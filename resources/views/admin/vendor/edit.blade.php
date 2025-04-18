@@ -3,7 +3,7 @@
 @section('content')
 <div class="main-inner">
   <div class="mb-6 flex flex-wrap items-center justify-between gap-4 lg:mb-8">
-    <h2 class="h2">Updating a user record</h2>
+    <h2 class="h2">Updating a vendor record</h2>
 
   </div>
 
@@ -37,8 +37,8 @@
             Status
           </label>
           <select name="sort" class="nc-select full">
-            <option value="day" selected>Approve</option>
-            <option value="week">Reject</option>
+            <option value="day" selected>Active</option>
+            <option value="week">Deactive</option>
           </select>
         </div>
 

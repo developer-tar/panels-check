@@ -76,7 +76,7 @@
         </div>
       
         <div class="col-span-2 flex gap-4 md:gap-6 mt-2">
-          <button class="btn-primary type="submit">
+          <button class="btn-primary" type="submit">
             Save
           </button>
          

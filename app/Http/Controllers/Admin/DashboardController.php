@@ -36,4 +36,10 @@ class DashboardController extends Controller
     {
         return view('dashboard.index5');
     }
+    public function activityLogs(){
+        return view('admin.activitylogs');
+    }
+     public function claimsBilling(){
+        return view('admin.claims');    
+     }
 }

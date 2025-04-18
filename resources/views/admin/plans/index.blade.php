@@ -7,18 +7,18 @@
 @section('content')
 <div class="main-inner">
     <div class="mb-6 flex flex-wrap items-center justify-between gap-4 lg:mb-8">
-        <h2 class="h2">User Management</h2>
-        <a href="{{route('admin.user.create')}}" class="btn-primary inline-flex items-center">
+        <h2 class="h2">Plan Management</h2>
+        <a href="{{route('admin.plan.create')}}" class="btn-primary inline-flex items-center">
             <i class="las la-plus-circle text-base md:text-lg"></i>
-            <span class="ml-1">Add an new user</span>
+            <span class="ml-1">Add an new plan</span>
         </a>
     </div>
 
     <div class="grid grid-cols-1 gap-4 xxl:gap-6">
-        <!-- User Management -->
+        <!-- Plan Management -->
         <div class="box col-span-12 lg:col-span-6">
             <div class="flex justify-between items-center gap-4 flex-wrap bb-dashed mb-4 pb-4 lg:mb-6 lg:pb-6">
-                <h4 class="h4">Users</h4>
+                <h4 class="h4">Plans</h4>
                 <div class="flex items-center gap-4 flex-wrap grow sm:justify-end">
 
                     <form
@@ -47,29 +47,40 @@
                         <tr class="bg-secondary/5 dark:bg-bg3">
                             <th class="text-start !py-5 px-6 min-w-[230px] cursor-pointer">
                                 <div class="flex items-center gap-1">
-                                    Profile
+                                    Name
                                 </div>
                             </th>
                             <th class="text-start !py-5 px-6 min-w-[230px] cursor-pointer">
                                 <div class="flex items-center gap-1">
-                                    Name
+                                Coverage Limit ($)
                                 </div>
                             </th>
                             <th class="text-start !py-5 min-w-[130px] cursor-pointer">
                                 <div class="flex items-center gap-1">
-                                    Email
+                                Eligibility Rule
                                 </div>
                             </th>
                             <th class="text-start !py-5 min-w-[200px] cursor-pointer">
                                 <div class="flex items-center gap-1">
-                                    Role
+                                    Start
                                 </div>
                             </th>
                             <th class="text-start !py-5 min-w-[130px] cursor-pointer">
                                 <div class="flex items-center gap-1">
-                                    Status
+                                    End
                                 </div>
                             </th>
+                            <th class="text-start !py-5 min-w-[130px] cursor-pointer">
+                                <div class="flex items-center gap-1">
+                                   No of Employee Enrolled
+                                </div>
+                            </th>
+                            <th class="text-start !py-5 min-w-[130px] cursor-pointer">
+                                <div class="flex items-center gap-1">
+                                    Reminder<br> Status
+                                </div>
+                            </th>
+                            
                             <th class="text-center !py-5" data-sortable="false">Action</th>
                         </tr>
                     </thead>
@@ -77,35 +88,43 @@
                         <tr class="even:bg-secondary/5 dark:even:bg-bg3">
                             <td class="py-2 px-6">
                                 <div class="flex items-center gap-3">
-                                    <img src="{{ asset('assets/images/logo.png') }}" width="32" height="32" class="rounded-full"
-                                        alt="payment medium icon" />
-
+                                <p class="font-medium mb-1">Healthcare</p>
                                 </div>
                             </td>
                             <td class="py-2 px-6">
                                 <div class="flex items-center gap-3">
-                                    <p class="font-medium mb-1">Tammy</p>
+                                    <p class="font-medium mb-1">1000$</p>
                                 </div>
 
                             </td>
                             <td class="py-2">
                                 <div>
-                                    <p class="font-medium mb-1">tammy@yopmail.com</p>
+                                    <p class="font-medium mb-1">The person should be...</p>
 
                                 </div>
                             </td>
                             <td class="py-2">
                                 <div>
-                                    <p class="font-medium">HR</p>
+                                    <p class="font-medium">2025-09-12</p>
 
                                 </div>
                             </td>
+                            <td class="py-2">
+                                <div>
+                                    <p class="font-medium">2026-09-12</p>
 
+                                </div>
+                            </td>
+                            <td class="py-2">
+                                <div>
+                                    <p class="font-medium">100</p>
 
+                                </div>
+                            </td>
                             <td class="py-2">
                                 <span
                                     class="block text-xs w-28 xxl:w-36 text-center rounded-[30px] dark:border-n500 border border-n30 py-2 bg-primary/10 dark:bg-bg3 text-primary">
-                                    Approved
+                                    Active
                                 </span>
                             </td>
                             <td class="py-2">
@@ -114,7 +133,7 @@
                                         <i class="las la-ellipsis-v horiz-option-btn cursor-pointer popover-button"></i>
                                         <ul class="horiz-option popover-content">
                                             <li>
-                                                <a href="{{route('admin.user.edit', 12)}}" class="single-option">
+                                                <a href="{{route('admin.plan.edit', 12)}}" class="single-option">
                                                     Edit
                                                 </a>
                                             </li>
@@ -130,35 +149,47 @@
                             </td>
                         </tr>
 
-                        <tr class="even:bg-secondary/5 dark:even:bg-bg3">
-                        <td class="py-2 px-6">
+                        <tr class="old:bg-secondary/5 dark:even:bg-bg3">
+                            <td class="py-2 px-6">
                                 <div class="flex items-center gap-3">
-                                    <img src="{{ asset('assets/images/usa-sm.png') }}" width="32" height="32" class="rounded-full"
-                                        alt="payment medium icon" />
-
+                                <p class="font-medium mb-1">Retirement</p>
                                 </div>
                             </td>
                             <td class="py-2 px-6">
                                 <div class="flex items-center gap-3">
-                                    <p class="font-medium mb-1">John</p>
+                                    <p class="font-medium mb-1">1000$</p>
                                 </div>
 
                             </td>
                             <td class="py-2">
                                 <div>
-                                    <p class="font-medium mb-1">john@yopmail.com</p>
+                                    <p class="font-medium mb-1">The person should be...</p>
+
                                 </div>
                             </td>
                             <td class="py-2">
                                 <div>
-                                    <p class="font-medium">Employee</p>
+                                    <p class="font-medium">2025-09-12</p>
+
+                                </div>
+                            </td>
+                            <td class="py-2">
+                                <div>
+                                    <p class="font-medium">2026-09-12</p>
+
+                                </div>
+                            </td>
+                            <td class="py-2">
+                                <div>
+                                    <p class="font-medium">10</p>
+
                                 </div>
                             </td>
 
                             <td class="py-2">
                                 <span
-                                    class="block text-xs w-28 xxl:w-36 text-center rounded-[30px] dark:border-n500 border border-n30 py-2 bg-error/10 dark:bg-bg3 text-error">
-                                    Rejected
+                                    class="block text-xs w-28 xxl:w-36 text-center rounded-[30px] dark:border-n500 border border-n30 py-2 bg-primary/10 dark:bg-bg3 text-primary">
+                                    Active
                                 </span>
                             </td>
                             <td class="py-2">
@@ -167,16 +198,14 @@
                                         <i class="las la-ellipsis-v horiz-option-btn cursor-pointer popover-button"></i>
                                         <ul class="horiz-option popover-content">
                                             <li>
-                                                <span
-                                                    class="single-option">
+                                                <a href="{{route('admin.plan.edit', 12)}}" class="single-option">
                                                     Edit
-                                                </span>
+                                                </a>
                                             </li>
                                             <li>
-                                                <span
-                                                    class="single-option">
-                                                    delete
-                                                </span>
+                                                <a href="/delete-url" class="single-option">
+                                                    Delete
+                                                </a>
                                             </li>
                                         </ul>
                                     </div>
