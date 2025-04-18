@@ -73,7 +73,7 @@ if (themeConfig.customizer) {
       </div>
     </aside>
   </div>`;
-  customizerContainer.innerHTML = customizerComponent;
+  customizerContainer.innerHTML = '';
   // Set the innerHTML of the container to your customizer HTML string
   document.body.appendChild(customizerContainer);
 }

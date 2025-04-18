@@ -13,7 +13,7 @@ use App\Http\Controllers\SupportController;
 use App\Http\Controllers\TradingController;
 use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Admin\DashboardController as AdminDashboardController; 
 /*
 |--------------------------------------------------------------------------
 | Web Routes

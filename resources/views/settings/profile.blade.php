@@ -4,18 +4,13 @@
     <div class="main-inner">
         <div class="mb-6 flex flex-wrap items-center justify-between gap-4 lg:mb-8">
             <h2 class="h2">Profile</h2>
-            <button class="btn-primary ac-modal-btn">
-                <i class="las la-plus-circle text-base md:text-lg"></i>
-                Open an Account
-            </button>
+            
         </div>
 
         <div class="grid grid-cols-12 gap-4 xxxxxl:gap-6">
             <div class="col-span-12 lg:col-span-6">
                 <div class="box xxl:p-8 xxxl:p-10">
-                    <h4 class="h4 bb-dashed mb-4 pb-4 md:mb-6 md:pb-6">
-                        Account Settings
-                    </h4>
+                  
                     <p class="text-lg font-medium mb-4">Profile Photo</p>
                     <div class="flex flex-wrap gap-6 xxl:gap-10 items-center bb-dashed mb-6 pb-6">
                         <img src="{{ asset('assets/images/placeholder.png') }}" width="120" height="120" class="rounded-xl"

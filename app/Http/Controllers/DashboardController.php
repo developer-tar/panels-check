@@ -7,8 +7,8 @@ use Illuminate\Http\Request;
 class DashboardController extends Controller
 {
     public function index()
-    {
-        return redirect()->route('dashboard.index1');
+    { 
+        return redirect()->route('admin.dashboard.index1');
     }
 
     public function index1()

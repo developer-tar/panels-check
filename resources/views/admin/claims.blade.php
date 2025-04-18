@@ -14,7 +14,7 @@
             <!-- Tracking Activity Logs -->
             <div class="box col-span-12 lg:col-span-6">
                 <div class="flex justify-between items-center gap-4 flex-wrap bb-dashed mb-4 pb-4 lg:mb-6 lg:pb-6">
-                    <h4 class="h4">Logs</h4>
+                    <h4 class="h4">List</h4>
                     <div class="flex items-center gap-4 flex-wrap grow sm:justify-end">
 
 
