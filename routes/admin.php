@@ -68,3 +68,5 @@ Route::group(['prefix' => 'notification', 'as' => 'admin.notification.'], functi
     Route::get('create', action: [NotificationController::class, 'create'])->name('create');
     Route::get('{id?}/edit', action: [NotificationController::class, 'edit'])->name('edit');
 });
+// Analytics & reports
+Route::get('/analytics', [DashboardController::class, 'analytics'])->name('admin.analytics');

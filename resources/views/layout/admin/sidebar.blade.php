@@ -339,13 +339,14 @@
 
 
                         </li>
+                        <!-- Reports -->
                         <li class="menu-li">
                             <button class="menu-btn group bg-n0 dark:!border-n500 dark:!bg-bg4">
                                 <span class="flex items-center justify-center gap-2">
                                     <span class="menu-icon">
-                                        <i class="las la-piggy-bank"></i>
+                                        <i class="las la-chart-pie"></i>
                                     </span>
-                                    <span class="menu-title font-medium">Accounts</span>
+                                    <span class="menu-title font-medium">Reports</span>
                                 </span>
                                 <span class="plus-minus">
                                     <i class="las la-plus text-xl"></i>
@@ -357,62 +358,15 @@
                             </button>
                             <ul class="submenu-hide submenu">
                                 <li>
-                                    <a href="{{ route('accounts.bank.account') }}" class="submenu-link">
+                                    <a href="{{ route('admin.analytics') }}" class="submenu-link">
                                         <i class="las la-minus text-xl"></i>
-                                        <span>Bank Account</span>
+                                        <span>manage</span>
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="{{ route('accounts.account.overview') }}" class="submenu-link">
-                                        <i class="las la-minus text-xl"></i>
-                                        <span>Account Overview</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('accounts.account.details') }}" class="submenu-link">
-                                        <i class="las la-minus text-xl"></i>
-                                        <span>Account Details</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('accounts.deposit.detail') }}" class="submenu-link">
-                                        <i class="las la-minus text-xl"></i>
-                                        <span>Deposit Details</span>
-                                    </a>
-                                </li>
+                               
                             </ul>
                         </li>
-                        <li class="menu-li">
-                            <button class="menu-btn group bg-n0 dark:!border-n500 dark:!bg-bg4">
-                                <span class="flex items-center justify-center gap-2">
-                                    <span class="menu-icon">
-                                        <i class="las la-credit-card"></i>
-                                    </span>
-                                    <span class="menu-title font-medium">Cards</span>
-                                </span>
-                                <span class="plus-minus">
-                                    <i class="las la-plus text-xl"></i>
-                                    <i class="las la-minus text-xl"></i>
-                                </span>
-                                <span class="chevron-down hidden">
-                                    <i class="las la-angle-down text-base"></i>
-                                </span>
-                            </button>
-                            <ul class="submenu-hide submenu">
-                                <li>
-                                    <a href="{{ route('cards.overview') }}" class="submenu-link">
-                                        <i class="las la-minus text-xl"></i>
-                                        <span>Card Overview</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('cards.details') }}" class="submenu-link">
-                                        <i class="las la-minus text-xl"></i>
-                                        <span>Card Details</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
+                   
                         <li class="menu-li">
                             <button class="menu-btn group bg-n0 dark:!border-n500 dark:!bg-bg4">
                                 <span class="flex items-center justify-center gap-2">
@@ -450,166 +404,7 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="menu-li">
-                            <button class="menu-btn group bg-n0 dark:!border-n500 dark:!bg-bg4">
-                                <span class="flex items-center justify-center gap-2">
-                                    <span class="menu-icon">
-                                        <i class="las la-wallet"></i>
-                                    </span>
-                                    <span class="menu-title font-medium">Payment</span>
-                                </span>
-                                <span class="plus-minus">
-                                    <i class="las la-plus text-xl"></i>
-                                    <i class="las la-minus text-xl"></i>
-                                </span>
-                                <span class="chevron-down hidden">
-                                    <i class="las la-angle-down text-base"></i>
-                                </span>
-                            </button>
-                            <ul class="submenu-hide submenu">
-                                <li>
-                                    <a href="{{ route('payment.overview') }}" class="submenu-link">
-                                        <i class="las la-minus text-xl"></i>
-                                        <span>Payment Overview</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('payment.providers') }}" class="submenu-link">
-                                        <i class="las la-minus text-xl"></i>
-                                        <span>Payment Providers</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('payment.exchange') }}" class="submenu-link">
-                                        <i class="las la-minus text-xl"></i>
-                                        <span>Exchange</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('payment.make.payment') }}" class="submenu-link">
-                                        <i class="las la-minus text-xl"></i>
-                                        <span>Make a Payment</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="menu-li">
-                            <button class="menu-btn group bg-n0 dark:!border-n500 dark:!bg-bg4">
-                                <span class="flex items-center justify-center gap-2">
-                                    <span class="menu-icon">
-                                        <i class="las la-coins"></i>
-                                    </span>
-                                    <span class="menu-title font-medium">Private Transfers</span>
-                                </span>
-                                <span class="plus-minus">
-                                    <i class="las la-plus text-xl"></i>
-                                    <i class="las la-minus text-xl"></i>
-                                </span>
-                                <span class="chevron-down hidden">
-                                    <i class="las la-angle-down text-base"></i>
-                                </span>
-                            </button>
-                            <ul class="submenu-hide submenu">
-                                <li>
-                                    <a href="{{ route('transfer.add.contact') }}" class="submenu-link">
-                                        <i class="las la-minus text-xl"></i>
-                                        <span>Add Contact</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('transfer.overview') }}" class="submenu-link">
-                                        <i class="las la-minus text-xl"></i>
-                                        <span>Transfer Overview</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('transfer.make.transfer') }}" class="submenu-link">
-                                        <i class="las la-minus text-xl"></i>
-                                        <span>Make Transfer</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('transfer.chat') }}" class="submenu-link">
-                                        <i class="las la-minus text-xl"></i>
-                                        <span>Chat</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="menu-li">
-                            <button class="menu-btn group bg-n0 dark:!border-n500 dark:!bg-bg4">
-                                <span class="flex items-center justify-center gap-2">
-                                    <span class="menu-icon">
-                                        <i class="las la-file-invoice"></i>
-                                    </span>
-                                    <span class="menu-title font-medium">Invoicing</span>
-                                </span>
-                                <span class="plus-minus">
-                                    <i class="las la-plus text-xl"></i>
-                                    <i class="las la-minus text-xl"></i>
-                                </span>
-                                <span class="chevron-down hidden">
-                                    <i class="las la-angle-down text-base"></i>
-                                </span>
-                            </button>
-                            <ul class="submenu-hide submenu">
-                                <li>
-                                    <a href="{{ route('invoicing.add.invoicing') }}" class="submenu-link">
-                                        <i class="las la-minus text-xl"></i>
-                                        <span>Add New Invoice</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('invoicing.style1') }}" class="submenu-link">
-                                        <i class="las la-minus text-xl"></i>
-                                        <span>Style 01</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('invoicing.style2') }}" class="submenu-link">
-                                        <i class="las la-minus text-xl"></i>
-                                        <span>Style 02</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="menu-li">
-                            <button class="menu-btn group bg-n0 dark:!border-n500 dark:!bg-bg4">
-                                <span class="flex items-center justify-center gap-2">
-                                    <span class="menu-icon">
-                                        <i class="las la-chart-bar"></i>
-                                    </span>
-                                    <span class="menu-title font-medium">Trading</span>
-                                </span>
-                                <span class="plus-minus">
-                                    <i class="las la-plus text-xl"></i>
-                                    <i class="las la-minus text-xl"></i>
-                                </span>
-                                <span class="chevron-down hidden">
-                                    <i class="las la-angle-down text-base"></i>
-                                </span>
-                            </button>
-                            <ul class="submenu-hide submenu">
-                                <li>
-                                    <a href="{{ route('trading.style1') }}" class="submenu-link">
-                                        <i class="las la-minus text-xl"></i>
-                                        <span>Style 01</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('trading.style2') }}" class="submenu-link">
-                                        <i class="las la-minus text-xl"></i>
-                                        <span>Style 02</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('trading.style3') }}" class="submenu-link">
-                                        <i class="las la-minus text-xl"></i>
-                                        <span>Style 03</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
+                   
                         <li class="menu-li">
                             <button class="menu-btn group bg-n0 dark:!border-n500 dark:!bg-bg4">
                                 <span class="flex items-center justify-center gap-2">

@@ -1,24 +1,91 @@
 @extends('layout.main')
 
-@push('page-css')
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jsvectormap/dist/css/jsvectormap.min.css" />
-@endpush
-
 @section('content')
     <div class="main-inner">
         <div class="mb-6 flex flex-wrap items-center justify-between gap-4 lg:mb-8">
-            <h2 class="h2">Notification  Management</h2>
-            <a href="{{route('admin.notification.create')}}" class="btn-primary inline-flex items-center">
+            <h2 class="h2">Reports Style 02</h2>
+            <button class="btn-primary ac-modal-btn">
                 <i class="las la-plus-circle text-base md:text-lg"></i>
-                <span class="ml-1">Add New Notification</span>
-            </a>
+                Open an Account
+            </button>
         </div>
 
+        <div class="box xl:p-8">
+            <div class="flex justify-between items-center flex-wrap gap-4 mb-4 pb-4 xl:pb-6 xl:mb-6 bb-dashed font-medium">
+                <h4 class="h4">Accounts Overview</h4>
+                <div class="flex items-center gap-2">
+                    <p class="text-xs sm:text-sm md:text-base">Sort By : </p>
+                    <select name="sort" class="nc-select green">
+                        <option value="day">Last 15 Days</option>
+                        <option value="week">Last 1 Month</option>
+                        <option value="year">Last 6 Month</option>
+                    </select>
+                </div>
+            </div>
+            <!-- Statistics -->
+            <div
+                class="box xxxl:p-8 grid grid-cols-12 xxl:divide-x-2 xxl:rtl:divide-x-reverse bg-primary/5 dark:bg-bg3 rounded-xl border border-n30 dark:border-n500 divide-n30 dark:divide-n500 divide-dashed max-xxl:gap-5 mb-4 xxxl:mb-6">
+                <div
+                    class="col-span-12 sm:col-span-6 xxl:col-span-3 flex items-center justify-between overflow-x-hidden xxl:px-6 first:ltr:pl-0 first:rtl:pr-0 last:ltr:pr-0 last:rtl:pl-0 gap-3">
+                    <div>
+                        <p class="font-medium mb-4">Total Balance</p>
+                        <div class="flex gap-2 items-center">
+                            <h4 class="h4">$8500</h4>
+                            <span class="text-primary text-sm flex items-center gap-1">
+                                <i class="las la-arrow-up text-base"></i> 50.8%
+                            </span>
+                        </div>
+                    </div>
+                    <div class="reports-stat-chart"></div>
+                </div>
+                <div
+                    class="col-span-12 sm:col-span-6 xxl:col-span-3 flex items-center justify-between overflow-x-hidden xxl:px-6 first:ltr:pl-0 first:rtl:pr-0 last:ltr:pr-0 last:rtl:pl-0 gap-3">
+                    <div>
+                        <p class="font-medium mb-4">Total Deposits</p>
+                        <div class="flex gap-2 items-center">
+                            <h4 class="h4">$5500</h4>
+                            <span class="text-primary text-sm flex items-center gap-1">
+                                <i class="las la-arrow-up text-base"></i> 50.8%
+                            </span>
+                        </div>
+                    </div>
+                    <div class="reports-stat-chart"></div>
+                </div>
+                <div
+                    class="col-span-12 sm:col-span-6 xxl:col-span-3 flex items-center justify-between overflow-x-hidden xxl:px-6 first:ltr:pl-0 first:rtl:pr-0 last:ltr:pr-0 last:rtl:pl-0 gap-3">
+                    <div>
+                        <p class="font-medium mb-4">Yearly In</p>
+                        <div class="flex gap-2 items-center">
+                            <h4 class="h4">$2500</h4>
+                            <span class="text-primary text-sm flex items-center gap-1">
+                                <i class="las la-arrow-up text-base"></i> 50.8%
+                            </span>
+                        </div>
+                    </div>
+                    <div class="reports-stat-chart"></div>
+                </div>
+                <div
+                    class="col-span-12 sm:col-span-6 xxl:col-span-3 flex items-center justify-between overflow-x-hidden xxl:px-6 first:ltr:pl-0 first:rtl:pr-0 last:ltr:pr-0 last:rtl:pl-0 gap-3">
+                    <div>
+                        <p class="font-medium mb-4">Yearly Out</p>
+                        <div class="flex gap-2 items-center">
+                            <h4 class="h4">$3500</h4>
+                            <span class="text-primary text-sm flex items-center gap-1">
+                                <i class="las la-arrow-up text-base"></i> 50.8%
+                            </span>
+                        </div>
+                    </div>
+                    <div class="reports-stat-chart"></div>
+                </div>
+            </div>
+            <!-- Account balance chart -->
+            <div class="reports-ac-balance overflow-x-hidden"></div>
+        </div>
         <div class="grid grid-cols-1 gap-4 xxl:gap-6">
-            <!-- Notification Management -->
+            <!-- HR Management -->
             <div class="box col-span-12 lg:col-span-6">
                 <div class="flex justify-between items-center gap-4 flex-wrap bb-dashed mb-4 pb-4 lg:mb-6 lg:pb-6">
-                    <h4 class="h4">Notifications</h4>
+                    <h4 class="h4">HRs</h4>
                     <div class="flex items-center gap-4 flex-wrap grow sm:justify-end">
 
                         <form
@@ -47,23 +114,28 @@
                             <tr class="bg-secondary/5 dark:bg-bg3">
                                 <th class="text-start !py-5 px-6 min-w-[230px] cursor-pointer">
                                     <div class="flex items-center gap-1">
-                                        Notification Type
+                                        Profile
                                     </div>
                                 </th>
                                 <th class="text-start !py-5 px-6 min-w-[230px] cursor-pointer">
                                     <div class="flex items-center gap-1">
-                                        Send to 
+                                        Name
                                     </div>
                                 </th>
                                 <th class="text-start !py-5 min-w-[130px] cursor-pointer">
                                     <div class="flex items-center gap-1">
-                                       Schedule <br> Sending<br> Date 
+                                        Email
                                     </div>
                                 </th>
 
                                 <th class="text-start !py-5 min-w-[130px] cursor-pointer">
                                     <div class="flex items-center gap-1">
-                                       Created at
+                                        Status
+                                    </div>
+                                </th>
+                                <th class="text-start !py-5 min-w-[130px] cursor-pointer">
+                                    <div class="flex items-center gap-1">
+                                        No of <br>Employee <br>Enrolled
                                     </div>
                                 </th>
                                 <th class="text-center !py-5" data-sortable="false">Action</th>
@@ -73,83 +145,43 @@
                             <tr class="even:bg-secondary/5 dark:even:bg-bg3">
                                 <td class="py-2 px-6">
                                     <div class="flex items-center gap-3">
-                                        <p class="font-medium mb-1">Remidner Alarm</p>
+                                        <img src="{{ asset('assets/images/logo.png') }}" width="32" height="32"
+                                            class="rounded-full" alt="payment medium icon" />
+
                                     </div>
                                 </td>
                                 <td class="py-2 px-6">
                                     <div class="flex items-center gap-3">
-                                        <p class="font-medium mb-1">All</p>
+                                        <p class="font-medium mb-1">Tammy</p>
                                     </div>
 
-                                </td>
-
-                                <td class="py-2">
-                                    <div>
-                                        <p class="font-medium">2025-09-12</p>
-
-                                    </div>
                                 </td>
                                 <td class="py-2">
                                     <div>
-                                        <p class="font-medium">2022-09-12</p>
+                                        <p class="font-medium mb-1">tammy@yopmail.com</p>
 
                                     </div>
                                 </td>
-  
+
+                                <td class="py-2">
+                                    <span
+                                        class="block text-xs w-28 xxl:w-36 text-center rounded-[30px] dark:border-n500 border border-n30 py-2 bg-primary/10 dark:bg-bg3 text-primary">
+                                        Approved
+                                    </span>
+                                </td>
+                                <td class="py-2">
+                                    <div>
+                                        <p class="font-medium">3</p>
+
+                                    </div>
+                                </td>
                                 <td class="py-2">
                                     <div class="flex justify-center">
                                         <div class="relative">
                                             <i class="las la-ellipsis-v horiz-option-btn cursor-pointer popover-button"></i>
                                             <ul class="horiz-option popover-content">
                                                 <li>
-                                                    <a href="{{route('admin.benefit.edit', 12)}}" class="single-option">
-                                                        Edit
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="/delete-url" class="single-option">
-                                                        Delete
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr class="odd:bg-secondary/5 dark:odd:bg-bg3">
-                                <td class="py-2 px-6">
-                                    <div class="flex items-center gap-3">
-                                        <p class="font-medium mb-1">Alert</p>
-                                    </div>
-                                </td>
-                                <td class="py-2 px-6">
-                                    <div class="flex items-center gap-3">
-                                        <p class="font-medium mb-1">Vendor</p>
-                                    </div>
-
-                                </td>
-
-                                <td class="py-2">
-                                    <div>
-                                        <p class="font-medium">2025-09-12</p>
-
-                                    </div>
-                                </td>
-                                <td class="py-2">
-                                    <div>
-                                        <p class="font-medium">2022-09-12</p>
-
-                                    </div>
-                                </td>
-  
-                                <td class="py-2">
-                                    <div class="flex justify-center">
-                                        <div class="relative">
-                                            <i class="las la-ellipsis-v horiz-option-btn cursor-pointer popover-button"></i>
-                                            <ul class="horiz-option popover-content">
-                                                <li>
-                                                    <a href="{{route('admin.benefit.edit', 12)}}" class="single-option">
+                                                    <a href="{{route('admin.hr.edit', 12)}}" class="single-option">
                                                         Edit
                                                     </a>
                                                 </li>
@@ -165,6 +197,57 @@
                                 </td>
                             </tr>
 
+                            <tr class="even:bg-secondary/5 dark:even:bg-bg3">
+                                <td class="py-2 px-6">
+                                    <div class="flex items-center gap-3">
+                                        <img src="{{ asset('assets/images/usa-sm.png') }}" width="32" height="32"
+                                            class="rounded-full" alt="payment medium icon" />
+
+                                    </div>
+                                </td>
+                                <td class="py-2 px-6">
+                                    <div class="flex items-center gap-3">
+                                        <p class="font-medium mb-1">John</p>
+                                    </div>
+
+                                </td>
+                                <td class="py-2">
+                                    <div>
+                                        <p class="font-medium mb-1">john@yopmail.com</p>
+                                    </div>
+                                </td>
+                                <td class="py-2">
+                                    <span
+                                        class="block text-xs w-28 xxl:w-36 text-center rounded-[30px] dark:border-n500 border border-n30 py-2 bg-error/10 dark:bg-bg3 text-error">
+                                        Rejected
+                                    </span>
+                                </td>
+                                <td class="py-2">
+                                    <div>
+                                        <p class="font-medium mb-1">20</p>
+                                    </div>
+                                </td>
+                                <td class="py-2">
+                                    <div class="flex justify-center">
+                                        <div class="relative">
+                                            <i class="las la-ellipsis-v horiz-option-btn cursor-pointer popover-button"></i>
+                                            <ul class="horiz-option popover-content">
+                                                <li>
+                                                    <span class="single-option">
+                                                        Edit
+                                                    </span>
+                                                </li>
+                                                <li>
+                                                    <span class="single-option">
+                                                        delete
+                                                    </span>
+                                                </li>
+                                            </ul>
+                                        </div>
+
+                                    </div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -186,7 +269,18 @@
                                 1
                             </button>
                         </li>
-                       
+                        <li>
+                            <button
+                                class="hover:bg-primary text-primary hover:text-n0 border md:w-10 duration-300 md:h-10 w-8 h-8 flex items-center rounded-full justify-center border-primary">
+                                2
+                            </button>
+                        </li>
+                        <li>
+                            <button
+                                class="hover:bg-primary text-primary hover:text-n0 border md:w-10 duration-300 md:h-10 w-8 h-8 flex items-center rounded-full justify-center border-primary">
+                                3
+                            </button>
+                        </li>
                         <li>
                             <button
                                 class="hover:bg-primary text-primary hover:text-n0 rtl:rotate-180 border md:w-10 duration-300 md:h-10 w-8 h-8 flex items-center rounded-full justify-center border-primary">
@@ -197,95 +291,6 @@
                 </div>
             </div>
 
-        </div>
-    </div>
-@endsection
-
-@section('page-modal')
-    <div class="modal-two-overlay fixed inset-0 z-[99] modalhide overflow-y-auto bg-n900/80 duration-500">
-        <div class="overflow-y-auto">
-            <div
-                class="modal box modal-inner absolute left-1/2 my-10 max-h-[90vh] w-[95%] max-w-[710px] -translate-x-1/2 overflow-y-auto duration-300 xl:p-8">
-                <!-- { "translate-y-0 scale-100 opacity-100 my-10": open } -->
-                <div class="relative">
-                    <button class="modal-two-close-btn absolute top-0 ltr:right-0 rtl:left-0">
-                        <i class="las la-times"></i>
-                    </button>
-
-                    <form>
-                        <div class="mt-6 grid grid-cols-2 gap-4 xl:mt-8 xxxl:gap-6">
-                            <div class="col-span-2">
-                                <label for="name" class="mb-4 block font-medium md:text-lg">
-                                    Account Holder Name
-                                </label>
-                                <input type="text"
-                                    class="w-full rounded-3xl border border-n30 bg-secondary/5 px-6 py-2.5 dark:border-n500 dark:bg-bg3 md:py-3"
-                                    placeholder="Enter Name" id="name" required />
-                            </div>
-                            <div class="col-span-2">
-                                <label for="number" class="mb-4 block font-medium md:text-lg">
-                                    Phone Number
-                                </label>
-                                <input type="number"
-                                    class="w-full rounded-3xl border border-n30 bg-secondary/5 px-6 py-2.5 dark:border-n500 dark:bg-bg3 md:py-3"
-                                    placeholder="Enter Number" id="number" required />
-                            </div>
-                            <div class="col-span-2">
-                                <label for="currency" class="mb-4 block font-medium md:text-lg">
-                                    Select Currency
-                                </label>
-                                <select name="currency" class="nc-select full dark:!border-n500">
-                                    <option value="usd">USD</option>
-                                    <option value="gbp">GBP</option>
-                                    <option value="yen">YEN</option>
-                                    <option value="jpn">JPN</option>
-                                </select>
-                            </div>
-                            <div class="col-span-2 md:col-span-1">
-                                <label for="rate" class="mb-4 block font-medium md:text-lg">
-                                    Interest Rate
-                                </label>
-                                <input type="number"
-                                    class="w-full rounded-3xl border border-n30 bg-secondary/5 px-6 py-2.5 dark:border-n500 dark:bg-bg3 md:py-3"
-                                    placeholder="Interest Rate %" id="rate" required />
-                            </div>
-                            <div class="col-span-2 md:col-span-1">
-                                <label for="expire" class="mb-4 block font-medium md:text-lg">
-                                    Expiry Date
-                                </label>
-                                <div
-                                    class="relative bg-secondary/5 py-3 dark:bg-bg3 border border-n30 dark:border-n500 rounded-3xl">
-                                    <input id="date2" class="border-none" placeholder="Select Date" autocomplete="off" />
-                                    <i
-                                        class="las la-calendar absolute ltr:right-4 rtl:left-4 top-1/2 -translate-y-1/2 cursor-pointer"></i>
-                                </div>
-                            </div>
-                            <div class="col-span-2">
-                                <label for="amount" class="mb-4 block font-medium md:text-lg">
-                                    Amount
-                                </label>
-                                <input type="number"
-                                    class="w-full rounded-3xl border border-n30 bg-secondary/5 px-6 py-2.5 dark:border-n500 dark:bg-bg3 md:py-3"
-                                    placeholder="Enter Amount" id="amount" required />
-                            </div>
-                            <div class="col-span-2">
-                                <label for="status" class="mb-4 block font-medium md:text-lg">
-                                    Select Status
-                                </label>
-                                <select name="currency" class="nc-select full dark:!border-n500">
-                                    <option value="active">Active</option>
-                                    <option value="inactive">Inactive</option>
-                                </select>
-                            </div>
-                            <div class="col-span-2 mt-4">
-                                <button class="btn-primary flex w-full justify-center" type="submit">
-                                    Create Account
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
         </div>
     </div>
 @endsection
