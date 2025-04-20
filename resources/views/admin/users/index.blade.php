@@ -52,6 +52,11 @@
                             </th>
                             <th class="text-start !py-5 px-6 min-w-[230px] cursor-pointer">
                                 <div class="flex items-center gap-1">
+                                   Company Name
+                                </div>
+                            </th>
+                            <th class="text-start !py-5 px-6 min-w-[230px] cursor-pointer">
+                                <div class="flex items-center gap-1">
                                     Name
                                 </div>
                             </th>
@@ -81,6 +86,12 @@
                                         alt="payment medium icon" />
 
                                 </div>
+                            </td>
+                            <td class="py-2 px-6">
+                                <div class="flex items-center gap-3">
+                                    <p class="font-medium mb-1">Netset</p>
+                                </div>
+
                             </td>
                             <td class="py-2 px-6">
                                 <div class="flex items-center gap-3">
@@ -137,6 +148,12 @@
                                         alt="payment medium icon" />
 
                                 </div>
+                            </td>
+                            <td class="py-2 px-6">
+                                <div class="flex items-center gap-3">
+                                    <p class="font-medium mb-1">Luminoguru</p>
+                                </div>
+
                             </td>
                             <td class="py-2 px-6">
                                 <div class="flex items-center gap-3">

@@ -15,12 +15,25 @@
 
       <div class="grid grid-cols-2 gap-4 xxxl:gap-6">
       <div class="col-span-2 md:col-span-1">
-        <label for="name" class="mb-4 md:text-lg font-medium block">
-        Plan Name
+        <label for="date" class="md:text-lg font-medium block mb-4">
+        Select company
         </label>
-        <input type="text"
-        class="w-full text-sm  bg-secondary/5 dark:bg-bg3 !border border-n30 dark:border-n500 rounded-3xl px-3 md:px-6 py-2 md:py-3"
-        placeholder="Enter name" id="name" required />
+        <select name="sort" class="nc-select full">
+        <option value="day">Netset </option>
+        <option value="week">Luminoguru</option>
+
+        </select>
+      </div>
+      <div class="col-span-2 md:col-span-1">
+        <label for="name" class="mb-4 md:text-lg font-medium block">
+        Select Domain Name
+        </label>
+        <select name="sort" class="nc-select full">
+        <option value="day">HealthCare </option>
+        <option value="week">Home Loan</option>
+        <option value="week">Other</option>
+
+        </select>
       </div>
 
 
@@ -48,7 +61,7 @@
         class="w-full text-sm  bg-secondary/5 dark:bg-bg3 !border border-n30 dark:border-n500 rounded-3xl px-3 md:px-6 py-2 md:py-3"
         placeholder="Enter name" id="name" required />
       </div>
-      
+
       <div class="col-span-2 md:col-span-1">
         <label for="date" class="md:text-lg font-medium block mb-4">
         Compare with Plan
@@ -67,11 +80,11 @@
         placeholder="Enter Description..." rows="5" id="desc" required></textarea>
       </div>
       <div class="col-span-2 md:col-span-1 md:ltr:pr-5 md:rtl:pl-5 flex flex-col gap-4 xxl:gap-6">
-       
+
         <div class="flex items-center justify-between">
         <div>
           <p class="font-medium text-base md:text-lg xl:text-xl mb-2">
-          Automatic Reminder 
+          Automatic Reminder
           </p>
           <span class="text-xs md:text-sm">Automatic reminder for open enrollment user </span>
         </div>

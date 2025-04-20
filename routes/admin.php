@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\BenefitsEnrollController;
+use App\Http\Controllers\Admin\CompanyController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\HrController;
 use App\Http\Controllers\Admin\PlansController;
@@ -70,3 +71,10 @@ Route::group(['prefix' => 'notification', 'as' => 'admin.notification.'], functi
 });
 // Analytics & reports
 Route::get('/analytics', [DashboardController::class, 'analytics'])->name('admin.analytics');
+
+//company management
+Route::group(['prefix' => 'company', 'as' => 'admin.company.'], function(){
+    Route::get('/', [CompanyController::class, 'index'])->name('index');
+    Route::get('create', [CompanyController::class, 'create'])->name('create');
+    Route::get('{id}/edit', [CompanyController::class, 'edit'])->name('edit');
+});

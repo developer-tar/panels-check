@@ -23,7 +23,16 @@
       </div>
 
       <div class="grid grid-cols-2 gap-4 xxxl:gap-6">
-
+      <div class="col-span-2 md:col-span-1">
+          <label for="date" class="md:text-lg font-medium block mb-4">
+            Select company
+          </label>
+          <select name="sort" class="nc-select full">
+            <option value="day" selected>Netset </option>
+            <option value="week">Luminoguru</option>
+           
+          </select>
+        </div>
         <div class="col-span-2 md:col-span-1">
           <label for="name" class="mb-4 md:text-lg font-medium block">
             Name

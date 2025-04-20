@@ -3,13 +3,13 @@
 @section('content')
 <div class="main-inner">
     <div class="mb-6 flex flex-wrap items-center justify-between gap-4 lg:mb-8">
-      <h2 class="h2">Register a new Hr</h2>
+      <h2 class="h2">Update a  Company</h2>
      
     </div>
 
     <div class="box mb-4 xxxl:mb-6">
       <div class="mb-6 pb-6 bb-dashed flex justify-between items-center">
-        <h4 class="h4">Registering</h4>
+        <h4 class="h4">Update</h4>
       </div>
       <form>
       <div class="mb-6 flex flex-wrap items-center gap-5 xl:gap-10">
@@ -23,31 +23,12 @@
       </div>
       <div class="grid grid-cols-2 gap-4 xxxl:gap-6">
       <div class="col-span-2 md:col-span-1">
-          <label for="date" class="md:text-lg font-medium block mb-4">
-            Select company
-          </label>
-          <select name="sort" class="nc-select full">
-            <option value="day">Netset </option>
-            <option value="week">Luminoguru</option>
-           
-          </select>
-        </div>
-        <div class="col-span-2 md:col-span-1">
           <label for="name" class="mb-4 md:text-lg font-medium block">
             Name
           </label>
           <input type="text"
             class="w-full text-sm  bg-secondary/5 dark:bg-bg3 !border border-n30 dark:border-n500 rounded-3xl px-3 md:px-6 py-2 md:py-3"
-            placeholder="Enter name" id="name" required />
-        </div>
-        <div class="col-span-2 md:col-span-1">
-          <label for="payfor" class="mb-4 md:text-lg font-medium block">
-            Status
-          </label>
-          <select name="sort" class="nc-select full">
-            <option value="day">Active</option>
-            <option value="week">Deactive</option>
-          </select>
+            placeholder="Enter name" id="name" required value="netset" />
         </div>
        
         <div class="col-span-2 md:col-span-1">
@@ -56,34 +37,36 @@
           </label>
           <input type="text"
             class="w-full text-sm  bg-secondary/5 dark:bg-bg3 !border border-n30 dark:border-n500 rounded-3xl px-3 md:px-6 py-2 md:py-3"
-            placeholder="Enter name" id="name" required />
+            placeholder="Enter name" id="name" required value="hr@netset.com"/>
         </div>
         <div class="col-span-2 md:col-span-1">
-          <label for="date" class="md:text-lg font-medium block mb-4">
-            Gender
+          <label for="payfor" class="mb-4 md:text-lg font-medium block">
+            type
           </label>
           <select name="sort" class="nc-select full">
-            <option value="day">Male</option>
-            <option value="week">Female</option>
-            <option value="week">Other</option>
+            <option value="day" selected>LLC</option>
+            <option value="week">PVT LTD</option>
+            <option value="week">Coorportion</option>
           </select>
         </div>
+       
         <div class="col-span-2 md:col-span-1">
-          <label for="number" class="md:text-lg font-medium block mb-4">
-            Password
+          <label for="medium" class="mb-4 md:text-lg font-medium block">
+            Registration number
           </label>
-          <input type="number"
-            class="w-full text-sm  bg-secondary/5 dark:bg-bg3 border border-n30 dark:border-n500 rounded-3xl px-3 md:px-6 py-2 md:py-3"
-            placeholder="Enter Number" id="number" required />
+          <input type="text"
+            class="w-full text-sm  bg-secondary/5 dark:bg-bg3 !border border-n30 dark:border-n500 rounded-3xl px-3 md:px-6 py-2 md:py-3"
+            placeholder="Enter name" id="name" required value='1246643355663' />
         </div>
         <div class="col-span-2 md:col-span-1">
-          <label for="amount" class="md:text-lg font-medium block mb-4">
-            Confirm Password
+          <label for="medium" class="mb-4 md:text-lg font-medium block">
+            Wesbite Url
           </label>
-          <input type="number"
-            class="w-full text-sm  bg-secondary/5 dark:bg-bg3 border border-n30 dark:border-n500 rounded-3xl px-3 md:px-6 py-2 md:py-3"
-            placeholder="Enter Amount" id="amount" required />
+          <input type="text"
+            class="w-full text-sm  bg-secondary/5 dark:bg-bg3 !border border-n30 dark:border-n500 rounded-3xl px-3 md:px-6 py-2 md:py-3"
+            placeholder="Enter name" id="name" required value="www.netset.com"/>
         </div>
+      
       
         <div class="col-span-2 flex gap-4 md:gap-6 mt-2">
           <button class="btn-primary" type="submit">

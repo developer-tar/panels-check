@@ -5,7 +5,7 @@
             <div class="logo-container">
                 <div class="logo-inner">
                     <a href="{{ route('admin.dashboard.index1') }}" class="logo-wrapper">
-                        <img src="{{ asset('assets/images/logo-with-text.png') }}" width="174" height="38"
+                        <img src="{{ asset('assets/images/ChatGPT Image Apr 20, 2025, 11_55_27 PM copy.png') }}" width="174" height="38"
                             class="logo-full" alt="logo" />
                         <img src="{{ asset('assets/images/logo.png') }}" width="37" height="36" class="logo-icon hidden"
                             alt="logo" />
@@ -26,6 +26,42 @@
                                 <i class="las la-home"></i>
                                 <span>Dashboard</span>
                             </a>
+                        </li>
+                         <!-- Company  -->
+                         <li class="menu-li">
+                            <button class="menu-btn border-n30 bg-n0 dark:!border-n500 dark:bg-bg4">
+                                <span class="flex items-center justify-center gap-2">
+                                    <span class="menu-icon">
+                                        <i class="las la-users"></i>
+                                    </span>
+                                    <span class="menu-title font-medium">Company</span>
+                                </span>
+                                <span class="plus-minus">
+                                    <i class="las la-plus text-xl"></i>
+                                    <i class="las la-minus text-xl"></i>
+                                </span>
+                                <span class="chevron-down hidden">
+                                    <i class="las la-angle-down text-base"></i>
+                                </span>
+                            </button>
+                            <ul class="submenu-hide submenu">
+                                <li>
+                                    <a href="{{ route('admin.company.index') }}" class="submenu-link">
+                                        <i class="las la-minus text-xl"></i>
+                                        <span>List/Manage</span>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="{{ route('admin.company.create') }}" class="submenu-link">
+                                        <i class="las la-minus text-xl"></i>
+                                        <span>Register</span>
+                                    </a>
+                                </li>
+
+                            </ul>
+
+
                         </li>
                         <!-- user -->
                         <li class="menu-li">

@@ -7,18 +7,18 @@
 @section('content')
 <div class="main-inner">
     <div class="mb-6 flex flex-wrap items-center justify-between gap-4 lg:mb-8">
-        <h2 class="h2">Plan Management</h2>
-        <a href="{{route('admin.plan.create')}}" class="btn-primary inline-flex items-center">
+        <h2 class="h2">Company Management</h2>
+        <a href="{{route('admin.company.create')}}" class="btn-primary inline-flex items-center">
             <i class="las la-plus-circle text-base md:text-lg"></i>
-            <span class="ml-1">Add an new plan</span>
+            <span class="ml-1">Add an new Company</span>
         </a>
     </div>
 
     <div class="grid grid-cols-1 gap-4 xxl:gap-6">
-        <!-- Plan Management -->
+        <!-- Company Management -->
         <div class="box col-span-12 lg:col-span-6">
             <div class="flex justify-between items-center gap-4 flex-wrap bb-dashed mb-4 pb-4 lg:mb-6 lg:pb-6">
-                <h4 class="h4">Plans</h4>
+                <h4 class="h4">Companies</h4>
                 <div class="flex items-center gap-4 flex-wrap grow sm:justify-end">
 
                     <form
@@ -47,40 +47,29 @@
                         <tr class="bg-secondary/5 dark:bg-bg3">
                             <th class="text-start !py-5 px-6 min-w-[230px] cursor-pointer">
                                 <div class="flex items-center gap-1">
-                                   Domain  Name
+                                    profile
                                 </div>
                             </th>
                             <th class="text-start !py-5 px-6 min-w-[230px] cursor-pointer">
                                 <div class="flex items-center gap-1">
-                                Coverage Limit ($)
+                                    Name
                                 </div>
                             </th>
                             <th class="text-start !py-5 min-w-[130px] cursor-pointer">
                                 <div class="flex items-center gap-1">
-                                Eligibility Rule
+                                    Email
                                 </div>
                             </th>
                             <th class="text-start !py-5 min-w-[200px] cursor-pointer">
                                 <div class="flex items-center gap-1">
-                                    Start
+                                    Registerating Number
                                 </div>
                             </th>
                             <th class="text-start !py-5 min-w-[130px] cursor-pointer">
                                 <div class="flex items-center gap-1">
-                                    End
+                                    Type
                                 </div>
                             </th>
-                            <th class="text-start !py-5 min-w-[130px] cursor-pointer">
-                                <div class="flex items-center gap-1">
-                                   No of Employee Enrolled
-                                </div>
-                            </th>
-                            <th class="text-start !py-5 min-w-[130px] cursor-pointer">
-                                <div class="flex items-center gap-1">
-                                    Reminder<br> Status
-                                </div>
-                            </th>
-                            
                             <th class="text-center !py-5" data-sortable="false">Action</th>
                         </tr>
                     </thead>
@@ -88,52 +77,44 @@
                         <tr class="even:bg-secondary/5 dark:even:bg-bg3">
                             <td class="py-2 px-6">
                                 <div class="flex items-center gap-3">
-                                <p class="font-medium mb-1">Healthcare</p>
+                                    <img src="{{ asset('assets/images/logo.png') }}" width="32" height="32" class="rounded-full"
+                                        alt="payment medium icon" />
+
                                 </div>
                             </td>
                             <td class="py-2 px-6">
                                 <div class="flex items-center gap-3">
-                                    <p class="font-medium mb-1">1000$</p>
+                                    <p class="font-medium mb-1">Netset</p>
                                 </div>
 
                             </td>
                             <td class="py-2">
                                 <div>
-                                    <p class="font-medium mb-1">The person should be...</p>
+                                    <p class="font-medium mb-1">hr@netset.com</p>
 
                                 </div>
                             </td>
                             <td class="py-2">
                                 <div>
-                                    <p class="font-medium">2025-09-12</p>
+                                    <p class="font-medium">1246643355663</p>
 
                                 </div>
                             </td>
                             <td class="py-2">
                                 <div>
-                                    <p class="font-medium">2026-09-12</p>
+                                    <p class="font-medium">LLC</p>
 
                                 </div>
                             </td>
-                            <td class="py-2">
-                                <div>
-                                    <p class="font-medium">100</p>
 
-                                </div>
-                            </td>
-                            <td class="py-2">
-                                <span
-                                    class="block text-xs w-28 xxl:w-36 text-center rounded-[30px] dark:border-n500 border border-n30 py-2 bg-primary/10 dark:bg-bg3 text-primary">
-                                    Active
-                                </span>
-                            </td>
+
                             <td class="py-2">
                                 <div class="flex justify-center">
                                     <div class="relative">
                                         <i class="las la-ellipsis-v horiz-option-btn cursor-pointer popover-button"></i>
                                         <ul class="horiz-option popover-content">
                                             <li>
-                                                <a href="{{route('admin.plan.edit', 12)}}" class="single-option">
+                                                <a href="{{route('admin.company.edit', 12)}}" class="single-option">
                                                     Edit
                                                 </a>
                                             </li>
@@ -149,56 +130,47 @@
                             </td>
                         </tr>
 
-                        <tr class="old:bg-secondary/5 dark:even:bg-bg3">
+                        <tr class="odd:bg-secondary/5 dark:odd:bg-bg3">
                             <td class="py-2 px-6">
                                 <div class="flex items-center gap-3">
-                                <p class="font-medium mb-1">Retirement</p>
+                                    <img src="{{ asset('assets/images/logo.png') }}" width="32" height="32" class="rounded-full"
+                                        alt="payment medium icon" />
+
                                 </div>
                             </td>
                             <td class="py-2 px-6">
                                 <div class="flex items-center gap-3">
-                                    <p class="font-medium mb-1">1000$</p>
+                                    <p class="font-medium mb-1">Luminoguru</p>
                                 </div>
 
                             </td>
                             <td class="py-2">
                                 <div>
-                                    <p class="font-medium mb-1">The person should be...</p>
+                                    <p class="font-medium mb-1">hr@Luminoguru.com</p>
 
                                 </div>
                             </td>
                             <td class="py-2">
                                 <div>
-                                    <p class="font-medium">2025-09-12</p>
+                                    <p class="font-medium">1246643355663</p>
 
                                 </div>
                             </td>
                             <td class="py-2">
                                 <div>
-                                    <p class="font-medium">2026-09-12</p>
-
-                                </div>
-                            </td>
-                            <td class="py-2">
-                                <div>
-                                    <p class="font-medium">10</p>
+                                    <p class="font-medium">PVT LTD</p>
 
                                 </div>
                             </td>
 
-                            <td class="py-2">
-                                <span
-                                    class="block text-xs w-28 xxl:w-36 text-center rounded-[30px] dark:border-n500 border border-n30 py-2 bg-primary/10 dark:bg-bg3 text-primary">
-                                    Active
-                                </span>
-                            </td>
+
                             <td class="py-2">
                                 <div class="flex justify-center">
                                     <div class="relative">
                                         <i class="las la-ellipsis-v horiz-option-btn cursor-pointer popover-button"></i>
                                         <ul class="horiz-option popover-content">
                                             <li>
-                                                <a href="{{route('admin.plan.edit', 12)}}" class="single-option">
+                                                <a href="{{route('admin.company.edit', 12)}}" class="single-option">
                                                     Edit
                                                 </a>
                                             </li>

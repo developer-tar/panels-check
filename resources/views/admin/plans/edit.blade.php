@@ -15,12 +15,25 @@
 
       <div class="grid grid-cols-2 gap-4 xxxl:gap-6">
       <div class="col-span-2 md:col-span-1">
-        <label for="name" class="mb-4 md:text-lg font-medium block">
-        Plan Name
+        <label for="date" class="md:text-lg font-medium block mb-4">
+        Select company
         </label>
-        <input type="text"
-        class="w-full text-sm  bg-secondary/5 dark:bg-bg3 !border border-n30 dark:border-n500 rounded-3xl px-3 md:px-6 py-2 md:py-3"
-        placeholder="Enter name" id="name" required value="Healthcare"/>
+        <select name="sort" class="nc-select full">
+        <option value="day">Netset </option>
+        <option value="week">Luminoguru</option>
+
+        </select>
+      </div>
+      <div class="col-span-2 md:col-span-1">
+        <label for="name" class="mb-4 md:text-lg font-medium block">
+        Select Domain Name
+        </label>
+        <select name="sort" class="nc-select full">
+        <option value="day" selected>HealthCare </option>
+        <option value="week">Home Loan</option>
+        <option value="week">Other</option>
+
+        </select>
       </div>
 
 
