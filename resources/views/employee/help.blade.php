@@ -3,41 +3,75 @@
 @section('content')
     <div class="main-inner">
         <div class="mb-6 flex flex-wrap items-center justify-between gap-4 lg:mb-8">
-            <h2 class="h2">Help Center</h2>
-           
+            <h2 class=" mb-6">How Can We Help You?</h2>
+            <p class="mb-7 ">
+                Welcome to our Help Center! We&apos;re here to provide you with the
+                assistance and information you need.
+            </p>
+
         </div>
 
         <div class="flex flex-col gap-4 xxl:gap-6">
-            <!-- Hero -->
-            <div class="box xl:p-6 ">
-                <div class="box bg-primary/5 dark:bg-bg3 xl:p-10 xxxl:p-[60px] grid grid-cols-2 gap-4 items-center">
-                    <div class="col-span-2 md:col-span-1">
-                        <h2 class="display-4 mb-6">How Can We Help You?</h2>
-                        <p class="mb-7 lg:mb-10">
-                            Welcome to our Help Center! We&apos;re here to provide you with the
-                            assistance and information you need.
-                        </p>
-                        <form
-                            class=" datatable-search  border border-n30 dark:border-n500 gap-3 rounded-[30px] focus-within:border-primary p-2 items-center justify-between min-w-[200px] bg-n0 dark:bg-bg4 xxl:max-w-[610px] max-w-[300px] flex w-full ">
-                            <input type="text" placeholder="Search"
-                                class="bg-transparent text-sm border-none ltr:pl-4 rtl:pr-4 py-1 w-full"
-                                id="payment-account-search" />
-                            <button
-                                class="bg-primary shrink-0 rounded-full w-7 h-7 lg:w-8 lg:h-8 flex justify-center items-center text-n0">
-                                <i class="las la-search text-lg"></i>
-                            </button>
-                        </form>
-                    </div>
-                    <div class="col-span-2 md:col-span-1 flex justify-center md:justify-end">
-                        <img src="{{ asset('assets/images/help-center.png') }}" width="384" height="325" alt="help center img" />
-                    </div>
+            <div class="col-span-12 lg:col-span-6">
+                <div class="box xxl:p-8 xxxl:p-10">
+
+
+                    <form class="mt-6 xl:mt-8 grid grid-cols-2 gap-4 xxxxxl:gap-6">
+                        <div class="col-span-2">
+                            <label for="fname" class="md:text-lg font-medium block mb-4">
+                                Your Name
+                            </label>
+                            <input type="text"
+                                class="w-full text-sm bg-primary/5 dark:bg-bg3 border border-n30 dark:border-n500 rounded-3xl px-3 md:px-6 py-2 md:py-3"
+                                id="fname" placeholder="First Name" value="Darrel" required />
+                        </div>
+
+                        <div class="col-span-2">
+                            <label for="email" class="md:text-lg font-medium block mb-4">
+                                Email
+                            </label>
+                            <input type="email"
+                                class="w-full text-sm bg-primary/5 dark:bg-bg3 border border-n30 dark:border-n500 rounded-3xl px-3 md:px-6 py-2 md:py-3"
+                                placeholder="Enter Email" value="example@mail.com" id="email" required />
+                        </div>
+                        <div class="col-span-2">
+                            <label for="phone" class="md:text-lg font-medium block mb-4">
+                                Phone (Optional)
+                            </label>
+                            <input type="text"
+                                class="w-full text-sm bg-primary/5 dark:bg-bg3 border border-n30 dark:border-n500 rounded-3xl px-3 md:px-6 py-2 md:py-3"
+                                placeholder="Enter Phone" value="91021421144" id="phone" required />
+                        </div>
+
+
+                        <div class="col-span-2">
+                            <label for="tagline" class="md:text-lg font-medium block mb-4">
+                                Ask Anything :
+                            </label>
+                            <div>
+                                <div id="editor">
+                                    <p>what is the billing is it COD or pay online?</p>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div></div>
+                        <div class="col-span-2">
+
+                            <div class="flex mt-6 xxl:mt-10 gap-4">
+                                <button class="btn-primary px-5">Submit</button>
+                                <button class="btn-outline px-5">Cancel</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
+            
             <!-- Product Info -->
             <div class="box xl:p-8">
                 <div class="flex justify-between items-center bb-dashed mb-4 pb-4 lg:mb-6 lg:pb-6">
                     <h4 class="h4">Product Info</h4>
-              @include('partials._horizontal-options')
+                    @include('partials._horizontal-options')
 
                 </div>
                 <div class="grid grid-cols-12 gap-4 xxl:gap-6">
@@ -329,8 +363,8 @@
                     <div
                         class="col-span-12 md:col-span-6 xxl:col-span-4 box xl:p-6 bg-primary/5 dark:bg-bg3 border border-n30 dark:border-n500">
                         <p class="font-medium mb-3 text-secondary">Your Guide</p>
-                        <a class="h5 mb-4 block text-base font-medium md:text-xl md:font-semibold"
-                            href="#">Contacting Customer
+                        <a class="h5 mb-4 block text-base font-medium md:text-xl md:font-semibold" href="#">Contacting
+                            Customer
                             Support</a>
                         <p class="text-sm mb-6">Find the various channels through which you can reach our customer support
                             team
@@ -359,8 +393,8 @@
                     <div
                         class="col-span-12 md:col-span-6 xxl:col-span-4 box xl:p-6 bg-primary/5 dark:bg-bg3 border border-n30 dark:border-n500">
                         <p class="font-medium mb-3 text-secondary">Fees</p>
-                        <a class="h5 mb-4 block text-base font-medium md:text-xl md:font-semibold"
-                            href="#">Demystifying Overdraft
+                        <a class="h5 mb-4 block text-base font-medium md:text-xl md:font-semibold" href="#">Demystifying
+                            Overdraft
                             Fees</a>
                         <p class="text-sm mb-6">Understand how overdraft fees work, how to avoid them, and what to do if
                             you find
@@ -374,8 +408,8 @@
                     <div
                         class="col-span-12 md:col-span-6 xxl:col-span-4 box xl:p-6 bg-primary/5 dark:bg-bg3 border border-n30 dark:border-n500">
                         <p class="font-medium mb-3 text-secondary">Investment</p>
-                        <a class="h5 mb-4 block text-base font-medium md:text-xl md:font-semibold"
-                            href="#">Investment Basics for
+                        <a class="h5 mb-4 block text-base font-medium md:text-xl md:font-semibold" href="#">Investment
+                            Basics for
                             Beginners</a>
                         <p class="text-sm mb-6">A beginner's guide to understanding different investment options, risk
                             factors,
@@ -417,8 +451,8 @@
                     <div
                         class="col-span-12 md:col-span-6 xxl:col-span-4 box xl:p-6 bg-primary/5 dark:bg-bg3 border border-n30 dark:border-n500">
                         <p class="font-medium mb-3 text-secondary">Traveling Card</p>
-                        <a class="h5 mb-4 block text-base font-medium md:text-xl md:font-semibold"
-                            href="#">Traveling with Your
+                        <a class="h5 mb-4 block text-base font-medium md:text-xl md:font-semibold" href="#">Traveling with
+                            Your
                             Debit/Credit Card</a>
                         <p class="text-sm mb-6">Tips and precautions for using your cards while traveling to ensure a
                             secure and
@@ -447,8 +481,8 @@
                     <div
                         class="col-span-12 md:col-span-6 xxl:col-span-4 box xl:p-6 bg-primary/5 dark:bg-bg3 border border-n30 dark:border-n500">
                         <p class="font-medium mb-3 text-secondary">Scores</p>
-                        <a class="h5 mb-4 block text-base font-medium md:text-xl md:font-semibold"
-                            href="#">Understanding Credit
+                        <a class="h5 mb-4 block text-base font-medium md:text-xl md:font-semibold" href="#">Understanding
+                            Credit
                             Scores</a>
                         <p class="text-sm mb-6">Demystify credit scores and their impact on your financial health. Learn
                             how to

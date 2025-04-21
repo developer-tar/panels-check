@@ -14,6 +14,21 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function(){
     return to_route('employee.dashboard.index');
 }); 
+Route::get('/profile', function(){
+    return view('employee.profile');
+})->name('employee.profile');
+
+Route::get('/transaction', function(){
+    return view('employee.transaction');
+})->name('employee.transaction'); 
+
+Route::get('/help-centers', function(){
+    return view('employee.help');
+})->name('employee.help-center'); 
+
+Route::get('/comparison-benefit-tools', function(){
+    return view('employee.comparison-tools');
+})->name('employee.comparison-tools'); 
 
 Route::group(['prefix' => 'dashboard', 'as' => 'employee.dashboard.'], function(){
     Route::get('/', [DashboardController::class, 'index'])->name('index');

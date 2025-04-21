@@ -27,42 +27,7 @@
                                 <span>Dashboard</span>
                             </a>
                         </li>
-                         <!-- Company  -->
-                         <li class="menu-li">
-                            <button class="menu-btn border-n30 bg-n0 dark:!border-n500 dark:bg-bg4">
-                                <span class="flex items-center justify-center gap-2">
-                                    <span class="menu-icon">
-                                        <i class="las la-users"></i>
-                                    </span>
-                                    <span class="menu-title font-medium">Company</span>
-                                </span>
-                                <span class="plus-minus">
-                                    <i class="las la-plus text-xl"></i>
-                                    <i class="las la-minus text-xl"></i>
-                                </span>
-                                <span class="chevron-down hidden">
-                                    <i class="las la-angle-down text-base"></i>
-                                </span>
-                            </button>
-                            <ul class="submenu-hide submenu">
-                                <li>
-                                    <a href="{{ route('hr.company.index') }}" class="submenu-link">
-                                        <i class="las la-minus text-xl"></i>
-                                        <span>List/Manage</span>
-                                    </a>
-                                </li>
 
-                                <li>
-                                    <a href="{{ route('hr.company.create') }}" class="submenu-link">
-                                        <i class="las la-minus text-xl"></i>
-                                        <span>Register</span>
-                                    </a>
-                                </li>
-
-                            </ul>
-
-
-                        </li>
                         <!-- user -->
                         <li class="menu-li">
                             <button class="menu-btn border-n30 bg-n0 dark:!border-n500 dark:bg-bg4">
@@ -99,14 +64,14 @@
 
 
                         </li>
-                        <!-- Roles -->
+                        <!-- Compliance -->
                         <li class="menu-li">
                             <button class="menu-btn border-n30 bg-n0 dark:!border-n500 dark:bg-bg4">
                                 <span class="flex items-center justify-center gap-2">
                                     <span class="menu-icon">
                                         <i class="las la-chalkboard"></i>
                                     </span>
-                                    <span class="menu-title font-medium">Roles</span>
+                                    <span class="menu-title font-medium">Compliance</span>
                                 </span>
                                 <span class="plus-minus">
                                     <i class="las la-plus text-xl"></i>
@@ -118,14 +83,14 @@
                             </button>
                             <ul class="submenu-hide submenu">
                                 <li>
-                                    <a href="{{ route('hr.role.index') }}" class="submenu-link">
+                                    <a href="{{ route('hr.compliance.index') }}" class="submenu-link">
                                         <i class="las la-minus text-xl"></i>
                                         <span>List/Manage</span>
                                     </a>
                                 </li>
 
                                 <li>
-                                    <a href="{{ route('hr.role.create') }}" class="submenu-link">
+                                    <a href="{{ route('hr.compliance.create') }}" class="submenu-link">
                                         <i class="las la-minus text-xl"></i>
                                         <span>Add</span>
                                     </a>
@@ -137,42 +102,9 @@
                         </li>
 
 
-                        <!-- plans -->
-                        <li class="menu-li">
-                            <button class="menu-btn border-n30 bg-n0 dark:!border-n500 dark:bg-bg4">
-                                <span class="flex items-center justify-center gap-2">
-                                    <span class="menu-icon">
-                                        <i class="las la-chart-area"></i>
-                                    </span>
-                                    <span class="menu-title font-medium">plans</span>
-                                </span>
-                                <span class="plus-minus">
-                                    <i class="las la-plus text-xl"></i>
-                                    <i class="las la-minus text-xl"></i>
-                                </span>
-                                <span class="chevron-down hidden">
-                                    <i class="las la-angle-down text-base"></i>
-                                </span>
-                            </button>
-                            <ul class="submenu-hide submenu">
-                                <li>
-                                    <a href="{{ route('hr.plan.index') }}" class="submenu-link">
-                                        <i class="las la-minus text-xl"></i>
-                                        <span>List/Manage</span>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="{{ route('hr.plan.create') }}" class="submenu-link">
-                                        <i class="las la-minus text-xl"></i>
-                                        <span>Add</span>
-                                    </a>
-                                </li>
-
-                            </ul>
 
 
-                        </li>
+
                         <!-- benefits enrollment -->
                         <li class="menu-li">
                             <button class="menu-btn border-n30 bg-n0 dark:!border-n500 dark:bg-bg4">
@@ -209,79 +141,9 @@
 
 
                         </li>
-                        <!-- Hr -->
-                        <li class="menu-li">
-                            <button class="menu-btn border-n30 bg-n0 dark:!border-n500 dark:bg-bg4">
-                                <span class="flex items-center justify-center gap-2">
-                                    <span class="menu-icon">
-                                        <i class="las la-chart-bar"></i>
-                                    </span>
-                                    <span class="menu-title font-medium">HRs Management</span>
-                                </span>
-                                <span class="plus-minus">
-                                    <i class="las la-plus text-xl"></i>
-                                    <i class="las la-minus text-xl"></i>
-                                </span>
-                                <span class="chevron-down hidden">
-                                    <i class="las la-angle-down text-base"></i>
-                                </span>
-                            </button>
-                            <ul class="submenu-hide submenu">
-                                <li>
-                                    <a href="{{ route('hr.hr.index') }}" class="submenu-link">
-                                        <i class="las la-minus text-xl"></i>
-                                        <span>List/Manage</span>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="{{ route('hr.hr.create') }}" class="submenu-link">
-                                        <i class="las la-minus text-xl"></i>
-                                        <span>Register</span>
-                                    </a>
-                                </li>
-
-                            </ul>
 
 
-                        </li>
-                        <!-- Vendor -->
-                        <li class="menu-li">
-                            <button class="menu-btn border-n30 bg-n0 dark:!border-n500 dark:bg-bg4">
-                                <span class="flex items-center justify-center gap-2">
-                                    <span class="menu-icon">
-                                        <i class="las la-store"></i>
-                                    </span>
-                                    <span class="menu-title font-medium">Vendor Management</span>
-                                </span>
-                                <span class="plus-minus">
-                                    <i class="las la-plus text-xl"></i>
-                                    <i class="las la-minus text-xl"></i>
-                                </span>
-                                <span class="chevron-down hidden">
-                                    <i class="las la-angle-down text-base"></i>
-                                </span>
-                            </button>
-                            <ul class="submenu-hide submenu">
-                                <li>
-                                    <a href="{{ route('hr.vendor.index') }}" class="submenu-link">
-                                        <i class="las la-minus text-xl"></i>
-                                        <span>List/Manage</span>
-                                    </a>
-                                </li>
 
-                                <li>
-                                    <a href="{{ route('hr.vendor.create') }}" class="submenu-link">
-                                        <i class="las la-minus text-xl"></i>
-                                        <span>Register</span>
-                                    </a>
-                                </li>
-
-                            </ul>
-
-
-                        </li>
-                      
                         <!-- notification -->
 
 
@@ -320,6 +182,42 @@
 
 
                         </li>
+                        <!-- Policy Updates-->
+                        <li class="menu-li">
+                            <button class="menu-btn border-n30 bg-n0 dark:!border-n500 dark:bg-bg4">
+                                <span class="flex items-center justify-center gap-2">
+                                    <span class="menu-icon">
+                                        <i class="las la-bell"></i>
+                                    </span>
+                                    <span class="menu-title font-medium">Policy Updates</span>
+                                </span>
+                                <span class="plus-minus">
+                                    <i class="las la-plus text-xl"></i>
+                                    <i class="las la-minus text-xl"></i>
+                                </span>
+                                <span class="chevron-down hidden">
+                                    <i class="las la-angle-down text-base"></i>
+                                </span>
+                            </button>
+                            <ul class="submenu-hide submenu">
+                                <li>
+                                    <a href="{{ route('hr.policy.index') }}" class="submenu-link">
+                                        <i class="las la-minus text-xl"></i>
+                                        <span>List/Manage</span>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="{{ route('hr.policy.create') }}" class="submenu-link">
+                                        <i class="las la-minus text-xl"></i>
+                                        <span>Add</span>
+                                    </a>
+                                </li>
+
+                            </ul>
+
+
+                        </li>
                         <!-- Reports -->
                         <li class="menu-li">
                             <button class="menu-btn group bg-n0 dark:!border-n500 dark:!bg-bg4">
@@ -348,48 +246,22 @@
                             </ul>
                         </li>
 
-                      
+                        <!-- Roles -->
                         <li class="menu-li">
-                            <button class="menu-btn group bg-n0 dark:!border-n500 dark:!bg-bg4">
-                                <span class="flex items-center justify-center gap-2">
-                                    <span class="menu-icon">
-                                        <i class="las la-cog"></i>
-                                    </span>
-                                    <span class="menu-title font-medium">Settings</span>
-                                </span>
-                                <span class="plus-minus">
-                                    <i class="las la-plus text-xl"></i>
-                                    <i class="las la-minus text-xl"></i>
-                                </span>
-                                <span class="chevron-down hidden">
-                                    <i class="las la-angle-down text-base"></i>
-                                </span>
-                            </button>
-                            <ul class="submenu-hide submenu">
-                                <li>
-                                    <a href="{{ route('settings.profile') }}" class="submenu-link">
-                                        <i class="las la-minus text-xl"></i>
-                                        <span>Profile</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('settings.security') }}" class="submenu-link">
-                                        <i class="las la-minus text-xl"></i>
-                                        <span>Security</span>
-                                    </a>
-                                </li>
-
-                            </ul>
+                            <a href="{{route('hr.role.index')}}" class="menu-link">
+                                <i class="las la-puzzle-piece"></i>
+                                <span>HR Roles/Permissions</span>
+                            </a>
                         </li>
-
+                        <!-- Vendor -->
                         <li class="menu-li">
-                            <a href="{{route('transaction.style1')}}" class="menu-link">
-                                <i class="las la-exchange-alt"></i>
-                                <span>Tranaction</span>
+                            <a href="{{route('hr.vendor.index')}}" class="menu-link">
+                                <i class="las la-puzzle-piece"></i>
+                                <span>View Vendors</span>
                             </a>
                         </li>
 
-                    
+
                         <!-- tracking logs -->
                         <li class="menu-li">
                             <a href="{{route('hr.logs')}}" class="menu-link">
@@ -397,8 +269,8 @@
                                 <span>Logs</span>
                             </a>
                         </li>
-                          <!-- Claim Record-->
-                          <li class="menu-li">
+                        <!-- Claim Record-->
+                        <li class="menu-li">
                             <a href="{{route('hr.claims.billing')}}" class="menu-link">
                                 <i class="las la-puzzle-piece"></i>
                                 <span>claim Management</span>

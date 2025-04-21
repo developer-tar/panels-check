@@ -7,11 +7,8 @@
 @section('content')
     <div class="main-inner">
         <div class="mb-6 flex flex-wrap items-center justify-between gap-4 lg:mb-8">
-            <h2 class="h2">Role Management</h2>
-            <a href="{{route('hr.role.create')}}" class="btn-primary inline-flex items-center">
-                <i class="las la-plus-circle text-base md:text-lg"></i>
-                <span class="ml-1">Add an new role</span>
-            </a>
+            <h2 class="h2">Hr Role Management</h2>
+          
         </div>
 
         <div class="grid grid-cols-1 gap-4 xxl:gap-6">
@@ -139,67 +136,7 @@
                                     </div>
                                 </td>
                             </tr>
-                            <tr class="even:bg-secondary/5 dark:even:bg-bg3">
-                                <td class="py-2 px-6">
-                                    <div class="flex items-center gap-3">
-                                        <p class="font-medium mb-1">2</p>
-
-                                    </div>
-                                </td>
-                                <td class="py-2 px-6">
-                                    <div class="flex items-center gap-3">
-                                        <p class="font-medium mb-1">Employee</p>
-
-                                    </div>
-                                </td>
-                                <td class="py-2 px-6">
-                                    <div class="flex items-center gap-3">
-                                        <p class="font-medium mb-1">-</p>
-                                    </div>
-
-                                </td>
-                                <td class="py-2">
-                                    <div>
-                                        <p class="font-medium mb-1">10</p>
-
-                                    </div>
-                                </td>
-                                <td class="py-2">
-                                    <div>
-                                        <p class="font-medium">john</p>
-
-                                    </div>
-                                </td>
-
-
-                                <td class="py-2">
-                                    <span
-                                        class="block text-xs w-28 xxl:w-36 text-center rounded-[30px] dark:border-n500 border border-n30 py-2 bg-primary/10 dark:bg-bg3 text-primary">
-                                        Active
-                                    </span>
-                                </td>
-                                <td class="py-2">
-                                    <div class="flex justify-center">
-                                        <div class="relative">
-                                            <i class="las la-ellipsis-v horiz-option-btn cursor-pointer popover-button"></i>
-                                            <ul class="horiz-option popover-content">
-                                                <li>
-                                                    <a href="{{route('hr.role.edit', 12)}}" class="single-option">
-                                                        Edit
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="/delete-url" class="single-option">
-                                                        Delete
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-
-                                    </div>
-                                </td>
-                            </tr>
-
+                         
                         </tbody>
                     </table>
                 </div>

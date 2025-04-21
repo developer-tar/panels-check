@@ -5,16 +5,17 @@ namespace App\Http\Controllers\Hr;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class CompanyController extends Controller {
+class PolicyController extends Controller
+{
     public function index(){
-        return view('hr.company.index');
+        return view('hr.policies.index');
     }
 
     public function create(){
-        return view('hr.company.create');
+        return view('hr.policies.create');
     }
 
     public function edit($id){
-        return view('hr.company.edit');
-    }    
+        return view('hr.policies.edit');
+    }
 }

@@ -7,15 +7,12 @@
 @section('content')
     <div class="main-inner">
         <div class="mb-6 flex flex-wrap items-center justify-between gap-4 lg:mb-8">
-            <h2 class="h2">Vendor Management</h2>
-            <a href="{{route('hr.vendor.create')}}" class="btn-primary inline-flex items-center">
-                <i class="las la-plus-circle text-base md:text-lg"></i>
-                <span class="ml-1">Add an new Vendor</span>
-            </a>
+            <h2 class="h2">Vendors Record</h2>
+           
         </div>
 
         <div class="grid grid-cols-1 gap-4 xxl:gap-6">
-            <!-- HR Management -->
+            <!-- vendors Management -->
             <div class="box col-span-12 lg:col-span-6">
                 <div class="flex justify-between items-center gap-4 flex-wrap bb-dashed mb-4 pb-4 lg:mb-6 lg:pb-6">
                     <h4 class="h4">vendors</h4>
@@ -52,6 +49,11 @@
                                 </th>
                                 <th class="text-start !py-5 px-6 min-w-[230px] cursor-pointer">
                                     <div class="flex items-center gap-1">
+                                        Company name
+                                    </div>
+                                </th>
+                                <th class="text-start !py-5 px-6 min-w-[230px] cursor-pointer">
+                                    <div class="flex items-center gap-1">
                                         Name
                                     </div>
                                 </th>
@@ -71,7 +73,7 @@
                                         No of <br>Employee <br>Enrolled
                                     </div>
                                 </th>
-                                <th class="text-center !py-5" data-sortable="false">Action</th>
+                               
                             </tr>
                         </thead>
                         <tbody>
@@ -85,10 +87,18 @@
                                 </td>
                                 <td class="py-2 px-6">
                                     <div class="flex items-center gap-3">
+                                        <p class="font-medium mb-1">Netset</p>
+                                    </div>
+
+                                </td>
+                                <td class="py-2 px-6">
+                                    <div class="flex items-center gap-3">
                                         <p class="font-medium mb-1">Tammy</p>
                                     </div>
 
                                 </td>
+                              
+
                                 <td class="py-2">
                                     <div>
                                         <p class="font-medium mb-1">tammy@yopmail.com</p>
@@ -108,26 +118,7 @@
 
                                     </div>
                                 </td>
-                                <td class="py-2">
-                                    <div class="flex justify-center">
-                                        <div class="relative">
-                                            <i class="las la-ellipsis-v horiz-option-btn cursor-pointer popover-button"></i>
-                                            <ul class="horiz-option popover-content">
-                                                <li>
-                                                    <a href="{{route('hr.vendor.edit', 12)}}" class="single-option">
-                                                        Edit
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="/delete-url" class="single-option">
-                                                        Delete
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-
-                                    </div>
-                                </td>
+                              
                             </tr>
 
                             <tr class="even:bg-secondary/5 dark:even:bg-bg3">
@@ -137,6 +128,12 @@
                                             class="rounded-full" alt="payment medium icon" />
 
                                     </div>
+                                </td>
+                                <td class="py-2 px-6">
+                                    <div class="flex items-center gap-3">
+                                        <p class="font-medium mb-1">Luminoguru</p>
+                                    </div>
+
                                 </td>
                                 <td class="py-2 px-6">
                                     <div class="flex items-center gap-3">
@@ -160,26 +157,7 @@
                                         <p class="font-medium mb-1">20</p>
                                     </div>
                                 </td>
-                                <td class="py-2">
-                                    <div class="flex justify-center">
-                                        <div class="relative">
-                                            <i class="las la-ellipsis-v horiz-option-btn cursor-pointer popover-button"></i>
-                                            <ul class="horiz-option popover-content">
-                                                <li>
-                                                    <span class="single-option">
-                                                        Edit
-                                                    </span>
-                                                </li>
-                                                <li>
-                                                    <span class="single-option">
-                                                        delete
-                                                    </span>
-                                                </li>
-                                            </ul>
-                                        </div>
-
-                                    </div>
-                                </td>
+                              
                             </tr>
                         </tbody>
                     </table>
@@ -202,18 +180,7 @@
                                 1
                             </button>
                         </li>
-                        <li>
-                            <button
-                                class="hover:bg-primary text-primary hover:text-n0 border md:w-10 duration-300 md:h-10 w-8 h-8 flex items-center rounded-full justify-center border-primary">
-                                2
-                            </button>
-                        </li>
-                        <li>
-                            <button
-                                class="hover:bg-primary text-primary hover:text-n0 border md:w-10 duration-300 md:h-10 w-8 h-8 flex items-center rounded-full justify-center border-primary">
-                                3
-                            </button>
-                        </li>
+                      
                         <li>
                             <button
                                 class="hover:bg-primary text-primary hover:text-n0 rtl:rotate-180 border md:w-10 duration-300 md:h-10 w-8 h-8 flex items-center rounded-full justify-center border-primary">

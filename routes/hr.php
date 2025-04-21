@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\Hr\ComplianceController;
 use App\Http\Controllers\Hr\BenefitsEnrollController;
 use App\Http\Controllers\Hr\CompanyController;
 use App\Http\Controllers\Hr\DashboardController;
 use App\Http\Controllers\Hr\HrController;
 use App\Http\Controllers\Hr\PlansController;
+use App\Http\Controllers\Hr\PolicyController;
 use App\Http\Controllers\Hr\RolesController;
 use App\Http\Controllers\Hr\UsersController;
 use App\Http\Controllers\Hr\VendorController;
@@ -72,9 +74,15 @@ Route::group(['prefix' => 'notification', 'as' => 'hr.notification.'], function(
 // Analytics & reports
 Route::get('/analytics', [DashboardController::class, 'analytics'])->name('hr.analytics');
 
-//company management
-Route::group(['prefix' => 'company', 'as' => 'hr.company.'], function(){
-    Route::get('/', [CompanyController::class, 'index'])->name('index');
-    Route::get('create', [CompanyController::class, 'create'])->name('create');
-    Route::get('{id}/edit', [CompanyController::class, 'edit'])->name('edit');
+// Compliance
+Route::group(['prefix' => 'compliance', 'as' => 'hr.compliance.'], function(){
+    Route::get('/', [ComplianceController::class, 'index'])->name('index');
+    Route::get('create', action: [ComplianceController::class, 'create'])->name('create');
+    Route::get('{id?}/edit', action: [ComplianceController::class, 'edit'])->name('edit');
+});
+// Compliance
+Route::group(['prefix' => 'policy', 'as' => 'hr.policy.'], function(){
+    Route::get('/', [PolicyController::class, 'index'])->name('index');
+    Route::get('create', action: [PolicyController::class, 'create'])->name('create');
+    Route::get('{id?}/edit', action: [PolicyController::class, 'edit'])->name('edit');
 });

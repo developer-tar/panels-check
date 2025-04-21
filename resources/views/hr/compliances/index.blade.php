@@ -1,4 +1,4 @@
-@extends('layout.employee.main')
+@extends('layout.hr.main')
 
 @push('page-css')
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jsvectormap/dist/css/jsvectormap.min.css" />
@@ -7,18 +7,18 @@
 @section('content')
     <div class="main-inner">
         <div class="mb-6 flex flex-wrap items-center justify-between gap-4 lg:mb-8">
-            <h2 class="h2">Benefit Management</h2>
-            <a href="{{route('employee.benefit.create')}}" class="btn-primary inline-flex items-center">
+            <h2 class="h2">Compliance  Management</h2>
+            <a href="{{route('hr.compliance.create')}}" class="btn-primary inline-flex items-center">
                 <i class="las la-plus-circle text-base md:text-lg"></i>
-                <span class="ml-1">Get a new benefit</span>
+                <span class="ml-1">Add New compliance</span>
             </a>
         </div>
 
         <div class="grid grid-cols-1 gap-4 xxl:gap-6">
-            <!-- Benefit Management -->
+            <!-- Compliance Management -->
             <div class="box col-span-12 lg:col-span-6">
                 <div class="flex justify-between items-center gap-4 flex-wrap bb-dashed mb-4 pb-4 lg:mb-6 lg:pb-6">
-                    <h4 class="h4">Plans</h4>
+                    <h4 class="h4">Compliance</h4>
                     <div class="flex items-center gap-4 flex-wrap grow sm:justify-end">
 
                         <form
@@ -47,120 +47,85 @@
                             <tr class="bg-secondary/5 dark:bg-bg3">
                                 <th class="text-start !py-5 px-6 min-w-[230px] cursor-pointer">
                                     <div class="flex items-center gap-1">
-                                        Plan name
+                                    Complaint ID
                                     </div>
                                 </th>
-                                
+                                <th class="text-start !py-5 px-6 min-w-[230px] cursor-pointer">
+                                    <div class="flex items-center gap-1">
+                                    Compliance Type
+                                    </div>
+                                </th>
                                 <th class="text-start !py-5 min-w-[130px] cursor-pointer">
                                     <div class="flex items-center gap-1">
-                                        Plan start period
+                                       Filed <br>By 
                                     </div>
                                 </th>
 
                                 <th class="text-start !py-5 min-w-[130px] cursor-pointer">
                                     <div class="flex items-center gap-1">
-                                        Plan end period
+                                       Status
                                     </div>
                                 </th>
                                 <th class="text-start !py-5 min-w-[130px] cursor-pointer">
                                     <div class="flex items-center gap-1">
-                                        Enrolled<br> Status
+                                    Date <br> Filed 
                                     </div>
                                 </th>
                                 <th class="text-start !py-5 min-w-[130px] cursor-pointer">
                                     <div class="flex items-center gap-1">
-                                        Enrolled at
+                                    Date <br> Resolved 
                                     </div>
                                 </th>
-                                <th class="text-center !py-5" data-sortable="false">Action</th>
+                                <th class="text-start !py-5 min-w-[130px] cursor-pointer">
+                                    <div class="flex items-center gap-1">
+                                    Assigned  <br>To 
+                                    </div>
+                                </th>
+                                <th class="text-center !py-5" data-sortable="false">Date Filed</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr class="even:bg-secondary/5 dark:even:bg-bg3">
                                 <td class="py-2 px-6">
                                     <div class="flex items-center gap-3">
-                                        <p class="font-medium mb-1">Healthcare</p>
+                                        <p class="font-medium mb-1">12345</p>
                                     </div>
                                 </td>
-                               
-
-                                <td class="py-2">
-                                    <div>
-                                        <p class="font-medium">2025-09-12</p>
-
-                                    </div>
-                                </td>
-                                <td class="py-2">
-                                    <div>
-                                        <p class="font-medium">2026-09-12</p>
-
-                                    </div>
-                                </td>
-
-                                <td class="py-2">
-                                    <span
-                                        class="block text-xs w-28 xxl:w-36 text-center rounded-[30px] dark:border-n500 border border-n30 py-2 bg-primary/10 dark:bg-bg3 text-primary">
-                                        Approval
-                                    </span>
-                                </td>
-                                <td class="py-2">
-                                    <div>
-                                        <p class="font-medium">2026-01-12</p>
-
-                                    </div>
-                                </td>
-                                <td class="py-2">
-                                    <div class="flex justify-center">
-                                        <div class="relative">
-                                            <i class="las la-ellipsis-v horiz-option-btn cursor-pointer popover-button"></i>
-                                            <ul class="horiz-option popover-content">
-                                                <li>
-                                                    <a href="{{route('employee.benefit.edit', 12)}}" class="single-option">
-                                                        Edit
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="/delete-url" class="single-option">
-                                                        Delete
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-
-                                    </div>
-                                </td>
-                            </tr>
-
-                            <tr class="even:bg-secondary/5 dark:even:bg-bg3">
                                 <td class="py-2 px-6">
                                     <div class="flex items-center gap-3">
-                                        <p class="font-medium mb-1">Plan B</p>
+                                        <p class="font-medium mb-1">Employee Contracts</p>
                                     </div>
+
                                 </td>
-                                
 
                                 <td class="py-2">
                                     <div>
-                                        <p class="font-medium">2025-09-12</p>
+                                        <p class="font-medium">John doe</p>
 
                                     </div>
                                 </td>
                                 <td class="py-2">
                                     <div>
-                                        <p class="font-medium">2026-09-12</p>
+                                        <p class="font-medium">Open</p>
 
                                     </div>
                                 </td>
 
                                 <td class="py-2">
-                                    <span
-                                        class="block text-xs w-28 xxl:w-36 text-center rounded-[30px] dark:border-n500 border border-n30 py-2 bg-danger/10 dark:bg-bg3 text-danger">
-                                        Rejected
-                                    </span>
+                                    <div>
+                                        <p class="font-medium">April 10,2025</p>
+
+                                    </div>
                                 </td>
                                 <td class="py-2">
                                     <div>
-                                        <p class="font-medium">2026-01-12</p>
+                                        <p class="font-medium">-</p>
+
+                                    </div>
+                                </td>
+                                <td class="py-2">
+                                    <div>
+                                        <p class="font-medium">Hr Department</p>
 
                                     </div>
                                 </td>
@@ -170,7 +135,7 @@
                                             <i class="las la-ellipsis-v horiz-option-btn cursor-pointer popover-button"></i>
                                             <ul class="horiz-option popover-content">
                                                 <li>
-                                                    <a href="{{route('employee.benefit.edit', 12)}}" class="single-option">
+                                                    <a href="{{route('hr.compliance.edit', 12)}}" class="single-option">
                                                         Edit
                                                     </a>
                                                 </li>
@@ -185,6 +150,72 @@
                                     </div>
                                 </td>
                             </tr>
+                            <tr class="odd:bg-secondary/5 dark:odd:bg-bg3">
+                                <td class="py-2 px-6">
+                                    <div class="flex items-center gap-3">
+                                        <p class="font-medium mb-1">12556</p>
+                                    </div>
+                                </td>
+                                <td class="py-2 px-6">
+                                    <div class="flex items-center gap-3">
+                                        <p class="font-medium mb-1">Safety Training</p>
+                                    </div>
+
+                                </td>
+
+                                <td class="py-2">
+                                    <div>
+                                        <p class="font-medium">Tammy</p>
+
+                                    </div>
+                                </td>
+                                <td class="py-2">
+                                    <div>
+                                        <p class="font-medium">Resolved</p>
+
+                                    </div>
+                                </td>
+
+                                <td class="py-2">
+                                    <div>
+                                        <p class="font-medium">April 20,2025</p>
+
+                                    </div>
+                                </td>
+                                <td class="py-2">
+                                    <div>
+                                        <p class="font-medium">May 1,2025</p>
+
+                                    </div>
+                                </td>
+                                <td class="py-2">
+                                    <div>
+                                        <p class="font-medium">Legal Team</p>
+
+                                    </div>
+                                </td>
+                                <td class="py-2">
+                                    <div class="flex justify-center">
+                                        <div class="relative">
+                                            <i class="las la-ellipsis-v horiz-option-btn cursor-pointer popover-button"></i>
+                                            <ul class="horiz-option popover-content">
+                                                <li>
+                                                    <a href="{{route('hr.compliance.edit', 12)}}" class="single-option">
+                                                        Edit
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="/delete-url" class="single-option">
+                                                        Delete
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+
+                                    </div>
+                                </td>
+                            </tr>
+
                         </tbody>
                     </table>
                 </div>
@@ -206,18 +237,7 @@
                                 1
                             </button>
                         </li>
-                        <li>
-                            <button
-                                class="hover:bg-primary text-primary hover:text-n0 border md:w-10 duration-300 md:h-10 w-8 h-8 flex items-center rounded-full justify-center border-primary">
-                                2
-                            </button>
-                        </li>
-                        <li>
-                            <button
-                                class="hover:bg-primary text-primary hover:text-n0 border md:w-10 duration-300 md:h-10 w-8 h-8 flex items-center rounded-full justify-center border-primary">
-                                3
-                            </button>
-                        </li>
+                       
                         <li>
                             <button
                                 class="hover:bg-primary text-primary hover:text-n0 rtl:rotate-180 border md:w-10 duration-300 md:h-10 w-8 h-8 flex items-center rounded-full justify-center border-primary">

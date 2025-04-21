@@ -1,4 +1,4 @@
-@extends('layout.admin.main')
+@extends('layout.employee.main')
 
 @section('content')
     <div class="main-inner">
