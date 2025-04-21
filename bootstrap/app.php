@@ -12,6 +12,9 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
         then: function () {
             Route::prefix('admin')->group(base_path('routes/admin.php'));
+            Route::prefix('hr')->group(base_path('routes/hr.php'));
+            Route::prefix('employee')->group(base_path('routes/employee.php'));
+            Route::prefix('vendor')->group(base_path('routes/vendor.php'));
         },
     )
     ->withMiddleware(function (Middleware $middleware) {

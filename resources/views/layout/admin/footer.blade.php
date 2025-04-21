@@ -2,7 +2,7 @@
     <div class="flex flex-col items-center justify-center gap-3 px-4 py-5 lg:flex-row lg:justify-between xxl:px-8">
         <p class="text-sm max-md:w-full max-md:text-center lg:text-base">
             Copyright @ <span id="current-year"></span>
-            <a class="text-primary" href="{{ route('admin.dashboard.index1') }}"> Bankhub </a>
+            <a class="text-primary" href="{{ route('admin.dashboard.index') }}"> Bankhub </a>
             . Designed By
             <a href="#" class="text-secondary"> Pixelaxis </a>
         </p>
@@ -51,7 +51,7 @@
     </div>
 </footer>
 
-@include('layout.modal')
+@include('layout.admin.modal')
 
 @yield('page-modal')
 

@@ -8,7 +8,7 @@
 
     @vite(['resources/css/app.scss'])
 
-    <title>Bankhub - HTML Tailwindcss Fintech and Banking Dashboard</title>
+    <title>Employee panel</title>
 </head>
 
 <body class="vertical bg-secondary/5 dark:bg-bg3 hidden">

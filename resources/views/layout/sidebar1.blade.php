@@ -7,7 +7,7 @@
                     <a href="{{ route('dashboard.index1') }}" class="logo-wrapper">
                         <img src="{{ asset('assets/images/logo-with-text.png') }}" width="174" height="38"
                             class="logo-full" alt="logo" />
-                        <img src="{{ asset('assets/images/logo.png') }}" width="37" height="36"
+                        <img src="{{ asset('assets/images/logo-with-text.png') }}" width="37" height="36"
                             class="logo-icon hidden" alt="logo" />
                     </a>
                     <img width="141" height="38" class="logo-text hidden"

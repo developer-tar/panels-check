@@ -4,8 +4,8 @@
         <div class="logo-column">
             <div class="logo-container">
                 <div class="logo-inner">
-                    <a href="{{ route('admin.dashboard.index1') }}" class="logo-wrapper">
-                        <img src="{{ asset('assets/images/ChatGPT Image Apr 20, 2025, 11_55_27 PM copy.png') }}" width="174" height="38"
+                    <a href="{{ route('admin.dashboard.index') }}" class="logo-wrapper">
+                        <img src="{{ asset('assets/images/logo-with-text.png') }}" width="174" height="38"
                             class="logo-full" alt="logo" />
                         <img src="{{ asset('assets/images/logo.png') }}" width="37" height="36" class="logo-icon hidden"
                             alt="logo" />
@@ -22,7 +22,7 @@
                     <p class="menu-heading">Navigation</p>
                     <ul class="menu-ul">
                         <li class="menu-li">
-                            <a href="{{route('admin.dashboard.index1')}}" class="menu-link">
+                            <a href="{{route('admin.dashboard.index')}}" class="menu-link">
                                 <i class="las la-home"></i>
                                 <span>Dashboard</span>
                             </a>

@@ -1,8 +1,9 @@
-@include('layout.header')
+@include('layout.vendor.header')
 <!-- Navigation -->
 <section class="topbar-container z-30">
-    @include('layout.admin.nav')
-    @include('layout.admin.sidebar')
+  
+    @include('layout.vendor.nav')
+    @include('layout.vendor.sidebar')
 </section>
 
 <!-- Main Content -->
@@ -10,4 +11,4 @@
     @yield('content')
 </main>
 
-@include('layout.admin.footer')
+@include('layout.vendor.footer')

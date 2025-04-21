@@ -1,4 +1,4 @@
-@extends('layout.main')
+@extends('layout.admin.main')
 
 @push('page-css')
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jsvectormap/dist/css/jsvectormap.min.css" />
