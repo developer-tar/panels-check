@@ -59,7 +59,7 @@
 
 @stack('page-js')
 
-@vite(['resources/js/app.js'])
+@vite(['resources/js/hr/app.js'])
 
 </body>
 

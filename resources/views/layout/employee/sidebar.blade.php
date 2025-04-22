@@ -27,8 +27,8 @@
                                 <span>Dashboard</span>
                             </a>
                         </li>
-                        
-                       
+
+
                         <!-- benefits enrollment -->
                         <li class="menu-li">
                             <button class="menu-btn border-n30 bg-n0 dark:!border-n500 dark:bg-bg4">
@@ -65,7 +65,39 @@
 
 
                         </li>
-                      
+                        <!-- Claim Record-->
+                        <li class="menu-li">
+                            <a href="{{route('employee.claims.billing')}}" class="menu-link">
+                                <i class="las la-money-check"></i>
+                                <span>claim Management</span>
+                            </a>
+                        </li>
+                        <li class="menu-li">
+                            <a href="{{route('employee.comparison-tools')}}" class="menu-link">
+                                <i class=" lab la-searchengin"></i>
+                                <span> Comparison benefit tools </span>
+                            </a>
+                        </li>
+                        <!-- tracking logs -->
+                        <li class="menu-li">
+                            <a href="{{route('employee.profile')}}" class="menu-link">
+                                <i class="las la-user"></i>
+                                <span>Personal profile</span>
+                            </a>
+                        </li>
+                        <li class="menu-li">
+                            <a href="{{route('employee.help-center')}}" class="menu-link">
+                                <i class="lab la-hire-a-helper"></i>
+                                <span> Support & Helpdesk</span>
+                            </a>
+                        </li>
+                        <li class="menu-li">
+                            <a href="{{route('employee.transaction')}}" class="menu-link">
+                                <i class="las la-exchange-alt"></i>
+                                <span>Transaction</span>
+                            </a>
+                        </li>
+
                         <!-- Reports -->
                         <li class="menu-li">
                             <button class="menu-btn group bg-n0 dark:!border-n500 dark:!bg-bg4">
@@ -94,35 +126,6 @@
                             </ul>
                         </li>
 
-                      
-                          <!-- tracking logs -->
-                          <li class="menu-li">
-                            <a href="{{route('employee.profile')}}" class="menu-link">
-                                <i class="las la-user"></i>
-                                <span>Personal profile</span>
-                            </a>
-                        </li>
-                        <li class="menu-li">
-                            <a href="{{route('employee.comparison-tools')}}" class="menu-link">
-                                <i class=" lab la-searchengin"></i>
-                                <span> Comparison benefit tools </span>
-                            </a>
-                        </li>
-                        <li class="menu-li">
-                            <a href="{{route('employee.help-center')}}" class="menu-link">
-                                <i class="lab la-hire-a-helper"></i>
-                                <span> Support & Helpdesk</span>
-                            </a>
-                        </li>
-                        
-                        <li class="menu-li">
-                            <a href="{{route('employee.transaction')}}" class="menu-link">
-                                <i class="las la-exchange-alt"></i>
-                                <span>Transaction</span>
-                            </a>
-                        </li>
-
-                    
                         <!-- tracking logs -->
                         <li class="menu-li">
                             <a href="{{route('employee.logs')}}" class="menu-link">
@@ -130,13 +133,7 @@
                                 <span>Logs</span>
                             </a>
                         </li>
-                          <!-- Claim Record-->
-                          <li class="menu-li">
-                            <a href="{{route('employee.claims.billing')}}" class="menu-link">
-                                <i class="las la-money-check"></i>
-                                <span>claim Management</span>
-                            </a>
-                        </li>
+
                     </ul>
                 </div>
 

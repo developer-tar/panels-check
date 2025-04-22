@@ -64,48 +64,6 @@
 
 
                         </li>
-                        <!-- Compliance -->
-                        <li class="menu-li">
-                            <button class="menu-btn border-n30 bg-n0 dark:!border-n500 dark:bg-bg4">
-                                <span class="flex items-center justify-center gap-2">
-                                    <span class="menu-icon">
-                                 
-                                        <i class="las la-file-alt"></i>
-                                    </span>
-                                    <span class="menu-title font-medium">Compliance</span>
-                                </span>
-                                <span class="plus-minus">
-                                    <i class="las la-plus text-xl"></i>
-                                    <i class="las la-minus text-xl"></i>
-                                </span>
-                                <span class="chevron-down hidden">
-                                    <i class="las la-angle-down text-base"></i>
-                                </span>
-                            </button>
-                            <ul class="submenu-hide submenu">
-                                <li>
-                                    <a href="{{ route('hr.compliance.index') }}" class="submenu-link">
-                                        <i class="las la-minus text-xl"></i>
-                                        <span>List/Manage</span>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="{{ route('hr.compliance.create') }}" class="submenu-link">
-                                        <i class="las la-minus text-xl"></i>
-                                        <span>Add</span>
-                                    </a>
-                                </li>
-
-                            </ul>
-
-
-                        </li>
-
-
-
-
-
                         <!-- benefits enrollment -->
                         <li class="menu-li">
                             <button class="menu-btn border-n30 bg-n0 dark:!border-n500 dark:bg-bg4">
@@ -142,6 +100,104 @@
 
 
                         </li>
+                        <!-- Claim Record-->
+                        <li class="menu-li">
+                            <a href="{{route('hr.claims.billing')}}" class="menu-link">
+                                <i class="las la-money-check"></i>
+                                <span>claim Management</span>
+                            </a>
+                        </li>
+                        <!-- Policy Updates-->
+                        <li class="menu-li">
+                            <button class="menu-btn border-n30 bg-n0 dark:!border-n500 dark:bg-bg4">
+                                <span class="flex items-center justify-center gap-2">
+                                    <span class="menu-icon">
+                                        <i class="las la-exclamation"></i>
+                                    </span>
+                                    <span class="menu-title font-medium">Policy Updates</span>
+                                </span>
+                                <span class="plus-minus">
+                                    <i class="las la-plus text-xl"></i>
+                                    <i class="las la-minus text-xl"></i>
+                                </span>
+                                <span class="chevron-down hidden">
+                                    <i class="las la-angle-down text-base"></i>
+                                </span>
+                            </button>
+                            <ul class="submenu-hide submenu">
+                                <li>
+                                    <a href="{{ route('hr.policy.index') }}" class="submenu-link">
+                                        <i class="las la-minus text-xl"></i>
+                                        <span>List/Manage</span>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="{{ route('hr.policy.create') }}" class="submenu-link">
+                                        <i class="las la-minus text-xl"></i>
+                                        <span>Add</span>
+                                    </a>
+                                </li>
+
+                            </ul>
+
+
+                        </li>
+
+                        <!-- Vendor -->
+                        <li class="menu-li">
+                            <a href="{{route('hr.vendor.index')}}" class="menu-link">
+                                <i class="las la-store"></i>
+                                <span>View Vendors</span>
+                            </a>
+                        </li>
+                        <!-- Compliance -->
+                        <li class="menu-li">
+                            <button class="menu-btn border-n30 bg-n0 dark:!border-n500 dark:bg-bg4">
+                                <span class="flex items-center justify-center gap-2">
+                                    <span class="menu-icon">
+
+                                        <i class="las la-file-alt"></i>
+                                    </span>
+                                    <span class="menu-title font-medium">Compliance</span>
+                                </span>
+                                <span class="plus-minus">
+                                    <i class="las la-plus text-xl"></i>
+                                    <i class="las la-minus text-xl"></i>
+                                </span>
+                                <span class="chevron-down hidden">
+                                    <i class="las la-angle-down text-base"></i>
+                                </span>
+                            </button>
+                            <ul class="submenu-hide submenu">
+                                <li>
+                                    <a href="{{ route('hr.compliance.index') }}" class="submenu-link">
+                                        <i class="las la-minus text-xl"></i>
+                                        <span>List/Manage</span>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="{{ route('hr.compliance.create') }}" class="submenu-link">
+                                        <i class="las la-minus text-xl"></i>
+                                        <span>Add</span>
+                                    </a>
+                                </li>
+
+                            </ul>
+
+
+                        </li>
+
+
+                        <!-- Roles -->
+                        <li class="menu-li">
+                            <a href="{{route('hr.role.index')}}" class="menu-link">
+                                <i class="las la-chalkboard"></i>
+                                <span>HR Roles/Permissions</span>
+                            </a>
+                        </li>
+
 
 
 
@@ -183,42 +239,7 @@
 
 
                         </li>
-                        <!-- Policy Updates-->
-                        <li class="menu-li">
-                            <button class="menu-btn border-n30 bg-n0 dark:!border-n500 dark:bg-bg4">
-                                <span class="flex items-center justify-center gap-2">
-                                    <span class="menu-icon">
-                                        <i class="las la-exclamation"></i>
-                                    </span>
-                                    <span class="menu-title font-medium">Policy Updates</span>
-                                </span>
-                                <span class="plus-minus">
-                                    <i class="las la-plus text-xl"></i>
-                                    <i class="las la-minus text-xl"></i>
-                                </span>
-                                <span class="chevron-down hidden">
-                                    <i class="las la-angle-down text-base"></i>
-                                </span>
-                            </button>
-                            <ul class="submenu-hide submenu">
-                                <li>
-                                    <a href="{{ route('hr.policy.index') }}" class="submenu-link">
-                                        <i class="las la-minus text-xl"></i>
-                                        <span>List/Manage</span>
-                                    </a>
-                                </li>
 
-                                <li>
-                                    <a href="{{ route('hr.policy.create') }}" class="submenu-link">
-                                        <i class="las la-minus text-xl"></i>
-                                        <span>Add</span>
-                                    </a>
-                                </li>
-
-                            </ul>
-
-
-                        </li>
                         <!-- Reports -->
                         <li class="menu-li">
                             <button class="menu-btn group bg-n0 dark:!border-n500 dark:!bg-bg4">
@@ -269,24 +290,11 @@
                                         <span>Profile</span>
                                     </a>
                                 </li>
-                                
+
 
                             </ul>
                         </li>
-                        <!-- Roles -->
-                        <li class="menu-li">
-                            <a href="{{route('hr.role.index')}}" class="menu-link">
-                                <i class="las la-chalkboard"></i>
-                                <span>HR Roles/Permissions</span>
-                            </a>
-                        </li>
-                        <!-- Vendor -->
-                        <li class="menu-li">
-                            <a href="{{route('hr.vendor.index')}}" class="menu-link">
-                                <i class="las la-store"></i>
-                                <span>View Vendors</span>
-                            </a>
-                        </li>
+
 
 
                         <!-- tracking logs -->
@@ -296,13 +304,7 @@
                                 <span>Logs</span>
                             </a>
                         </li>
-                        <!-- Claim Record-->
-                        <li class="menu-li">
-                            <a href="{{route('hr.claims.billing')}}" class="menu-link">
-                                <i class="las la-money-check"></i>
-                                <span>claim Management</span>
-                            </a>
-                        </li>
+
                     </ul>
                 </div>
 

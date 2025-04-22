@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}" type="image/x-icon" />
 
-    @vite(['resources/css/app.scss'])
+    @vite(['resources/css/vendor/app.scss'])
 
     <title>Vendor panel</title>
 </head>
