@@ -14,6 +14,18 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function(){
     return to_route('vendor.dashboard.index');
 }); 
+Route::get('/chat', function(){
+    return view('vendor.chat');
+})->name('vendor.transfer.chat'); 
+
+Route::get('/profile', function(){
+    return view('vendor.profile');
+})->name('vendor.profile'); 
+
+Route::get('/transaction', function(){
+    return view('vendor.transaction');
+})->name('vendor.transaction'); 
+
 
 Route::group(['prefix' => 'dashboard', 'as' => 'vendor.dashboard.'], function(){
     Route::get('/', [DashboardController::class, 'index'])->name('index');

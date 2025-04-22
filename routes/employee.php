@@ -26,6 +26,10 @@ Route::get('/help-centers', function(){
     return view('employee.help');
 })->name('employee.help-center'); 
 
+Route::get('/chat', function(){
+    return view('employee.chat');
+})->name('employee.transfer.chat'); 
+
 Route::get('/comparison-benefit-tools', function(){
     return view('employee.comparison-tools');
 })->name('employee.comparison-tools'); 

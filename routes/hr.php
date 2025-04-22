@@ -16,6 +16,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function(){
     return to_route('hr.dashboard.index');
 }); 
+Route::get('/chat', function(){
+    return view('hr.chat');
+})->name('hr.transfer.chat'); 
+
+Route::get('/profile', function(){
+    return view('hr.profile');
+})->name('hr.profile'); 
 
 Route::group(['prefix' => 'dashboard', 'as' => 'hr.dashboard.'], function(){
     Route::get('/', [DashboardController::class, 'index'])->name('index');

@@ -32,7 +32,7 @@
                             <button class="menu-btn border-n30 bg-n0 dark:!border-n500 dark:bg-bg4">
                                 <span class="flex items-center justify-center gap-2">
                                     <span class="menu-icon">
-                                        <i class="las la-users"></i>
+                                        <i class="las la-industry"></i>
                                     </span>
                                     <span class="menu-title font-medium">Company</span>
                                 </span>
@@ -367,13 +367,13 @@
                             </button>
                             <ul class="submenu-hide submenu">
                                 <li>
-                                    <a href="{{ route('settings.profile') }}" class="submenu-link">
+                                    <a href="{{ route('admin.profile') }}" class="submenu-link">
                                         <i class="las la-minus text-xl"></i>
                                         <span>Profile</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('settings.security') }}" class="submenu-link">
+                                    <a href="{{ route('admin.security') }}" class="submenu-link">
                                         <i class="las la-minus text-xl"></i>
                                         <span>Security</span>
                                     </a>
@@ -383,9 +383,9 @@
                         </li>
 
                         <li class="menu-li">
-                            <a href="{{route('transaction.style1')}}" class="menu-link">
+                            <a href="{{route('admin.transaction')}}" class="menu-link">
                                 <i class="las la-exchange-alt"></i>
-                                <span>Tranaction</span>
+                                <span>Transaction</span>
                             </a>
                         </li>
 
@@ -400,7 +400,7 @@
                           <!-- Claim Record-->
                           <li class="menu-li">
                             <a href="{{route('admin.claims.billing')}}" class="menu-link">
-                                <i class="las la-puzzle-piece"></i>
+                                <i class="las la-money-check"></i>
                                 <span>claim Management</span>
                             </a>
                         </li>

@@ -98,19 +98,19 @@
                           <!-- tracking logs -->
                           <li class="menu-li">
                             <a href="{{route('employee.profile')}}" class="menu-link">
-                                <i class="las la-puzzle-piece"></i>
+                                <i class="las la-user"></i>
                                 <span>Personal profile</span>
                             </a>
                         </li>
                         <li class="menu-li">
                             <a href="{{route('employee.comparison-tools')}}" class="menu-link">
-                                <i class="las la-puzzle-piece"></i>
+                                <i class=" lab la-searchengin"></i>
                                 <span> Comparison benefit tools </span>
                             </a>
                         </li>
                         <li class="menu-li">
                             <a href="{{route('employee.help-center')}}" class="menu-link">
-                                <i class="las la-puzzle-piece"></i>
+                                <i class="lab la-hire-a-helper"></i>
                                 <span> Support & Helpdesk</span>
                             </a>
                         </li>
@@ -133,7 +133,7 @@
                           <!-- Claim Record-->
                           <li class="menu-li">
                             <a href="{{route('employee.claims.billing')}}" class="menu-link">
-                                <i class="las la-puzzle-piece"></i>
+                                <i class="las la-money-check"></i>
                                 <span>claim Management</span>
                             </a>
                         </li>

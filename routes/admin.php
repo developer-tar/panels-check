@@ -14,6 +14,21 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function(){
     return to_route('admin.dashboard.index');
 }); 
+Route::get('/chat', function(){
+    return view('admin.chat');
+})->name('admin.transfer.chat'); 
+
+Route::get('/profile', function(){
+    return view('admin.profile');
+})->name('admin.profile'); 
+
+Route::get('/security', function(){
+    return view('admin.security');
+})->name('admin.security'); 
+
+Route::get('/transaction', function(){
+    return view('admin.transaction');
+})->name('admin.transaction'); 
 
 Route::group(['prefix' => 'dashboard', 'as' => 'admin.dashboard.'], function(){
     Route::get('/', [DashboardController::class, 'index'])->name('index');
