@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Vendor\AuthController;
 use App\Http\Controllers\Vendor\BenefitsEnrollController;
 use App\Http\Controllers\Vendor\CompanyController;
 use App\Http\Controllers\Vendor\DashboardController;
@@ -26,6 +27,11 @@ Route::get('/transaction', function(){
     return view('vendor.transaction');
 })->name('vendor.transaction'); 
 
+//auth
+Route::group(['prefix' => 'auth', 'as' => 'vendor.auth.'], function(){
+    Route::get('/sign-in', [AuthController::class, 'signIn'])->name('sign-in');
+    Route::get('/sign-up', [AuthController::class, 'signUp'])->name('sign-up');
+});
 
 Route::group(['prefix' => 'dashboard', 'as' => 'vendor.dashboard.'], function(){
     Route::get('/', [DashboardController::class, 'index'])->name('index');

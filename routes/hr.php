@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Hr\AuthController;
 use App\Http\Controllers\Hr\ComplianceController;
 use App\Http\Controllers\Hr\BenefitsEnrollController;
 use App\Http\Controllers\Hr\CompanyController;
@@ -23,6 +24,13 @@ Route::get('/chat', function(){
 Route::get('/profile', function(){
     return view('hr.profile');
 })->name('hr.profile'); 
+
+
+//auth
+Route::group(['prefix' => 'auth', 'as' => 'hr.auth.'], function(){
+    Route::get('/sign-in', [AuthController::class, 'signIn'])->name('sign-in');
+    Route::get('/sign-up', [AuthController::class, 'signUp'])->name('sign-up');
+});
 
 Route::group(['prefix' => 'dashboard', 'as' => 'hr.dashboard.'], function(){
     Route::get('/', [DashboardController::class, 'index'])->name('index');

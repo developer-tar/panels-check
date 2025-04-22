@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Employee\AuthController;
 use App\Http\Controllers\Employee\BenefitsEnrollController;
 use App\Http\Controllers\Employee\CompanyController;
 use App\Http\Controllers\Employee\DashboardController;
@@ -33,6 +34,12 @@ Route::get('/chat', function(){
 Route::get('/comparison-benefit-tools', function(){
     return view('employee.comparison-tools');
 })->name('employee.comparison-tools'); 
+
+//auth 
+Route::group(['prefix' => 'auth', 'as' => 'employee.auth.'], function(){
+    Route::get('/sign-in', [AuthController::class, 'signIn'])->name('sign-in');
+    Route::get('/sign-up', [AuthController::class, 'signUp'])->name('sign-up');
+});
 
 Route::group(['prefix' => 'dashboard', 'as' => 'employee.dashboard.'], function(){
     Route::get('/', [DashboardController::class, 'index'])->name('index');

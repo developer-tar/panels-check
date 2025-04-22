@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}" type="image/x-icon" />
     @vite('resources/css/app.scss')
-    <title>Uniwersal</title>
+    <title>Employee -signin</title>
 </head>
 
 <body class="vertical bg-secondary/5 dark:bg-bg3">
@@ -29,7 +29,8 @@
         <div class="flex items-center justify-center mt-7">
             <div class="relative z-[2] max-w-[1416px] mx-auto px-3 pb-10">
                 <div class="box p-3 md:p-4 xl:p-6 grid grid-cols-12 gap-6 items-center">
-                    <form  id="loginForm" class="col-span-12 lg:col-span-7">
+                      <!-- form start -->
+                      <div id="loginForm" class="col-span-12 lg:col-span-7">
                         <div class="box bg-primary/5 dark:bg-bg3 lg:p-6 xl:p-8 border border-n30 dark:border-n500">
                             <h3 class="h3 mb-4">Welcome Back!</h3>
                             <p class="md:mb-6 md:pb-6 mb-4 pb-4 bb-dashed text-sm md:text-base">
@@ -65,17 +66,18 @@
                             </a>
                             <p class="mt-3">
                                 Don&apos;t have an account?
-                                <a class="text-primary" href="/auth/sign-up.html">
+                                <a class="text-primary" href="{{route('employee.auth.sign-up')}}">
                                     Signup
                                 </a>
                             </p>
                             <div class="mt-8 flex gap-6">
-                                <button type="submit" class="btn-primary px-5">
+                                <a type="submit" class="btn-primary px-5" href="{{route('employee.dashboard.index')}}">
                                     Login
-                                </button>
+                                </a>
                             </div>
                         </div>
-                    </form>
+                    </div>
+                    <!--form end -->
                     <div class="col-span-12 lg:col-span-5">
                         <img src="{{ asset('assets/images/auth.png') }}" alt="img" width="533" height="560" />
                     </div>

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}" type="image/x-icon" />
     @vite('resources/css/app.scss')
-    <title>Uniwersal</title>
+    <title>Admin - sign-up</title>
 </head>
 
 <body class="vertical bg-secondary/5 dark:bg-bg3">
@@ -22,16 +22,17 @@
             alt="ellipse" />
         <img src="{{ asset('assets/images/ellipse2.png') }}"
             class="absolute bottom-6 ltr:left-0 rtl:right-0 ltr:sm:left-32 rtl:sm:right-32" alt="ellipse" />
-        
-            <img src="{{ asset('assets/images/logo-with-text.png') }}" alt="logo"
-                class="logo-full2 lg:block p-6 lg:p-8 relative z-[2]" />
+
+        <img src="{{ asset('assets/images/logo-with-text.png') }}" alt="logo"
+            class="logo-full2 lg:block p-6 lg:p-8 relative z-[2]" />
 
         <div class="flex items-center justify-center mt-7">
             <div class="relative z-[2] max-w-[1416px] mx-auto px-3 pb-10">
                 <div
                     class="box xl:p-6 dark:bg-bg4 grid grid-cols-12 gap-4 xxxl:gap-6 items-center shadow-[0px_6px_30px_0px_rgba(0,0,0,0.04)]">
                     <div class="col-span-12 lg:col-span-7">
-                        <form  id="signupForm"
+                        <!--form -->
+                        <div id="signupForm"
                             class="box bg-primary/5 dark:bg-bg3 lg:p-6 xl:p-8 border border-n30 dark:border-n500">
                             <h3 class="h3 mb-4">Let&apos;s Get Started!</h3>
                             <p class="md:mb-6 pb-4 mb-4 md:pb-6 bb-dashed text-sm md:text-base">
@@ -80,29 +81,21 @@
                                 </div>
                             </div>
 
-                            <p>
-                                By clicking submit, you agree to
-                                <a class="text-primary" href="#">
-                                    Terms of Use
+
+
+                            <p class="mt-2">
+                                Do have an account?
+                                <a class="text-primary" href="{{route('admin.auth.sign-in')}}">
+                                    Login here
                                 </a>
-                                ,
-                                <a class="text-primary" href="#">
-                                    Privacy Policy
-                                </a>
-                                ,
-                                <a class="text-primary" href="#">
-                                    E-sign
-                                </a>
-                                &
-                                <a class="text-primary" href="#">
-                                    Communication Authorization
-                                </a>
-                                .
+
+
                             </p>
                             <div class="mt-8">
-                                <button class="btn-primary px-5">Sign Up</button>
+                                <a href="{{route('admin.dashboard.index')}}" class="btn-primary px-5">Sign Up</a>
                             </div>
-                        </form>
+                        </div>
+                        <!--form -->
                     </div>
                     <div class="col-span-12 lg:col-span-5 flex justify-center items-center">
                         <img src="{{ asset('assets/images/auth.png') }}" alt="img" width="533" height="560" />

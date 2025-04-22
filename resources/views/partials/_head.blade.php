@@ -13,5 +13,5 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" />
   <link rel="stylesheet" href="../third-party/line-awesome/css/line-awesome.min.css" />
   <link rel="stylesheet" href="../css/style.css" />
-  <title>Bankhub - HTML Tailwindcss Fintech and Banking Dashboard</title>
+  <title>Uniwersal</title>
 </head>

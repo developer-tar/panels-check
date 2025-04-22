@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\BenefitsEnrollController;
 use App\Http\Controllers\Admin\CompanyController;
 use App\Http\Controllers\Admin\DashboardController;
@@ -12,6 +13,7 @@ use App\Http\Controllers\Admin\NotificationController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function(){
+    
     return to_route('admin.dashboard.index');
 }); 
 Route::get('/chat', function(){
@@ -29,6 +31,12 @@ Route::get('/security', function(){
 Route::get('/transaction', function(){
     return view('admin.transaction');
 })->name('admin.transaction'); 
+
+//auth
+Route::group(['prefix' => 'auth', 'as' => 'admin.auth.'], function(){
+    Route::get('/sign-in', [AuthController::class, 'signIn'])->name('sign-in');
+    Route::get('/sign-up', [AuthController::class, 'signUp'])->name('sign-up');
+});
 
 Route::group(['prefix' => 'dashboard', 'as' => 'admin.dashboard.'], function(){
     Route::get('/', [DashboardController::class, 'index'])->name('index');

@@ -8,7 +8,8 @@ class DashboardController extends Controller
 {
     public function index()
     { 
-        return redirect()->route('admin.dashboard.index');
+      
+        return redirect()->route('admin.auth.sign-in');
     }
 
     public function index1()
