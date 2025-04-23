@@ -18,7 +18,7 @@
     </div> --}}
 
     <div class="relative min-h-screen bg-secondary/5 dark:bg-bg3">
-        <img src="{{ asset('assets/images/ellipse1.png') }}" class="absolute top-16 md:top-5 ltr:right-10 rtl:left-10"
+        <img src="{{ asset('assets/images/vendor-ellipse1.png') }}" class="absolute top-16 md:top-5 ltr:right-10 rtl:left-10"
             alt="ellipse" />
         <img src="{{ asset('assets/images/ellipse2.png') }}"
             class="absolute bottom-6 ltr:left-0 rtl:right-0 ltr:sm:left-32 rtl:sm:right-32" alt="ellipse" />
@@ -98,7 +98,7 @@
                         <!--form -->
                     </div>
                     <div class="col-span-12 lg:col-span-5 flex justify-center items-center">
-                        <img src="{{ asset('assets/images/auth.png') }}" alt="img" width="533" height="560" />
+                        <img src="{{ asset('assets/images/vendor-auth.png') }}" alt="img" width="533" height="560" />
                     </div>
                 </div>
             </div>

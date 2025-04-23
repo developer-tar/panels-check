@@ -68,6 +68,12 @@ body.detached .submenu-link:hover {
 .arrow-bottom::after {
     border-top-color: #00897B;
 }
-.menu-container:hover::-webkit-scrollbar-thumb{
+
+.menu-container:hover::-webkit-scrollbar-thumb {
     background-color: #00897B;
 }
+
+*::-webkit-scrollbar-thumb {
+    background-color: #00897B;
+}
+
