@@ -72,23 +72,17 @@
                                 <span>claim Management</span>
                             </a>
                         </li>
+                        <!-- tracking logs -->
+                        <li class="menu-li">
+                            <a href="{{route('employee.logs')}}" class="menu-link">
+                                <i class="las la-puzzle-piece"></i>
+                                <span>Logs</span>
+                            </a>
+                        </li>
                         <li class="menu-li">
                             <a href="{{route('employee.comparison-tools')}}" class="menu-link">
                                 <i class=" lab la-searchengin"></i>
                                 <span> Comparison benefit tools </span>
-                            </a>
-                        </li>
-                        <!-- tracking logs -->
-                        <li class="menu-li">
-                            <a href="{{route('employee.profile')}}" class="menu-link">
-                                <i class="las la-user"></i>
-                                <span>Personal profile</span>
-                            </a>
-                        </li>
-                        <li class="menu-li">
-                            <a href="{{route('employee.help-center')}}" class="menu-link">
-                                <i class="lab la-hire-a-helper"></i>
-                                <span> Support & Helpdesk</span>
                             </a>
                         </li>
                         <li class="menu-li">
@@ -97,7 +91,6 @@
                                 <span>Transaction</span>
                             </a>
                         </li>
-
                         <!-- Reports -->
                         <li class="menu-li">
                             <button class="menu-btn group bg-n0 dark:!border-n500 dark:!bg-bg4">
@@ -125,14 +118,20 @@
 
                             </ul>
                         </li>
-
-                        <!-- tracking logs -->
                         <li class="menu-li">
-                            <a href="{{route('employee.logs')}}" class="menu-link">
-                                <i class="las la-puzzle-piece"></i>
-                                <span>Logs</span>
+                            <a href="{{route('employee.help-center')}}" class="menu-link">
+                                <i class="lab la-hire-a-helper"></i>
+                                <span> Support & Helpdesk</span>
                             </a>
                         </li>
+                        <!-- personal profile -->
+                        <li class="menu-li">
+                            <a href="{{route('employee.profile')}}" class="menu-link">
+                                <i class="las la-user"></i>
+                                <span>Personal profile</span>
+                            </a>
+                        </li>
+
 
                     </ul>
                 </div>

@@ -27,8 +27,8 @@
                                 <span>Dashboard</span>
                             </a>
                         </li>
-                         <!-- Company  -->
-                         <li class="menu-li">
+                        <!-- Company  -->
+                        <li class="menu-li">
                             <button class="menu-btn border-n30 bg-n0 dark:!border-n500 dark:bg-bg4">
                                 <span class="flex items-center justify-center gap-2">
                                     <span class="menu-icon">
@@ -209,6 +209,28 @@
 
 
                         </li>
+                        <!-- Claim Record-->
+                        <li class="menu-li">
+                            <a href="{{route('admin.claims.billing')}}" class="menu-link">
+                                <i class="las la-money-check"></i>
+                                <span>claim Management</span>
+                            </a>
+                        </li>
+                        <!-- transaction -->
+                        <li class="menu-li">
+                            <a href="{{route('admin.transaction')}}" class="menu-link">
+                                <i class="las la-exchange-alt"></i>
+                                <span>Transaction</span>
+                            </a>
+                        </li>
+                        <!-- tracking logs -->
+                        <li class="menu-li">
+                            <a href="{{route('admin.logs')}}" class="menu-link">
+                                <i class="las la-puzzle-piece"></i>
+                                <span>Logs</span>
+                            </a>
+                        </li>
+
                         <!-- Hr -->
                         <li class="menu-li">
                             <button class="menu-btn border-n30 bg-n0 dark:!border-n500 dark:bg-bg4">
@@ -252,7 +274,7 @@
                                     <span class="menu-icon">
                                         <i class="las la-store"></i>
                                     </span>
-                                    <span class="menu-title font-medium">Vendor Management</span>
+                                    <span class="menu-title font-medium">Vendors</span>
                                 </span>
                                 <span class="plus-minus">
                                     <i class="las la-plus text-xl"></i>
@@ -274,45 +296,6 @@
                                     <a href="{{ route('admin.vendor.create') }}" class="submenu-link">
                                         <i class="las la-minus text-xl"></i>
                                         <span>Register</span>
-                                    </a>
-                                </li>
-
-                            </ul>
-
-
-                        </li>
-                      
-                        <!-- notification -->
-
-
-                        <li class="menu-li">
-                            <button class="menu-btn border-n30 bg-n0 dark:!border-n500 dark:bg-bg4">
-                                <span class="flex items-center justify-center gap-2">
-                                    <span class="menu-icon">
-                                        <i class="las la-bell"></i>
-                                    </span>
-                                    <span class="menu-title font-medium">Notification Settings</span>
-                                </span>
-                                <span class="plus-minus">
-                                    <i class="las la-plus text-xl"></i>
-                                    <i class="las la-minus text-xl"></i>
-                                </span>
-                                <span class="chevron-down hidden">
-                                    <i class="las la-angle-down text-base"></i>
-                                </span>
-                            </button>
-                            <ul class="submenu-hide submenu">
-                                <li>
-                                    <a href="{{ route('admin.notification.index') }}" class="submenu-link">
-                                        <i class="las la-minus text-xl"></i>
-                                        <span>List/Manage</span>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="{{ route('admin.notification.create') }}" class="submenu-link">
-                                        <i class="las la-minus text-xl"></i>
-                                        <span>Add</span>
                                     </a>
                                 </li>
 
@@ -348,7 +331,42 @@
                             </ul>
                         </li>
 
-                      
+                        <!-- notification -->
+                        <li class="menu-li">
+                            <button class="menu-btn border-n30 bg-n0 dark:!border-n500 dark:bg-bg4">
+                                <span class="flex items-center justify-center gap-2">
+                                    <span class="menu-icon">
+                                        <i class="las la-bell"></i>
+                                    </span>
+                                    <span class="menu-title font-medium">Notification</span>
+                                </span>
+                                <span class="plus-minus">
+                                    <i class="las la-plus text-xl"></i>
+                                    <i class="las la-minus text-xl"></i>
+                                </span>
+                                <span class="chevron-down hidden">
+                                    <i class="las la-angle-down text-base"></i>
+                                </span>
+                            </button>
+                            <ul class="submenu-hide submenu">
+                                <li>
+                                    <a href="{{ route('admin.notification.index') }}" class="submenu-link">
+                                        <i class="las la-minus text-xl"></i>
+                                        <span>List/Manage</span>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="{{ route('admin.notification.create') }}" class="submenu-link">
+                                        <i class="las la-minus text-xl"></i>
+                                        <span>Add</span>
+                                    </a>
+                                </li>
+
+                            </ul>
+
+
+                        </li>
                         <li class="menu-li">
                             <button class="menu-btn group bg-n0 dark:!border-n500 dark:!bg-bg4">
                                 <span class="flex items-center justify-center gap-2">
@@ -382,28 +400,6 @@
                             </ul>
                         </li>
 
-                        <li class="menu-li">
-                            <a href="{{route('admin.transaction')}}" class="menu-link">
-                                <i class="las la-exchange-alt"></i>
-                                <span>Transaction</span>
-                            </a>
-                        </li>
-
-                    
-                        <!-- tracking logs -->
-                        <li class="menu-li">
-                            <a href="{{route('admin.logs')}}" class="menu-link">
-                                <i class="las la-puzzle-piece"></i>
-                                <span>Logs</span>
-                            </a>
-                        </li>
-                          <!-- Claim Record-->
-                          <li class="menu-li">
-                            <a href="{{route('admin.claims.billing')}}" class="menu-link">
-                                <i class="las la-money-check"></i>
-                                <span>claim Management</span>
-                            </a>
-                        </li>
                     </ul>
                 </div>
 

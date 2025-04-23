@@ -107,6 +107,21 @@
                                 <span>claim Management</span>
                             </a>
                         </li>
+                        <!-- Roles -->
+                        <li class="menu-li">
+                            <a href="{{route('hr.role.index')}}" class="menu-link">
+                                <i class="las la-chalkboard"></i>
+                                <span>HR Roles/Permissions</span>
+                            </a>
+                        </li>
+                        <!-- tracking logs -->
+                        <li class="menu-li">
+                            <a href="{{route('hr.logs')}}" class="menu-link">
+                                <i class="las la-puzzle-piece"></i>
+                                <span>Logs</span>
+                            </a>
+                        </li>
+
                         <!-- Policy Updates-->
                         <li class="menu-li">
                             <button class="menu-btn border-n30 bg-n0 dark:!border-n500 dark:bg-bg4">
@@ -143,14 +158,6 @@
 
 
                         </li>
-
-                        <!-- Vendor -->
-                        <li class="menu-li">
-                            <a href="{{route('hr.vendor.index')}}" class="menu-link">
-                                <i class="las la-store"></i>
-                                <span>View Vendors</span>
-                            </a>
-                        </li>
                         <!-- Compliance -->
                         <li class="menu-li">
                             <button class="menu-btn border-n30 bg-n0 dark:!border-n500 dark:bg-bg4">
@@ -185,25 +192,16 @@
                                 </li>
 
                             </ul>
-
-
                         </li>
-
-
-                        <!-- Roles -->
+                        <!-- Vendor -->
                         <li class="menu-li">
-                            <a href="{{route('hr.role.index')}}" class="menu-link">
-                                <i class="las la-chalkboard"></i>
-                                <span>HR Roles/Permissions</span>
+                            <a href="{{route('hr.vendor.index')}}" class="menu-link">
+                                <i class="las la-store"></i>
+                                <span>View Vendors</span>
                             </a>
                         </li>
 
-
-
-
                         <!-- notification -->
-
-
                         <li class="menu-li">
                             <button class="menu-btn border-n30 bg-n0 dark:!border-n500 dark:bg-bg4">
                                 <span class="flex items-center justify-center gap-2">
@@ -290,21 +288,8 @@
                                         <span>Profile</span>
                                     </a>
                                 </li>
-
-
                             </ul>
                         </li>
-
-
-
-                        <!-- tracking logs -->
-                        <li class="menu-li">
-                            <a href="{{route('hr.logs')}}" class="menu-link">
-                                <i class="las la-puzzle-piece"></i>
-                                <span>Logs</span>
-                            </a>
-                        </li>
-
                     </ul>
                 </div>
 

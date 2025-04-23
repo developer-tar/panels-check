@@ -11,14 +11,14 @@
             <!-- Statistics -->
             <div class="box col-span-12 bg-n0 dark:bg-bg4 min-[650px]:col-span-6 xxxl:col-span-3">
                 <div class="bb-dashed mb-4 flex items-center justify-between pb-4 lg:mb-6 lg:pb-6">
-                    <span class="font-medium">Total Income</span>
+                    <span class="font-medium">Total No of employees</span>
                     @include('partials._horizontal-options')
                 </div>
                 <div class="flex items-center justify-between">
                     <div>
-                        <h4 class="h4 mb-4">$8500 USD</h4>
+                        <h4 class="h4 mb-4">200 Employees</h4>
                         <span class="flex items-center gap-1 whitespace-nowrap text-primary">
-                            <i class="las la-arrow-up text-lg"></i> 35.7 AVG
+                            <i class="las la-arrow-up text-lg"></i> 70 AVG
                         </span>
                     </div>
                     <div
@@ -29,15 +29,15 @@
             </div>
             <div class="box col-span-12 bg-n0 dark:bg-bg4 min-[650px]:col-span-6 xxxl:col-span-3">
                 <div class="bb-dashed mb-4 flex items-center justify-between pb-4 lg:mb-6 lg:pb-6">
-                    <span class="font-medium">Total Spending</span>
+                    <span class="font-medium">Total No of claims enrolled by employees</span>
                     @include('partials._horizontal-options')
 
                 </div>
                 <div class="flex items-center justify-between">
                     <div>
-                        <h4 class="h4 mb-4">$2540 USD</h4>
+                        <h4 class="h4 mb-4">150 Employees</h4>
                         <span class="flex items-center gap-1 whitespace-nowrap text-primary">
-                            <i class="las la-arrow-up text-lg"></i> 35.7 AVG
+                            <i class="las la-arrow-up text-lg"></i> 50.7 AVG
                         </span>
                     </div>
                     <div
@@ -48,15 +48,34 @@
             </div>
             <div class="box col-span-12 bg-n0 dark:bg-bg4 min-[650px]:col-span-6 xxxl:col-span-3">
                 <div class="bb-dashed mb-4 flex items-center justify-between pb-4 lg:mb-6 lg:pb-6">
-                    <span class="font-medium">Spending Goal</span>
+                    <span class="font-medium">Total no of claims approved</span>
                     @include('partials._horizontal-options')
 
                 </div>
                 <div class="flex items-center justify-between">
                     <div>
-                        <h4 class="h4 mb-4">$1250 USD</h4>
+                        <h4 class="h4 mb-4">135 Employees</h4>
                         <span class="flex items-center gap-1 whitespace-nowrap text-primary">
-                            <i class="las la-arrow-up text-lg"></i> 35.7 AVG
+                            <i class="las la-arrow-up text-lg"></i> 41.7 AVG
+                        </span>
+                    </div>
+                    <div
+                        class="-my-3 shrink-0 ltr:translate-x-3 xl:ltr:translate-x-7 xxxl:ltr:translate-x-2 4xl:ltr:translate-x-9 rtl:-translate-x-3 xl:rtl:-translate-x-7 xxxl:rtl:-translate-x-2 4xl:rtl:-translate-x-9">
+                        <div class="progress-chart"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="box col-span-12 bg-n0 dark:bg-bg4 min-[650px]:col-span-6 xxxl:col-span-3">
+                <div class="bb-dashed mb-4 flex items-center justify-between pb-4 lg:mb-6 lg:pb-6">
+                    <span class="font-medium">Total No of claims submission</span>
+                    @include('partials._horizontal-options')
+
+                </div>
+                <div class="flex items-center justify-between">
+                    <div>
+                        <h4 class="h4 mb-4">20 Employees</h4>
+                        <span class="flex items-center gap-1 whitespace-nowrap text-primary">
+                            <i class="las la-arrow-up text-lg"></i> 40.7 AVG
                         </span>
                     </div>
                     <div

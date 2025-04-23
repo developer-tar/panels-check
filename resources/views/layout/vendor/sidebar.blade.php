@@ -27,7 +27,7 @@
                                 <span>Dashboard</span>
                             </a>
                         </li>
-                    
+
                         <!-- plans -->
                         <li class="menu-li">
                             <button class="menu-btn border-n30 bg-n0 dark:!border-n500 dark:bg-bg4">
@@ -64,9 +64,56 @@
 
 
                         </li>
-                       
-                     
-                      
+
+
+                        <!-- Claim Record-->
+                        <li class="menu-li">
+                            <a href="{{route('vendor.claims.billing')}}" class="menu-link">
+                                <i class="las la-money-check"></i>
+                                <span>claim Management</span>
+                            </a>
+                        </li>
+                        <!-- tracking logs -->
+                        <li class="menu-li">
+                            <a href="{{route('vendor.logs')}}" class="menu-link">
+                                <i class="las la-puzzle-piece"></i>
+                                <span>Logs</span>
+                            </a>
+                        </li>
+                        <li class="menu-li">
+                            <a href="{{route('vendor.transaction')}}" class="menu-link">
+                                <i class="las la-exchange-alt"></i>
+                                <span>Transaction & Invoice</span>
+                            </a>
+                        </li>
+                        <!-- Reports -->
+                        <li class="menu-li">
+                            <button class="menu-btn group bg-n0 dark:!border-n500 dark:!bg-bg4">
+                                <span class="flex items-center justify-center gap-2">
+                                    <span class="menu-icon">
+                                        <i class="las la-chart-pie"></i>
+                                    </span>
+                                    <span class="menu-title font-medium">Reports</span>
+                                </span>
+                                <span class="plus-minus">
+                                    <i class="las la-plus text-xl"></i>
+                                    <i class="las la-minus text-xl"></i>
+                                </span>
+                                <span class="chevron-down hidden">
+                                    <i class="las la-angle-down text-base"></i>
+                                </span>
+                            </button>
+                            <ul class="submenu-hide submenu">
+                                <li>
+                                    <a href="{{ route('vendor.analytics') }}" class="submenu-link">
+                                        <i class="las la-minus text-xl"></i>
+                                        <span>manage</span>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+
                         <!-- notification -->
 
 
@@ -105,35 +152,8 @@
 
 
                         </li>
-                        <!-- Reports -->
-                        <li class="menu-li">
-                            <button class="menu-btn group bg-n0 dark:!border-n500 dark:!bg-bg4">
-                                <span class="flex items-center justify-center gap-2">
-                                    <span class="menu-icon">
-                                        <i class="las la-chart-pie"></i>
-                                    </span>
-                                    <span class="menu-title font-medium">Reports</span>
-                                </span>
-                                <span class="plus-minus">
-                                    <i class="las la-plus text-xl"></i>
-                                    <i class="las la-minus text-xl"></i>
-                                </span>
-                                <span class="chevron-down hidden">
-                                    <i class="las la-angle-down text-base"></i>
-                                </span>
-                            </button>
-                            <ul class="submenu-hide submenu">
-                                <li>
-                                    <a href="{{ route('vendor.analytics') }}" class="submenu-link">
-                                        <i class="las la-minus text-xl"></i>
-                                        <span>manage</span>
-                                    </a>
-                                </li>
+                        
 
-                            </ul>
-                        </li>
-
-                      
                         <li class="menu-li">
                             <button class="menu-btn group bg-n0 dark:!border-n500 dark:!bg-bg4">
                                 <span class="flex items-center justify-center gap-2">
@@ -157,33 +177,15 @@
                                         <span>Profile</span>
                                     </a>
                                 </li>
-                                
+
 
                             </ul>
                         </li>
 
-                        <li class="menu-li">
-                            <a href="{{route('vendor.transaction')}}" class="menu-link">
-                                <i class="las la-exchange-alt"></i>
-                                <span>Transaction & Invoice</span>
-                            </a>
-                        </li>
 
-                    
-                        <!-- tracking logs -->
-                        <li class="menu-li">
-                            <a href="{{route('vendor.logs')}}" class="menu-link">
-                                <i class="las la-puzzle-piece"></i>
-                                <span>Logs</span>
-                            </a>
-                        </li>
-                          <!-- Claim Record-->
-                          <li class="menu-li">
-                            <a href="{{route('vendor.claims.billing')}}" class="menu-link">
-                                <i class="las la-money-check"></i>
-                                <span>claim Management</span>
-                            </a>
-                        </li>
+
+
+
                     </ul>
                 </div>
 
