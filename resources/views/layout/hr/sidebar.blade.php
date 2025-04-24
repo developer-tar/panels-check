@@ -5,7 +5,7 @@
             <div class="logo-container">
                 <div class="logo-inner">
                     <a href="{{ route('hr.dashboard.index') }}" class="logo-wrapper">
-                        <img src="{{ asset('assets/images/logo-with-text.png') }}" width="174" height="38"
+                        <img src="{{ asset('assets/images/logo/hr-logo.png') }}" width="174" height="38"
                             class="logo-full" alt="logo" />
                         <img src="{{ asset('assets/images/logo.png') }}" width="37" height="36" class="logo-icon hidden"
                             alt="logo" />
