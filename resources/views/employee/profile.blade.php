@@ -58,6 +58,22 @@
                     </div>
                     <div class="col-span-2">
                         <label for="phone" class="md:text-lg font-medium block mb-4">
+                           Total no of experience
+                        </label>
+                        <input type="text"
+                            class="w-full text-sm bg-primary/5 dark:bg-bg3 border border-n30 dark:border-n500 rounded-3xl px-3 md:px-6 py-2 md:py-3"
+                            placeholder="Enter Phone" value="4" id="phone" required />
+                    </div>
+                    <div class="col-span-2">
+                        <label for="phone" class="md:text-lg font-medium block mb-4">
+                          Current Salary per annum
+                        </label>
+                        <input type="text"
+                            class="w-full text-sm bg-primary/5 dark:bg-bg3 border border-n30 dark:border-n500 rounded-3xl px-3 md:px-6 py-2 md:py-3"
+                            placeholder="Enter Phone" value="$2000" id="phone" required />
+                    </div>
+                    <div class="col-span-2">
+                        <label for="phone" class="md:text-lg font-medium block mb-4">
                             Gender :
                         </label>
                         <div class="flex gap-5">
@@ -154,22 +170,15 @@
                     </div>
                 </div>
                 <form class="mt-6 xl:mt-8 grid grid-cols-2 gap-4 xxxxxl:gap-6">
-                    <div class="col-span-2 md:col-span-1">
+                    <div class="col-span-2">
                         <label for="fname" class="md:text-lg font-medium block mb-4">
-                            First Name
+                            Name
                         </label>
                         <input type="text"
                             class="w-full text-sm bg-primary/5 dark:bg-bg3 border border-n30 dark:border-n500 rounded-3xl px-3 md:px-6 py-2 md:py-3"
                             id="fname" placeholder="First Name" value="Darrel" required />
                     </div>
-                    <div class="col-span-2 md:col-span-1">
-                        <label for="lname" class="md:text-lg font-medium block mb-4">
-                            Last Name
-                        </label>
-                        <input type="text"
-                            class="w-full text-sm bg-primary/5 dark:bg-bg3 border border-n30 dark:border-n500 rounded-3xl px-3 md:px-6 py-2 md:py-3"
-                            placeholder="Enter Last Name" value="Steward" id="lname" required />
-                    </div>
+
                     <div class="col-span-2">
                         <label for="email" class="md:text-lg font-medium block mb-4">
                             Email
@@ -188,79 +197,29 @@
                     </div>
                     <div class="col-span-2">
                         <label for="phone" class="md:text-lg font-medium block mb-4">
-                            Gender :
+                            Type :
                         </label>
+
                         <div class="flex gap-5">
-                            <label for="male" class="flex items-center gap-2 cursor-pointer">
-                                <input type="radio" id="male" name="gender" checked class="accent-secondary" />
-                                Male
-                            </label>
-                            <label for="female" class="flex items-center gap-2 cursor-pointer">
-                                <input type="radio" id="female" name="gender" class="accent-secondary" />
-                                Female
-                            </label>
-                            <label for="other" class="flex items-center gap-2 cursor-pointer">
-                                <input type="radio" id="other" name="gender" class="accent-secondary" />
-                                Other
-                            </label>
+                            <select name="sort" class="nc-select full">
+                                <option value="day">LLC</option>
+                                <option value="week">PVT LTD</option>
+                                <option value="week">Coorportion</option>
+                            </select>
                         </div>
                     </div>
 
                     <div class="col-span-2">
-                        <label for="tagline" class="md:text-lg font-medium block mb-4">
-                            Tagline :
+                        <label for="phone" class="md:text-lg font-medium block mb-4">
+                            Registration number
                         </label>
-                        <div>
-                            <div id="editor">
-                                <p>Hello World!</p>
-                            </div>
-                        </div>
-
+                        <input type="text"
+                            class="w-full text-sm bg-primary/5 dark:bg-bg3 border border-n30 dark:border-n500 rounded-3xl px-3 md:px-6 py-2 md:py-3"
+                            placeholder="Enter Phone" value="91021421144" id="phone" required />
                     </div>
                     <div></div>
                     <div class="col-span-2">
-                        <div class="flex flex-col gap-4">
-                            <div class="flex items-center relative">
-                                <input type="checkbox" id="I agree to the privacy &amp; policy" name="A3-confirmation"
-                                    class="opacity-0 absolute h-8 w-8" />
-                                <div
-                                    class="bg-n0 dark:bg-bg4 border border-gray-400 rounded-full w-5 h-5 flex shrink-0 justify-center items-center ltr:mr-2 rtl:ml-2 focus-within:border-primary">
-                                    <svg class="fill-current hidden w-[10px] h-[10px] text-primary pointer-events-none"
-                                        version="1.1" viewBox="0 0 17 12" xmlns="http://www.w3.org/2000/svg">
-                                        <g fill="none" fill-rule="evenodd">
-                                            <g transform="translate(-9 -11)" fill="#20B757" fill-rule="nonzero">
-                                                <path
-                                                    d="m25.576 11.414c0.56558 0.55188 0.56558 1.4439 0 1.9961l-9.404 9.176c-0.28213 0.27529-0.65247 0.41385-1.0228 0.41385-0.37034 0-0.74068-0.13855-1.0228-0.41385l-4.7019-4.588c-0.56584-0.55188-0.56584-1.4442 0-1.9961 0.56558-0.55214 1.4798-0.55214 2.0456 0l3.679 3.5899 8.3812-8.1779c0.56558-0.55214 1.4798-0.55214 2.0456 0z" />
-                                            </g>
-                                        </g>
-                                    </svg>
-                                </div>
-                                <label for="I agree to the privacy &amp; policy"
-                                    class="select-none text-sm md:text-base flex gap-2 cursor-pointer items-center">
-                                    I agree to the privacy &amp; policy
-                                </label>
-                            </div>
-                            <div class="flex items-center relative">
-                                <input type="checkbox" id="I agree with all terms &amp; conditions"
-                                    name="A3-confirmation" class="opacity-0 absolute h-8 w-8" />
-                                <div
-                                    class="bg-n0 dark:bg-bg4 border border-gray-400 rounded-full w-5 h-5 flex shrink-0 justify-center items-center ltr:mr-2 rtl:ml-2 focus-within:border-primary">
-                                    <svg class="fill-current hidden w-[10px] h-[10px] text-primary pointer-events-none"
-                                        version="1.1" viewBox="0 0 17 12" xmlns="http://www.w3.org/2000/svg">
-                                        <g fill="none" fill-rule="evenodd">
-                                            <g transform="translate(-9 -11)" fill="#20B757" fill-rule="nonzero">
-                                                <path
-                                                    d="m25.576 11.414c0.56558 0.55188 0.56558 1.4439 0 1.9961l-9.404 9.176c-0.28213 0.27529-0.65247 0.41385-1.0228 0.41385-0.37034 0-0.74068-0.13855-1.0228-0.41385l-4.7019-4.588c-0.56584-0.55188-0.56584-1.4442 0-1.9961 0.56558-0.55214 1.4798-0.55214 2.0456 0l3.679 3.5899 8.3812-8.1779c0.56558-0.55214 1.4798-0.55214 2.0456 0z" />
-                                            </g>
-                                        </g>
-                                    </svg>
-                                </div>
-                                <label for="I agree with all terms &amp; conditions"
-                                    class="select-none text-sm md:text-base flex gap-2 cursor-pointer items-center">
-                                    I agree with all terms &amp; conditions
-                                </label>
-                            </div>
-                        </div>
+                       
                         <div class="flex mt-6 xxl:mt-10 gap-4">
                             <button class="btn-primary px-5">Save Changes</button>
                             <button class="btn-outline px-5">Cancel</button>

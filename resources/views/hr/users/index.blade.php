@@ -60,6 +60,16 @@
                                     Name
                                 </div>
                             </th>
+                            <th class="text-start !py-5 px-6 min-w-[230px] cursor-pointer">
+                                <div class="flex items-center gap-1">
+                                    Salary 
+                                </div>
+                            </th>
+                            <th class="text-start !py-5 px-6 min-w-[230px] cursor-pointer">
+                                <div class="flex items-center gap-1">
+                                    Experience 
+                                </div>
+                            </th>
                             <th class="text-start !py-5 min-w-[130px] cursor-pointer">
                                 <div class="flex items-center gap-1">
                                     Email
@@ -98,6 +108,18 @@
                                     <p class="font-medium mb-1">Tammy</p>
                                 </div>
 
+                            </td>
+                            <td class="py-2">
+                                <div>
+                                    <p class="font-medium mb-1">30000$</p>
+
+                                </div>
+                            </td>
+                            <td class="py-2">
+                                <div>
+                                    <p class="font-medium mb-1">5+</p>
+
+                                </div>
                             </td>
                             <td class="py-2">
                                 <div>
@@ -160,6 +182,18 @@
                                     <p class="font-medium mb-1">John</p>
                                 </div>
 
+                            </td>
+                            <td class="py-2">
+                                <div>
+                                    <p class="font-medium mb-1">100000$</p>
+
+                                </div>
+                            </td>
+                            <td class="py-2">
+                                <div>
+                                    <p class="font-medium mb-1">7+</p>
+
+                                </div>
                             </td>
                             <td class="py-2">
                                 <div>
