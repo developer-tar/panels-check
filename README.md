@@ -9,24 +9,25 @@ This is a uniwersal-based web application. Follow the steps below to set up and 
 ###  Clone the Repository
 
 
-git clone <your-repo-url>
-cd <your-project-directory>
+git clone (https://github.com/ambrezent/uniwersal.git)
+
 
 ### Use Node.js version 20
 nvm use 20
 
 ### Install Node and PHP dependencies
 npm install
+
 composer install
 
-### Generate application key
-php artisan key:generate
 
 ### Copy the environment file
 cp .env.example .env
 
+### Generate application key
+php artisan key:generate
 
-### make sure update the env file
+### make sure update the .env file
 DB_CONNECTION=mysql
 
 DB_HOST=127.0.0.1
@@ -45,8 +46,9 @@ php artisan migrate
 
 ### Start the Development Server
 
-php artisan serve
 npm run dev
+
+php artisan serve
 
 ###  Test your app
 http://localhost:8000
