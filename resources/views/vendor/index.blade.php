@@ -16,7 +16,7 @@
             </div>
             <div class="flex items-center justify-between">
                 <div>
-                    <h4 class="h4 mb-4">approx 33 Pending Benefit Records</h4>
+                    <h4 class="h4 mb-4">Approx 33 Pending Benefit Records</h4>
                     <span class="flex items-center gap-1 whitespace-nowrap text-primary">
                         <i class="las la-arrow-up text-lg"></i> 40.9 AVG
                     </span>
@@ -35,7 +35,7 @@
             </div>
             <div class="flex items-center justify-between">
                 <div>
-                    <h4 class="h4 mb-4">100 Approved Benefit Records</h4>
+                    <h4 class="h4 mb-4">Approx 33 Approved Benefit Records</h4>
                     <span class="flex items-center gap-1 whitespace-nowrap text-primary">
                         <i class="las la-arrow-up text-lg"></i> 39.7 AVG
                     </span>
@@ -54,7 +54,7 @@
             </div>
             <div class="flex items-center justify-between">
                 <div>
-                    <h4 class="h4 mb-4">200 Approved Claim Records</h4>
+                    <h4 class="h4 mb-4">Approx 33 Approved Claim</h4>
                     <span class="flex items-center gap-1 whitespace-nowrap text-primary">
                         <i class="las la-arrow-up text-lg"></i> 90.7 AVG
                     </span>
