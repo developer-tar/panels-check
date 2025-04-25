@@ -62,12 +62,22 @@
                             </th>
                             <th class="text-start !py-5 px-6 min-w-[230px] cursor-pointer">
                                 <div class="flex items-center gap-1">
-                                    Salary 
+                                    Age
                                 </div>
                             </th>
                             <th class="text-start !py-5 px-6 min-w-[230px] cursor-pointer">
                                 <div class="flex items-center gap-1">
-                                    Experience 
+                                    Country
+                                </div>
+                            </th>
+                            <th class="text-start !py-5 px-6 min-w-[230px] cursor-pointer">
+                                <div class="flex items-center gap-1">
+                                    Salary/income
+                                </div>
+                            </th>
+                            <th class="text-start !py-5 px-6 min-w-[230px] cursor-pointer">
+                                <div class="flex items-center gap-1">
+                                    Experience
                                 </div>
                             </th>
                             <th class="text-start !py-5 min-w-[130px] cursor-pointer">
@@ -111,13 +121,25 @@
                             </td>
                             <td class="py-2">
                                 <div>
+                                    <p class="font-medium mb-1">27</p>
+
+                                </div>
+                            </td>
+                            <td class="py-2">
+                                <div>
+                                    <p class="font-medium mb-1">United State</p>
+
+                                </div>
+                            </td>
+                            <td class="py-2">
+                                <div>
                                     <p class="font-medium mb-1">30000$</p>
 
                                 </div>
                             </td>
                             <td class="py-2">
                                 <div>
-                                    <p class="font-medium mb-1">5+</p>
+                                    <p class="font-medium mb-1">5 year 10 month</p>
 
                                 </div>
                             </td>
@@ -182,6 +204,18 @@
                                     <p class="font-medium mb-1">John</p>
                                 </div>
 
+                            </td>
+                            <td class="py-2">
+                                <div>
+                                    <p class="font-medium mb-1">40</p>
+
+                                </div>
+                            </td>
+                            <td class="py-2">
+                                <div>
+                                    <p class="font-medium mb-1">Japan</p>
+
+                                </div>
                             </td>
                             <td class="py-2">
                                 <div>

@@ -43,7 +43,7 @@
         </div>
         <div class="col-span-2 md:col-span-1">
           <label for="name" class="mb-4 md:text-lg font-medium block">
-            Curent Salary
+          Current Salary/income per annum
           </label>
           <input type="text"
             class="w-full text-sm  bg-secondary/5 dark:bg-bg3 !border border-n30 dark:border-n500 rounded-3xl px-3 md:px-6 py-2 md:py-3"
@@ -51,13 +51,31 @@
         </div>
         <div class="col-span-2 md:col-span-1">
           <label for="name" class="mb-4 md:text-lg font-medium block">
-            Total experience
+          Experience in Years/months
           </label>
           <input type="text"
             class="w-full text-sm  bg-secondary/5 dark:bg-bg3 !border border-n30 dark:border-n500 rounded-3xl px-3 md:px-6 py-2 md:py-3"
-            placeholder="Enter name" id="name" required value="5+" />
+            placeholder="Enter name" id="name" required value="5 years 4 months" />
         </div>
-
+        <div class="col-span-2 md:col-span-1">
+          <label for="name" class="mb-4 md:text-lg font-medium block">
+            Age
+          </label>
+          <input type="text"
+            class="w-full text-sm  bg-secondary/5 dark:bg-bg3 !border border-n30 dark:border-n500 rounded-3xl px-3 md:px-6 py-2 md:py-3"
+            placeholder="Enter name" id="name" required value='27' />
+        </div>
+        <div class="col-span-2 md:col-span-1">
+          <label for="payfor" class="mb-4 md:text-lg font-medium block">
+            Country
+          </label>
+          <select name="currency" class="nc-select full ">
+            <option value="usd" selected>United State</option>
+            <option value="gbp">America</option>
+            <option value="yen">India</option>
+            <option value="jpn">Japan</option>
+          </select>
+        </div>
         <div class="col-span-2 md:col-span-1">
           <label for="payfor" class="mb-4 md:text-lg font-medium block">
             Status
