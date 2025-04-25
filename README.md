@@ -8,7 +8,7 @@ This is a Laravel-based web application. Follow the steps below to set up and ru
 
 ### 1. Clone the Repository
 
-```bash
+
 git clone <your-repo-url>
 cd <your-project-directory>
 
