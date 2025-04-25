@@ -6,7 +6,7 @@ This is a Laravel-based web application. Follow the steps below to set up and ru
 
 ## 🚀 Getting Started
 
-### 1. Clone the Repository
+###  Clone the Repository
 
 
 git clone <your-repo-url>
