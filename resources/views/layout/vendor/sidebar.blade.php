@@ -35,7 +35,7 @@
                                     <span class="menu-icon">
                                         <i class="las la-chart-area"></i>
                                     </span>
-                                    <span class="menu-title font-medium">plans/benefit add</span>
+                                    <span class="menu-title font-medium">Benefit plans</span>
                                 </span>
                                 <span class="plus-minus">
                                     <i class="las la-plus text-xl"></i>
