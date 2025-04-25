@@ -1,6 +1,6 @@
-# Laravel Project
+# uniwersal Project
 
-This is a Laravel-based web application. Follow the steps below to set up and run the project locally.
+This is a uniwersal-based web application. Follow the steps below to set up and run the project locally.
 
 ---
 
