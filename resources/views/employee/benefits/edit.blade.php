@@ -45,13 +45,13 @@
         </select>
       </div>
 
-    <div class="col-span-2 md:col-span-1">
+    <div class="col-span-2">
         <label for="medium" class="mb-4 md:text-lg font-medium block">
-        Coverage Limit($)
+        Claim amount($)
         </label>
         <input type="number"
         class="w-full text-sm  bg-secondary/5 dark:bg-bg3 !border border-n30 dark:border-n500 rounded-3xl px-3 md:px-6 py-2 md:py-3"
-        placeholder="Enter name" id="name" required value="1000$"/>
+        placeholder="Enter name" id="name" required value="1000"/>
       </div>
       <div class="col-span-2 md:col-span-2">
         <label for="desc" class="md:text-lg font-medium block mb-4">
