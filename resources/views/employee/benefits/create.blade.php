@@ -42,7 +42,7 @@
         <option value="day"> Plan A</option>
         </select>
       </div>
-        <div class="col-span-2 md:col-span-1">
+    <div class="col-span-2">
         <label for="medium" class="mb-4 md:text-lg font-medium block">
        Claim amount($)
         </label>
