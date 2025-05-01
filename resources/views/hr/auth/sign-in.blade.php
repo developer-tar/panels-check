@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}" type="image/x-icon" />
+    
     @vite('resources/css/hr/app.scss')
     <title>Hr -signin</title>
 </head>
@@ -23,7 +23,7 @@
         <img src="{{ asset('assets/images/ellipse2.png') }}"
             class="absolute bottom-6 ltr:left-0 rtl:right-0 ltr:sm:left-32 rtl:sm:right-32" alt="ellipse" />
         
-            <img src="{{ asset('assets/images/logo-with-text.png') }}" alt="logo"
+            <img src="{{ asset('assets/images/logo/hr-logo.png') }}" alt="logo"
                 class="logo-full2 lg:block p-6 lg:p-8 relative z-[2]" />
         
         <div class="flex items-center justify-center mt-7">

@@ -23,19 +23,7 @@
       </div>
       <div class="grid grid-cols-2 gap-4 xxxl:gap-6">
      
-      <div class="col-span-2 md:col-span-1">
-        <label for="date" class="md:text-lg font-medium block mb-4">
-        Select Employee
-        </label>
-        <select name="sort" class="nc-select full">
-        <option value="day" selected>Employee 1 </option>
-        <option value="week">Employee 2 </option>
-        <option value="day">Employee 2 </option>
-        <option value="week">Employee 3 </option>
-        <option value="day">Employee 4 </option>
-        <option value="week">Employee 5 </option>
-        </select>
-      </div>
+      
       <div class="col-span-2 md:col-span-1">
         <label for="date" class="md:text-lg font-medium block mb-4">
         Select company
@@ -57,15 +45,13 @@
         </select>
       </div>
 
-      <div class="col-span-2 md:col-span-1">
-        <label for="date" class="md:text-lg font-medium block mb-4">
-        Status
+    <div class="col-span-2">
+        <label for="medium" class="mb-4 md:text-lg font-medium block">
+        Claim amount($)
         </label>
-        <select name="sort" class="nc-select full">
-        <option value="day">Pending </option>
-        <option value="week" selected>Approval </option>
-        <option value="day"> Rejected</option>
-        </select>
+        <input type="number"
+        class="w-full text-sm  bg-secondary/5 dark:bg-bg3 !border border-n30 dark:border-n500 rounded-3xl px-3 md:px-6 py-2 md:py-3"
+        placeholder="Enter name" id="name" required value="1000"/>
       </div>
       <div class="col-span-2 md:col-span-2">
         <label for="desc" class="md:text-lg font-medium block mb-4">

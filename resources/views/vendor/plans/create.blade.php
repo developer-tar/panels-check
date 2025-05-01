@@ -53,18 +53,18 @@
         placeholder="Enter name" id="name" required />
       </div>
 
-      <div class="col-span-2 md:col-span-1">
-        <label for="date" class="md:text-lg font-medium block mb-4">
-        Compare with Plan
-        </label>
-        <select name="sort" class="nc-select full">
-        <option value="day">plan A</option>
-        <option value="week">plan B</option>
-        </select>
-      </div>
+   
       <div class="col-span-2 md:col-span-1">
         <label for="desc" class="md:text-lg font-medium block mb-4">
         Eligibility Rule
+        </label>
+        <textarea
+        class="w-full text-sm  bg-n0 dark:bg-bg4 border border-n30 dark:border-n500 rounded-3xl px-3 md:px-6 py-2 md:py-3"
+        placeholder="Enter Description..." rows="5" id="desc" required></textarea>
+      </div>
+    <div class="col-span-2 md:col-span-1">
+        <label for="desc" class="md:text-lg font-medium block mb-4">
+        Customization notes
         </label>
         <textarea
         class="w-full text-sm  bg-n0 dark:bg-bg4 border border-n30 dark:border-n500 rounded-3xl px-3 md:px-6 py-2 md:py-3"
@@ -109,14 +109,7 @@
         </div>
         </div>
       </div>
-      <div class="col-span-2 md:col-span-1">
-        <label for="desc" class="md:text-lg font-medium block mb-4">
-        Customization notes
-        </label>
-        <textarea
-        class="w-full text-sm  bg-n0 dark:bg-bg4 border border-n30 dark:border-n500 rounded-3xl px-3 md:px-6 py-2 md:py-3"
-        placeholder="Enter Description..." rows="5" id="desc" required></textarea>
-      </div>
+     
       <div class="col-span-2 flex gap-4 md:gap-6 mt-2">
         <button class="btn-primary" type="submit">
         Save

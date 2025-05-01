@@ -10,7 +10,7 @@
         <h2 class="h2">Plan Management</h2>
         <a href="{{route('admin.plan.create')}}" class="btn-primary inline-flex items-center">
             <i class="las la-plus-circle text-base md:text-lg"></i>
-            <span class="ml-1">Add an new plan</span>
+            <span class="ml-1">Add an new Benefit Plan</span>
         </a>
     </div>
 

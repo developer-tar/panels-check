@@ -3,7 +3,7 @@
     <div class="topbar-inner flex items-center justify-between">
         <div class="flex grow items-center gap-4 xxl:gap-6">
             <a href="{{ route('employee.dashboard.index') }}" class="topbar-logo hidden shrink-0">
-                <img width="174" height="38" src="{{ asset('assets/images/logo-with-text.png') }}" alt="logo"
+                <img width="174" height="38" src="{{ asset('assets/images/logo/employee-logo.png') }}" alt="logo"
                     class="logo-full2 hidden lg:block" />
             </a>
             <button class="flex items-center rounded-s-2xl bg-primary px-0.5 py-3 text-xl text-n0"

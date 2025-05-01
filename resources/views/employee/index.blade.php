@@ -9,7 +9,25 @@
 
         <div class="grid grid-cols-12 gap-4 xxl:gap-6">
             <!-- Statistics -->
-            
+            <div class="box col-span-12 bg-n0 dark:bg-bg4 min-[650px]:col-span-6 xxxl:col-span-3">
+                <div class="bb-dashed mb-4 flex items-center justify-between pb-4 lg:mb-6 lg:pb-6">
+                    <span class="font-medium">Credit scores</span>
+                    @include('partials._horizontal-options')
+                </div>
+                <div class="flex items-center justify-between">
+                    <div>
+                        <h4 class="h4 mb-4">100</h4>
+                        <span class="flex items-center gap-1 whitespace-nowrap text-primary">
+                            <i class="las la-arrow-up text-lg"></i> 42 AVG
+                        </span>
+                    </div>
+                    <div
+                        class="-my-3 shrink-0 ltr:translate-x-3 xl:ltr:translate-x-7 xxxl:ltr:translate-x-2 4xl:ltr:translate-x-9 rtl:-translate-x-3 xl:rtl:-translate-x-7 xxxl:rtl:-translate-x-2 4xl:rtl:-translate-x-9">
+                        <div class="progress-chart"></div>
+                    </div>
+                </div>
+                
+            </div>
             <div class="box col-span-12 bg-n0 dark:bg-bg4 min-[650px]:col-span-6 xxxl:col-span-3">
                 <div class="bb-dashed mb-4 flex items-center justify-between pb-4 lg:mb-6 lg:pb-6">
                     <span class="font-medium">Total Benefit Enrolled</span>
