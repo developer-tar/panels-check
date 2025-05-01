@@ -20,6 +20,12 @@ return new class extends Migration {
         });
         $user = User::find(1);
         $user->roles()->attach(1, ['created_at' => now(),'updated_at' => now()]);
+        $user = User::find(2);
+        $user->roles()->attach(2, ['created_at' => now(),'updated_at' => now()]);
+        $user = User::find(3);
+        $user->roles()->attach(3, ['created_at' => now(),'updated_at' => now()]);
+        $user = User::find(4);
+        $user->roles()->attach(4, ['created_at' => now(),'updated_at' => now()]);
        
     }
 

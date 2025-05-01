@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-   
+
     @vite('resources/css/app.scss')
     <title>Admin -signin</title>
 </head>
@@ -30,7 +30,8 @@
             <div class="relative z-[2] max-w-[1416px] mx-auto px-3 pb-10">
                 <div class="box p-3 md:p-4 xl:p-6 grid grid-cols-12 gap-6 items-center">
                     <!-- form start -->
-                    <div id="loginForm" class="col-span-12 lg:col-span-7">
+                    <form class="col-span-12 lg:col-span-7" method="post" action="{{route('admin.auth.authenticate')}}">
+                        @csrf
                         <div class="box bg-primary/5 dark:bg-bg3 lg:p-6 xl:p-8 border border-n30 dark:border-n500">
                             <h3 class="h3 mb-4">Welcome Back!</h3>
                             <p class="md:mb-6 md:pb-6 mb-4 pb-4 bb-dashed text-sm md:text-base">
@@ -41,8 +42,15 @@
                             </label>
                             <div class="mb-4">
                                 <input type="text"
-                                    class="w-full text-sm bg-n0 dark:bg-bg4 border border-n30 dark:border-n500 rounded-3xl px-3 md:px-6 py-2 md:py-3"
-                                    placeholder="Enter Your Email" id="email" />
+                                    class="w-full text-sm bg-n0 dark:bg-bg4 border border-n30 dark:border-n500 rounded-3xl px-3 md:px-6 py-2 md:py-3    @if (isset($errors) && $errors->has('email')) is-invalid @endif"
+                                    placeholder="Enter Your Email" id="email" name="email" value="{{ old('email') }}" />
+
+                                @if (isset($errors) && $errors->has('email'))
+                                    
+                                <div class="text-red-500 text-sm mt-1">
+                                    {{ $message }}
+                                </div>
+                                @endif
                             </div>
                             <label for="password" class="md:text-lg font-medium block mb-4">
                                 Enter Your Password
@@ -71,12 +79,14 @@
                                 </a>
                             </p>
                             <div class="mt-8 flex gap-6">
-                                <a type="submit" class="btn-primary px-5" href="{{route('admin.dashboard.index')}}">
+                                <button type="submit" class="btn-primary px-5">
                                     Login
-                                </a>
+                                </button>
                             </div>
                         </div>
-                    </div>
+
+
+                    </form>
                     <!--form end -->
                     <div class="col-span-12 lg:col-span-5">
                         <img src="{{ asset('assets/images/auth.png') }}" alt="img" width="533" height="560" />

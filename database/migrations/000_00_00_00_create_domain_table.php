@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string('name');
             $table->longText('description')->nullable();
             $table->tinyInteger('status')->default(1)->nullable()->comment('1= active, 2 = non-active');
-            $table->text('description')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

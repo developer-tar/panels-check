@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('domain_id')->index();
             $table->string('claim_amount');
             $table->longtext('reason_for_takng_the_benefit');
-            $table->status('status')->default(1)->comment('1= pending, 2 = approved 3= rejected');
+            $table->tinyInteger('status')->default(1)->comment('1= pending, 2 = approved 3= rejected');
             $table->softDeletes();
             $table->timestamps();
         });

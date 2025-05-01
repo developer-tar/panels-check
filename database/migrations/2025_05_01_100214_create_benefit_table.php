@@ -22,7 +22,7 @@ return new class extends Migration
             $table->text('eliegibility_rules');
             $table->boolean('automatice_reminder')->default(0)->comment('1=yes, 0 = no');
             $table->text('customization_notes')->nullable();
-            $table->status('status')->default(1)->comment('1= pending, 2 = approved 3= rejected');
+            $table->tinyInteger('status')->default(1)->comment('1= pending, 2 = approved 3= rejected');
             $table->softDeletes();
             $table->timestamps();
         });

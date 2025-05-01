@@ -12,3 +12,7 @@
 @import "./tailwind";
 @import "./main";
 @import "./misc";
+
+.is-invalid{
+    border: 1px solid red;
+}

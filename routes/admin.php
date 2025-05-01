@@ -13,7 +13,6 @@ use App\Http\Controllers\Admin\NotificationController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function(){
-    
     return to_route('admin.dashboard.index');
 }); 
 Route::get('/chat', function(){
@@ -36,11 +35,12 @@ Route::get('/transaction', function(){
 Route::group(['prefix' => 'auth', 'as' => 'admin.auth.'], function(){
     Route::get('/sign-in', [AuthController::class, 'signIn'])->name('sign-in');
     Route::get('/sign-up', [AuthController::class, 'signUp'])->name('sign-up');
-});
+    Route::post('/authenticate', [AuthController::class, 'authenticate'])->name('authenticate');
+})->middleware('guest');
 
 Route::group(['prefix' => 'dashboard', 'as' => 'admin.dashboard.'], function(){
     Route::get('/', [DashboardController::class, 'index'])->name('index');
-});
+})->middleware('web');
 Route::group(['prefix' => 'user', 'as' => 'admin.user.'], function(){
     Route::get('/', [UsersController::class, 'index'])->name('index');
     Route::get('create', [UsersController::class, 'create'])->name('create');
