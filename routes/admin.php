@@ -32,11 +32,11 @@ Route::get('/transaction', function(){
 })->name('admin.transaction'); 
 
 //auth
-Route::group(['prefix' => 'auth', 'as' => 'admin.auth.'], function(){
+Route::group(['prefix' => 'auth', 'as' => 'admin.auth.', 'middleware' => 'web'], function(){
     Route::get('/sign-in', [AuthController::class, 'signIn'])->name('sign-in');
     Route::get('/sign-up', [AuthController::class, 'signUp'])->name('sign-up');
     Route::post('/authenticate', [AuthController::class, 'authenticate'])->name('authenticate');
-})->middleware('guest');
+});
 
 Route::group(['prefix' => 'dashboard', 'as' => 'admin.dashboard.'], function(){
     Route::get('/', [DashboardController::class, 'index'])->name('index');
