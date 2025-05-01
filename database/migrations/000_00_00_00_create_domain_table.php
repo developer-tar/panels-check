@@ -11,15 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('companies', function (Blueprint $table) {
+        Schema::create('domains', function (Blueprint $table) {
             $table->id();
-            $table->string('company_name');
-            $table->string('email')->unique();
-            $table->string('phone')->nullable();
-            $table->string('type')->comment('1 =>LLC , 2=>PVTLTD, 3 => Coorporation');
-            $table->string('registration_number');
-            $table->string('website_url');
-            $table->foreignId('domain_id')->nullable()->index();
+            $table->string('name');
+            $table->longText('description')->nullable();
             $table->tinyInteger('status')->default(1)->nullable()->comment('1= active, 2 = non-active');
             $table->text('description')->nullable();
             $table->softDeletes();
@@ -32,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('companies');
+        Schema::dropIfExists('domains');
     }
 };
