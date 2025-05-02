@@ -1,5 +1,6 @@
-<form class="col-span-12 lg:col-span-7" method="post" action="{{route($key.'.auth.authenticate')}}">
+<form class="col-span-12 lg:col-span-7" method="post" action="{{route($key . '.auth.authenticate')}}">
     @csrf
+
     <div class="box bg-primary/5 dark:bg-bg3 lg:p-6 xl:p-8 border border-n30 dark:border-n500">
         <h3 class="h3 mb-4">Welcome Back!</h3>
         <p class="md:mb-6 md:pb-6 mb-4 pb-4 bb-dashed text-sm md:text-base">

@@ -2,12 +2,12 @@
 
 namespace App\Http\Middleware;
 
-use Auth;
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class AdminRedirect
+class HrAuthenticate
 {
     /**
      * Handle an incoming request.
@@ -16,8 +16,8 @@ class AdminRedirect
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(Auth::guard('admin')->check()){
-          return to_route('admin.dashboard.index');
+        if (!Auth::guard('hr')->check()) {
+            return redirect()->route('hr.auth.sign-in')->with('error', 'You must be logged in to access this area.');
         }
         return $next($request);
     }

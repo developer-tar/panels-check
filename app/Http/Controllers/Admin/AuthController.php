@@ -24,6 +24,7 @@ class AuthController extends Controller
     }
     public function authenticate(LoginRequest $request)
     {
-        return $this->authenticateUser($request, 'admin.dashboard.index');
+        $role = 'admin';
+        return $this->authenticateUser($request, 'admin.dashboard.index', $role);
     }
 }

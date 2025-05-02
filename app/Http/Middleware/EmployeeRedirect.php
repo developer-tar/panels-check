@@ -7,7 +7,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class AdminRedirect
+class EmployeeRedirect
 {
     /**
      * Handle an incoming request.
@@ -16,9 +16,10 @@ class AdminRedirect
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(Auth::guard('admin')->check()){
-          return to_route('admin.dashboard.index');
-        }
+        
+        if(Auth::guard('employee')->check()){
+            return to_route('employee.dashboard.index');
+          }
         return $next($request);
     }
 }

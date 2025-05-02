@@ -7,7 +7,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class AdminRedirect
+class HrRedirect
 {
     /**
      * Handle an incoming request.
@@ -16,9 +16,9 @@ class AdminRedirect
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(Auth::guard('admin')->check()){
-          return to_route('admin.dashboard.index');
-        }
+        if(Auth::guard('hr')->check()){
+            return to_route('hr.dashboard.index');
+          }
         return $next($request);
     }
 }
