@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use App\Models\Domain;
 
 return new class extends Migration
 {
@@ -19,6 +20,51 @@ return new class extends Migration
             $table->softDeletes();
             $table->timestamps();
         });
+        
+
+        $domains = [
+            [
+                'name' => 'Healthcare',
+                'description' => 'Services and products related to medical care, health insurance, and wellness.',
+            ],
+            [
+                'name' => 'Home Loan',
+                'description' => 'Financial services for providing loans to purchase or renovate homes.',
+            ],
+            [
+                'name' => 'Education Loan',
+                'description' => 'Loan services tailored to fund higher education and student expenses.',
+            ],
+            [
+                'name' => 'Travel Loan',
+                'description' => 'Loan options designed for personal or business travel expenses.',
+            ],
+            [
+                'name' => 'Insurance',
+                'description' => 'Coverage plans and policies for health, life, vehicle, and property protection.',
+            ],
+            [
+                'name' => 'Investment',
+                'description' => 'Services related to stocks, bonds, mutual funds, and wealth management.',
+            ],
+            [
+                'name' => 'Credit Card',
+                'description' => 'Various credit card offerings and related financial products.',
+            ],
+            [
+                'name' => 'Loan',
+                'description' => 'General loan products including personal, business, and secured loans.',
+            ],
+            [
+                'name' => 'Banking',
+                'description' => 'Traditional and digital banking services including savings and checking accounts.',
+            ],
+        ];
+        
+        foreach ($domains as $domain) {
+            Domain::create($domain);
+        }
+        
     }
 
     /**

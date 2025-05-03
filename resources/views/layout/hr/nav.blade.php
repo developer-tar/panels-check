@@ -10,7 +10,7 @@
                 id="sidebar-toggle-btn">
                 <i class="las la-angle-left text-lg"></i>
             </button>
-          
+
 
         </div>
         <div class="flex items-center gap-3 sm:gap-4 xxl:gap-6">
@@ -24,8 +24,7 @@
                     class="hide invisible absolute -left-8 top-full z-20 flex min-w-max max-w-[250px] origin-[20%_20%] gap-3 overflow-y-auto rounded-md bg-n0 p-3 opacity-0 shadow-[0px_6px_30px_0px_rgba(0,0,0,0.08)] duration-300 dark:bg-bg4">
                     <form
                         class="flex w-full items-center justify-between gap-3 rounded-[30px] border border-n30 bg-secondary/5 p-1 focus-within:border-primary dark:border-n500 dark:bg-bg3 xxl:p-2">
-                        <input type="text" placeholder="Search"
-                            class="w-full bg-transparent py-1 ltr:pl-4 rtl:pr-4" />
+                        <input type="text" placeholder="Search" class="w-full bg-transparent py-1 ltr:pl-4 rtl:pr-4" />
                         <button
                             class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-primary text-n0 lg:h-8 lg:w-8">
                             <i class="las la-search text-lg"></i>
@@ -33,7 +32,7 @@
                     </form>
                 </div>
             </div>
-          
+
             <!-- Notification -->
             <div class="relative">
                 <button id="notification-btn"
@@ -52,8 +51,8 @@
                     </div>
                     <ul class="flex w-[300px] flex-col p-4">
                         <div class="flex cursor-pointer gap-2 rounded-md p-2 duration-300 hover:bg-primary/10">
-                            <img src="{{ asset('assets/images/user-3.png') }}" width="44" height="40" class="shrink-0 rounded-full"
-                                alt="img" />
+                            <img src="{{ asset('assets/images/user-3.png') }}" width="44" height="40"
+                                class="shrink-0 rounded-full" alt="img" />
                             <div class="text-sm">
                                 <div class="flex gap-1">
                                     <span class="font-medium">Benjamin</span>
@@ -63,8 +62,8 @@
                             </div>
                         </div>
                         <div class="flex cursor-pointer gap-2 rounded-md p-2 duration-300 hover:bg-primary/10">
-                            <img src="{{ asset('assets/images/user-4.png') }}" width="44" height="40" class="shrink-0 rounded-full"
-                                alt="img" />
+                            <img src="{{ asset('assets/images/user-4.png') }}" width="44" height="40"
+                                class="shrink-0 rounded-full" alt="img" />
                             <div class="text-sm">
                                 <div class="flex gap-1">
                                     <span class="font-medium">Benjamin</span>
@@ -74,8 +73,8 @@
                             </div>
                         </div>
                         <div class="flex cursor-pointer gap-2 rounded-md p-2 duration-300 hover:bg-primary/10">
-                            <img src="{{ asset('assets/images/user-5.png') }}" width="44" height="40" class="shrink-0 rounded-full"
-                                alt="img" />
+                            <img src="{{ asset('assets/images/user-5.png') }}" width="44" height="40"
+                                class="shrink-0 rounded-full" alt="img" />
                             <div class="text-sm">
                                 <div class="flex gap-1">
                                     <span class="font-medium">Benjamin</span>
@@ -145,14 +144,14 @@
             <!-- Profile dropdown -->
             <div class="relative shrink-0">
                 <div id="profile-btn" class="w-10 cursor-pointer md:w-12">
-                    <img src="{{ asset('assets/images/user-big-4.png') }}" class="rounded-full" width="48"
-                        height="48" alt="profile img" />
+                    <img src="{{ asset('assets/images/user-big-4.png') }}" class="rounded-full" width="48" height="48"
+                        alt="profile img" />
                 </div>
                 <div id="profile"
                     class="hide absolute top-full z-20 rounded-md bg-n0 shadow-[0px_6px_30px_0px_rgba(0,0,0,0.08)] duration-300 dark:bg-bg4 ltr:right-0 ltr:origin-top-right rtl:left-0 rtl:origin-top-left">
                     <div class="flex flex-col items-center border-b p-3 text-center dark:border-n500 lg:p-4">
-                        <img src="{{ asset('assets/images/user-big-4.png') }}" width="60" height="60" class="rounded-full"
-                            alt="profile img" />
+                        <img src="{{ asset('assets/images/user-big-4.png') }}" width="60" height="60"
+                            class="rounded-full" alt="profile img" />
                         <h6 class="h6 mt-2">William James</h6>
                         <span class="text-sm">james@mail.com</span>
                     </div>
@@ -176,15 +175,18 @@
                                 Messages
                             </a>
                         </li>
-               
+
                         <li>
-                            <a href="{{ route('hr.auth.sign-in') }}"
-                                class="flex items-center gap-2 rounded-md p-2 duration-300 hover:bg-primary hover:text-n0">
-                                <span>
-                                    <i class="las la-sign-out-alt mt-1 text-xl"></i>
-                                </span>
-                                Logout
-                            </a>
+                            <form action="{{ route('hr.auth.logout') }}" method="POST">
+                                @csrf
+                                <button type="submit"
+                                    class="flex items-center gap-2 rounded-md p-2 duration-300 hover:bg-primary hover:text-n0">
+                                    <span>
+                                        <i class="las la-sign-out-alt mt-1 text-xl"></i>
+                                    </span>
+                                    Logout
+                                </button>
+                            </form>
                         </li>
                     </ul>
                 </div>
