@@ -64,8 +64,14 @@ class User extends Authenticatable
     }
     public function roles()
     {
-
-        return $this->belongsToMany(Role::class);
-
+        return $this->belongsToMany(Role::class, 'role_user');
+    }
+    public function company()
+    {
+        return $this->belongsTo(Company::class);
+    }
+    public function media()
+    {
+        return $this->hasMany(Media::class, 'model_id')->where('model_name', User::class);
     }
 }

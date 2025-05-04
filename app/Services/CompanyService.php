@@ -22,4 +22,12 @@ class CompanyService
             });
 
     }
+    public function getCompanies(){
+        return Company::with(['domain:id,name'])->get()->transform(function($company){
+            return [
+                'id' => $company->id,
+                'name' =>$company->company_name.'('.$company->domain->name.')',
+            ];
+        });
+    }
 }

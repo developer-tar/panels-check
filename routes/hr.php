@@ -44,6 +44,7 @@ Route::group(['middleware' => 'hr.auth'], function () {
     Route::group(['prefix' => 'user', 'as' => 'hr.user.'], function () {
         Route::get('/', [UsersController::class, 'index'])->name('index');
         Route::get('create', [UsersController::class, 'create'])->name('create');
+        Route::post('store', [UsersController::class, 'store'])->name('store');
         Route::get('{id}/edit', [UsersController::class, 'edit'])->name('edit');
     });
 
