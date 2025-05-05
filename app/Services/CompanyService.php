@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\Company;
+use Illuminate\Support\Facades\Auth;
 
 class CompanyService
 {
@@ -23,7 +24,15 @@ class CompanyService
 
     }
     public function getCompanies(){
-        return Company::with(['domain:id,name'])->get()->transform(function($company){
+        $company = Company::with(relations: ['domain:id,name']);
+        
+        if(Auth::guard(name: 'hr')->check()){
+            $company = $company->where('id',Auth::guard('hr')->user()->company_id)->get();
+        }else{
+            $company = $company->get();
+        }
+        
+        return $company->transform(function($company){
             return [
                 'id' => $company->id,
                 'name' =>$company->company_name.'('.$company->domain->name.')',

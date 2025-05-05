@@ -59,6 +59,12 @@
                                         <span>Register</span>
                                     </a>
                                 </li>
+                                <li>
+                                    <a href="{{ route('hr.user.pending.request') }}" class="submenu-link">
+                                        <i class="las la-minus text-xl"></i>
+                                        <span>Pending Request</span>
+                                    </a>
+                                </li>
 
                             </ul>
 

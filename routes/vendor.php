@@ -19,12 +19,12 @@ Route::group(['prefix' => 'auth', 'as' => 'vendor.auth.', 'middleware' => 'vendo
     Route::get('/sign-up', [AuthController::class, 'signUp'])->name('sign-up');
     Route::post('/sign-up-process', [AuthController::class, 'signUpProcess'])->name('sign-up-process');
     Route::post('/authenticate', [AuthController::class, 'authenticate'])->name('authenticate');
-    Route::post('logout', [AuthController::class, 'logout'])->name('logout');
+   
 });
 
 Route::group(['middleware' => 'vendor.auth'], function () {
 
-
+    Route::post('logout', [AuthController::class, 'logout'])->name('vendor.logout');
     Route::get('/', function () {
         return to_route('vendor.dashboard.index');
     });

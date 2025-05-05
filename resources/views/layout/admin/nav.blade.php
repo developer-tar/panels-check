@@ -176,10 +176,9 @@
                         </li>
 
                         <li>
-                            <form action="{{ route('hr.auth.logout') }}" method="POST">
+                            <form action="{{ route('admin.logout') }}" method="POST" class="flex items-center gap-2 rounded-md p-2 duration-300 hover:bg-primary hover:text-n0">
                                 @csrf
-                                <button type="submit"
-                                    class="flex items-center gap-2 rounded-md p-2 duration-300 hover:bg-primary hover:text-n0">
+                                <button type="submit">
                                     <span>
                                         <i class="las la-sign-out-alt mt-1 text-xl"></i>
                                     </span>

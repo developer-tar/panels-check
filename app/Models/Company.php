@@ -28,4 +28,5 @@ class Company extends Model
     {
         return $this->hasMany(Media::class, 'model_id')->where('model_name', Company::class);
     }
+   
 }

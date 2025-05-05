@@ -91,7 +91,13 @@
                                 <li>
                                     <a href="{{ route('admin.user.create') }}" class="submenu-link">
                                         <i class="las la-minus text-xl"></i>
-                                        <span>Register</span>
+                                        <span>Register HR</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('admin.user.kyc.pending.request') }}" class="submenu-link">
+                                        <i class="las la-minus text-xl"></i>
+                                        <span>Kyc pending request</span>
                                     </a>
                                 </li>
 
