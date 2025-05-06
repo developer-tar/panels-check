@@ -19,7 +19,7 @@
                 An error has occurred. If the problem persists, please contact a
                 system administrator or try again later.
             </p>
-            <a href="{{ route('dashboard.index1') }}" class="btn-primary">
+            <a href="javascript:history.back()" class="btn-primary">
                 Back to Home
             </a>
         </div>

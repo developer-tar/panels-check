@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\AuthenticatesUsers;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -14,7 +15,7 @@ class AuthController extends Controller
     use AuthenticatesUsers;
     public function signIn()
     {
-
+        dd(Carbon::now());
         return view('admin.auth.sign-in');
     }
 

@@ -101,6 +101,7 @@ Route::group(['middleware' => 'admin.auth'], function () {
     Route::group(['prefix' => 'company', 'as' => 'admin.company.'], function () {
         Route::get('/', [CompanyController::class, 'index'])->name('index');
         Route::get('create', [CompanyController::class, 'create'])->name('create');
+        Route::post('store', [CompanyController::class, 'store'])->name('store');
         Route::get('{id}/edit', [CompanyController::class, 'edit'])->name('edit');
     });
 });

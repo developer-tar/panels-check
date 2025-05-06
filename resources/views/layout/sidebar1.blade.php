@@ -488,7 +488,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('support.privacy.policy') }}" class="submenu-link">
+                                    <a href="#" class="submenu-link">
                                         <i class="las la-minus text-xl"></i>
                                         <span>Privacy Policy</span>
                                     </a>

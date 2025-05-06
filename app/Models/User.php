@@ -42,14 +42,16 @@ class User extends Authenticatable
     protected function casts(): array
     {
         return [
-            'email_verified_at' => 'datetime',
+            'email_verified_at' => 'jira',
             'password' => 'hashed',
         ];
     }
     public function roles()
     {
-
         return $this->belongsToMany(Role::class);
-
+    }
+    public function isAdmin()
+    {
+        return $this->roles()->where('name', config('constants.roles.admin'))->exists() ?? null;
     }
 }

@@ -40,10 +40,10 @@
 
         <ul class="flex gap-3 text-sm max-lg:w-full max-lg:justify-center lg:gap-4 lg:text-base">
             <li>
-                <a href="{{ route('support.privacy.policy') }}">Privacy Policy</a>
+                <a href="#">Privacy Policy</a>
             </li>
             <li>
-                <a href="{{ route('support.help.center') }}">Terms of condition</a>
+                <a href="#">Terms of condition</a>
             </li>
         </ul>
     </div>
