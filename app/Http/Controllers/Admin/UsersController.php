@@ -12,18 +12,16 @@ use App\Services\CompanyService;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-class UsersController extends Controller
-{
+
+class UsersController extends Controller {
 
     use ImageUploadTrait;
     private $name = 'admin';
     protected $companyService;
-    public function __construct(CompanyService $companyService)
-    {
+    public function __construct(CompanyService $companyService) {
         $this->companyService = $companyService;
     }
-    public function index()
-    {
+    public function index() {
         $users = User::with(['media:id,model_id,path', 'company:id,company_name', 'roles:id,name'])
             ->where('id', '!=', Auth::guard('admin')->id())
             ->paginate(10)
@@ -67,20 +65,17 @@ class UsersController extends Controller
         return view($this->name . '.users.index')->with('users', $users);
     }
 
-    public function create()
-    {
+    public function create() {
         $companies = $this->companyService->getCompanies();
 
         return view($this->name . '.users.create')->with('companies', $companies);
     }
 
-    public function edit($id)
-    {
+    public function edit($id) {
         return view($this->name . '.users.edit');
     }
 
-    public function store(UserStoreRequest $request)
-    {
+    public function store(UserStoreRequest $request) {
         try {
             DB::beginTransaction();
 
@@ -99,8 +94,11 @@ class UsersController extends Controller
                     'type' => config('constants.path.image'),
                 ]);
             }
-            if ($user) {
-                $user->roles()->attach(config('constants.roles.HR'), ['created_at' => now(), 'updated_at' => now()]);
+            if ($user && $request->filled('role_id')) {
+                $user->roles()->attach($request->role_id, [
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ]);
             }
 
             DB::commit();
@@ -112,12 +110,11 @@ class UsersController extends Controller
             return redirect()->back()->with('error', 'Something went wrong');
         }
     }
-    public function kycPendingRequest()
-    {
+    public function kycPendingRequest() {
         $users = User::with(['media:id,model_id,path', 'company:id,company_name', 'roles:id,name'])
 
             ->whereNot('id', Auth::guard('admin')->id())->where(['status' => config('constants.user_approval_status.pending')])
-           
+
             ->paginate(10)
             ->through(function ($user) {
                 // Experience formatting
@@ -133,7 +130,7 @@ class UsersController extends Controller
                     ? array_search($user->country_id, config('constants.country'))
                     : null;
 
-               
+
                 $kycStatus = isset($user->kyc_status)
                     ? array_search($user->kyc_status, config('constants.user_approval_status'))
                     : null;
@@ -155,20 +152,17 @@ class UsersController extends Controller
         return view($this->name . '.users.kycPendingRequest')->with('users', $users);
     }
 
-    public function approve(User $user)
-    {
+    public function approve(User $user) {
         $user->kyc_status = config('constants.user_approval_status.approved'); // Or just 'approved'
         $user->save();
 
         return back()->with('success', 'User approved successfully.');
     }
 
-    public function reject(User $user)
-    {
+    public function reject(User $user) {
         $user->kyc_status = config('constants.user_approval_status.rejected'); // Or just 'rejected'
         $user->save();
 
         return back()->with('success', 'User rejected successfully.');
     }
-
 }

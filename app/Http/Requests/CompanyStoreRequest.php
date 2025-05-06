@@ -29,7 +29,7 @@ class CompanyStoreRequest extends FormRequest
             'type' => ['required', 'string', 'max:50'],
             'registration_number' => ['required', 'string', 'max:100'],
             'website_url' => ['required', 'url', 'max:255'],
-            'domain_id' => ['required', 'integer'],
+            'domain_id' => ['nullable', 'integer'],
             'description' => ['required', 'string'],
             'path' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
 

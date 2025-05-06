@@ -11,6 +11,7 @@ use App\Services\CompanyService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use PDO;
 
 class UsersController extends Controller
 {
@@ -71,7 +72,7 @@ class UsersController extends Controller
 
     public function create()
     {
-        $companies = $this->companyService->getCompanies();
+        $companies = $this->companyService->getCompanies('hr');
 
         return view($this->name . '.users.create')->with('companies', $companies);
     }
@@ -116,14 +117,16 @@ class UsersController extends Controller
     }
     public function pendingRequest()
     {
+        // dd(Auth::guard('hr')->user()?->company_id);
         $users = User::with(['media:id,model_id,path', 'company:id,company_name', 'roles:id,name'])
 
-            ->whereNot('id', Auth::guard('hr')->id())->where(['status' => config('constants.user_approval_status.pending'), 'company_id' => Auth::guard('hr')->user()->company_id])
+            ->where(['status' => config('constants.user_approval_status.pending'), 'company_id' => Auth::guard('hr')->user()->company_id])
+            ->whereNotNull('company_id')
             ->whereHas('roles', function ($query) {
                 $query->where('name', config('constants.roles_inverse.employee'));
             })
-            ->paginate(10)
-            ->through(function ($user) {
+            ->get()
+            ->transform(function ($user) {
                 // Experience formatting
                 $expYears = $user->experience_in_years ?? 0;
                 $expMonths = $user->experience_in_month ?? 0;
@@ -159,7 +162,7 @@ class UsersController extends Controller
                     'kyc_status' => ucfirst($kycStatus),
                 ];
             });
-
+           
         return view($this->name . '.users.pendingRequest')->with('users', $users);
     }
 
@@ -177,5 +180,12 @@ class UsersController extends Controller
         $user->save();
 
         return back()->with('success', 'User rejected successfully.');
+    }
+
+    public function profile(){
+        $companies = $this->companyService->getCompanies();
+
+        return view('hr.profile')->with('companies',$companies);
+
     }
 }

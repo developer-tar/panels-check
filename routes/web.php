@@ -13,7 +13,9 @@ use App\Http\Controllers\SupportController;
 use App\Http\Controllers\TradingController;
 use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\DashboardController as AdminDashboardController; 
+use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
+use App\Http\Controllers\CommonController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,3 +28,4 @@ use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 */
 
 Route::get('/', [DashboardController::class, 'index'])->name('home');
+Route::get('/get-company-data/{id}', [CommonController::class, 'getCompanyData']);

@@ -1,28 +1,17 @@
 <?php
-
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
-class UserStoreRequest extends FormRequest
-{
-    /**
-     * Determine if the user is authorized to make this request.
-     */
-    public function authorize(): bool
-    {
-            // dd($this->all());
-            return true;
+class UserStoreRequest extends FormRequest {
+    public function authorize(): bool {
+        
+        return true;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
-     */
-    public function rules(): array
-    {
-        return [
+    public function rules(): array {
+        $rules =  [
             'company_id' => 'required|exists:companies,id',
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
@@ -36,10 +25,15 @@ class UserStoreRequest extends FormRequest
             'password' => 'required|string|min:6',
             'path' => 'nullable|image|max:2048',
         ];
+
+        if (Auth::guard('admin')->check()) {
+            $rules['role_id'] = 'required|in:' . implode(',', config('constants.roles'));
+        }
+
+        return $rules;
     }
 
-    public function messages(): array
-    {
+    public function messages(): array {
         return [
             'company_id.required' => 'Please select a company.',
             'company_id.exists' => 'Selected company does not exist.',

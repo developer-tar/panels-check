@@ -91,7 +91,7 @@
                                 <li>
                                     <a href="{{ route('admin.user.create') }}" class="submenu-link">
                                         <i class="las la-minus text-xl"></i>
-                                        <span>Register HR</span>
+                                        <span>Register</span>
                                     </a>
                                 </li>
                                 <li>

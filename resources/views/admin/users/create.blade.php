@@ -3,7 +3,7 @@
 @section('content')
 <div class="main-inner">
     <div class="mb-6 flex flex-wrap items-center justify-between gap-4 lg:mb-8">
-      <h2 class="h2">Register a new Hr</h2>
+      <h2 class="h2">Register a new User</h2>
      
     </div>
 
