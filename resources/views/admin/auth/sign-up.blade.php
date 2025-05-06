@@ -32,69 +32,7 @@
                     class="box xl:p-6 dark:bg-bg4 grid grid-cols-12 gap-4 xxxl:gap-6 items-center shadow-[0px_6px_30px_0px_rgba(0,0,0,0.04)]">
                     <div class="col-span-12 lg:col-span-7">
                         <!--form -->
-                        <div id="signupForm"
-                            class="box bg-primary/5 dark:bg-bg3 lg:p-6 xl:p-8 border border-n30 dark:border-n500">
-                            <h3 class="h3 mb-4">Let&apos;s Get Started!</h3>
-                            <p class="md:mb-6 pb-4 mb-4 md:pb-6 bb-dashed text-sm md:text-base">
-                                Please Enter your Email Address to Start your Online Application
-                            </p>
-                            <div class="grid grid-cols-2 gap-x-4 xxxl:gap-x-6">
-                                <div class="col-span-2 md:col-span-1">
-                                    <label for="name" class="md:text-lg font-medium block mb-1">
-                                        First Name
-                                    </label>
-                                    <input type="name"
-                                        class="w-full text-sm bg-n0 dark:bg-bg4 border border-n30 dark:border-n500 rounded-3xl px-3 md:px-6 py-2 md:py-3 mb-2"
-                                        placeholder="Jone" id="fname" />
-                                </div>
-                                <div class="col-span-2 md:col-span-1">
-                                    <label for="lname" class="md:text-lg font-medium block mb-1">
-                                        Last Name
-                                    </label>
-                                    <input type="lname"
-                                        class="w-full text-sm bg-n0 dark:bg-bg4 border border-n30 dark:border-n500 rounded-3xl px-3 md:px-6 py-2 md:py-3 mb-2"
-                                        placeholder="Doe" id="lname" />
-                                </div>
-                            </div>
-                            <div class="pt-4">
-                                <label for="email" class="md:text-lg font-medium block mb-2">
-                                    Enter Your Email
-                                </label>
-                                <input type="text"
-                                    class="w-full text-sm bg-n0 dark:bg-bg4 border border-n30 dark:border-n500 rounded-3xl px-3 md:px-6 py-2 md:py-3 mb-2"
-                                    placeholder="Enter Your Email" id="email" />
-                            </div>
-                            <label for="password" class="md:text-lg font-medium block my-4">
-                                Enter Your Password
-                            </label>
-                            <div class="mb-2">
-                                <div id="passwordfield"
-                                    class="bg-n0 dark:bg-bg4 border border-n30 dark:border-n500 rounded-3xl px-3 md:px-6 py-2 md:py-2.5 relative">
-                                    <input type="password" class="w-11/12 text-sm bg-transparent p-0 border-none"
-                                        placeholder="Enter Password" id="password2" />
-                                    <span
-                                        class="absolute eye-icon ltr:right-5 rtl:left-5 top-1/2 -translate-y-1/2 cursor-pointer"
-                                        id="toggleBtn">
-                                        <i class="las la-eye" style="display: none;"></i>
-                                        <i class="las la-eye-slash"></i>
-                                    </span>
-                                </div>
-                            </div>
-
-
-
-                            <p class="mt-2">
-                                Do have an account?
-                                <a class="text-primary" href="{{route('admin.auth.sign-in')}}">
-                                    Login here
-                                </a>
-
-
-                            </p>
-                            <div class="mt-8">
-                                <a href="{{route('admin.dashboard.index')}}" class="btn-primary px-5">Sign Up</a>
-                            </div>
-                        </div>
+                        @include('common.sign-up', ['key' => 'admin'])
                         <!--form -->
                     </div>
                     <div class="col-span-12 lg:col-span-5 flex justify-center items-center">
@@ -109,3 +47,4 @@
 </body>
 
 </html>
+@include('common.sign-in-script');

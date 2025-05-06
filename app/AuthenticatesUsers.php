@@ -3,6 +3,8 @@
 namespace App;
 
 
+use App\Models\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
@@ -16,13 +18,14 @@ trait AuthenticatesUsers
 
             if ($user && $user->roles()->whereNot('name', Str::upper($role))->exists()) {
                 Auth::guard($role)->logout();
-                return back()->with('error','You do not have permission to access this area.');
-             
+                return back()->with('error', 'You do not have permission to access this area.');
+
             }
-            
+
             return redirect()->route($redirectRoute)->with('success', 'Login successful');
         }
 
         return back()->with('error', 'Either email or password is incorrect');
     }
+ 
 }

@@ -16,11 +16,17 @@ class Company extends Model
         'registration_number',
         'website_url',
         'domain_id',
-        'status',
         'description',
+        'status'
     ];
+  
+  
+    public function domain()
+    {
+        return $this->belongsTo(Domain::class);
+    }
     public function media()
     {
-        return $this->morphMany(Media::class, 'mediable');
+        return $this->hasMany(Media::class, 'model_id')->where('model_name', Company::class);
     }
 }

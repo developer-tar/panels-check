@@ -17,7 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::group(['prefix' => 'auth', 'as' => 'vendor.auth.', 'middleware' => 'vendor.guest'], function () {
     Route::get('/sign-in', [AuthController::class, 'signIn'])->name('sign-in');
     Route::get('/sign-up', [AuthController::class, 'signUp'])->name('sign-up');
+    Route::post('/sign-up-process', [AuthController::class, 'signUpProcess'])->name('sign-up-process');
     Route::post('/authenticate', [AuthController::class, 'authenticate'])->name('authenticate');
+    Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 });
 
 Route::group(['middleware' => 'vendor.auth'], function () {
