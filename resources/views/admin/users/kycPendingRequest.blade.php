@@ -1,4 +1,4 @@
-@extends('layout.hr.main')
+@extends('layout.admin.main')
 
 @push('page-css')
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jsvectormap/dist/css/jsvectormap.min.css" />
@@ -7,11 +7,8 @@
 @section('content')
     <div class="main-inner">
         <div class="mb-6 flex flex-wrap items-center justify-between gap-4 lg:mb-8">
-            <h2 class="h2">User Management</h2>
-            <a href="{{route('hr.user.create')}}" class="btn-primary inline-flex items-center">
-                <i class="las la-plus-circle text-base md:text-lg"></i>
-                <span class="ml-1">Add an new user</span>
-            </a>
+            <h2 class="h2">Pending Request</h2>
+           
         </div>
 
         <div class="grid grid-cols-1 gap-4 xxl:gap-6">
@@ -19,27 +16,7 @@
             <div class="box col-span-12 lg:col-span-6">
                 <div class="flex justify-between items-center gap-4 flex-wrap bb-dashed mb-4 pb-4 lg:mb-6 lg:pb-6">
                     <h4 class="h4">Users</h4>
-                    <div class="flex items-center gap-4 flex-wrap grow sm:justify-end">
 
-                        <form
-                            class="bg-primary/5 datatable-search dark:bg-bg3 border border-n30 dark:border-n500 flex gap-3 rounded-[30px] focus-within:border-primary p-1 items-center justify-between min-w-[200px] xxl:max-w-[319px]">
-                            <input type="text" placeholder="Search"
-                                class="bg-transparent text-sm ltr:pl-4 rtl:pr-4 py-1 w-full border-none"
-                                id="payment-account-search" />
-                            <button
-                                class="bg-primary shrink-0 rounded-full w-7 h-7 lg:w-8 lg:h-8 flex justify-center items-center text-n0">
-                                <i class="las la-search text-lg"></i>
-                            </button>
-                        </form>
-                        <div class="flex items-center gap-3 whitespace-nowrap">
-                            <span>Sort By : </span>
-                            <select name="sort" class="nc-select green">
-                                <option value="day">Last 15 Days</option>
-                                <option value="week">Last 1 Month</option>
-                                <option value="year">Last 6 Month</option>
-                            </select>
-                        </div>
-                    </div>
                 </div>
                 <div class="overflow-x-auto pb-4 lg:pb-6">
                     <table class="w-full whitespace-nowrap" id="payment-account">
@@ -88,15 +65,10 @@
 
                                 <th class="text-start !py-5 min-w-[130px] cursor-pointer">
                                     <div class="flex items-center gap-1">
-                                        Status
+                                        Action
                                     </div>
                                 </th>
 
-                                <th class="text-start !py-5 min-w-[130px] cursor-pointer">
-                                    <div class="flex items-center gap-1">
-                                        Kyc Status
-                                    </div>
-                                </th>
                             </tr>
                         </thead>
                         <tbody>
@@ -169,8 +141,6 @@
                                             @else
                                                 <p class="font-medium mb-1">N/A</p>
                                             @endif
-
-
                                         </div>
                                     </td>
                                     <td class="py-2">
@@ -180,46 +150,29 @@
                                             @else
                                                 <p class="font-medium mb-1">N/A</p>
                                             @endif
-
-
                                         </div>
                                     </td>
-                                    <td class="py-2">
+                                    <td class="py-2 text-center">
                                         <div class="flex gap-2 justify-center">
-                                            @php
+                                            <form method="POST" action="{{ route('admin.user.approve', $user['id']) }}">
+                                                @csrf
 
-                                                if ($user['user_status'] == ucfirst(config('constants.user_approval_status_reverse.APPROVED'))) {
-                                                    $color = "bg-green-100 text-green-600 hover:bg-green-200";
-                                                } elseif ($user['user_status'] == ucfirst(config('constants.user_approval_status_reverse.REJECTED'))) {
-                                                    $color = "bg-red-100 text-red-600 hover:bg-red-200";
-                                                } else {
-                                                    // PENDING
-                                                    $color = "bg-yellow-100 text-yellow-600 hover:bg-yellow-200";
-                                                }
-                                            @endphp
-
-                                            <div class="text-xs px-3 py-1 rounded-full {{ $color }}">
-                                                {{ $user['user_status'] }}
-                                            </div>
-                                        </div>
-
-
-                                    </td>
-
-                                    <td class="py-2">
-                                        @php
-                                            if ($user['kyc_status'] == ucfirst(config('constants.user_approval_status_reverse.APPROVED'))) {
-                                                $color = "bg-green-100 text-green-600 hover:bg-green-200";
-                                            } elseif ($user['kyc_status'] == ucfirst(config('constants.user_approval_status_reverse.REJECTED'))) {
-                                                $color = "bg-red-100 text-red-600 hover:bg-red-200";
-                                            } else {
-                                                $color = "bg-yellow-100 text-yellow-600 hover:bg-yellow-200";
-                                            }
-                                           @endphp
-
-                                        <div class="text-xs px-3 py-1 rounded-full {{ $color }}">{{ $user['kyc_status'] }}
+                                                <button type="submit"
+                                                    class="text-xs px-3 py-1 rounded-full bg-green-100 text-green-600 hover:bg-green-200">
+                                                    Approve
+                                                </button>
+                                            </form>
+                                            <form method="POST" action="{{ route('admin.user.reject', $user['id']) }}">
+                                                @csrf
+                                                <button type="submit"
+                                                    class="text-xs px-3 py-1 rounded-full bg-red-100 text-red-600 hover:bg-red-200">
+                                                    Reject
+                                                </button>
+                                            </form>
                                         </div>
                                     </td>
+
+
                                 </tr>
                             @endforeach
 
@@ -235,7 +188,6 @@
                     {{ $users->onEachSide(1)->links('common.pagination') }}
                 </div>
             </div>
-
         </div>
     </div>
 @endsection

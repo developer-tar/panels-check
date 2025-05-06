@@ -20,10 +20,11 @@ Route::group(['prefix' => 'auth', 'as' => 'admin.auth.', 'middleware' => 'guest'
     Route::get('sign-up', [AuthController::class, 'signUp'])->name('sign-up');
     Route::post('sign-up-process', [AuthController::class, 'signUpProcess'])->name('sign-up-process');
     Route::post('authenticate', [AuthController::class, 'authenticate'])->name('authenticate');
-    Route::post('logout', [AuthController::class, 'logout'])->name('logout');
+
 });
 
 Route::group(['middleware' => 'admin.auth'], function () {
+    Route::post('logout', action: [AuthController::class, 'logout'])->name('admin.logout');
     Route::get('/', function () {
         return to_route('admin.dashboard.index');
     });
@@ -48,7 +49,11 @@ Route::group(['middleware' => 'admin.auth'], function () {
     Route::group(['prefix' => 'user', 'as' => 'admin.user.'], function () {
         Route::get('/', [UsersController::class, 'index'])->name('index');
         Route::get('create', [UsersController::class, 'create'])->name('create');
+        Route::post('store', [UsersController::class, 'store'])->name('store');
         Route::get('{id}/edit', [UsersController::class, 'edit'])->name('edit');
+        Route::get('/kyc/pending_request', [UsersController::class, 'kycPendingRequest'])->name('kyc.pending.request');
+        Route::post('{user}/approve', [UsersController::class, 'approve'])->name('approve');
+        Route::post('{user}/reject', [UsersController::class, 'reject'])->name('reject');
     });
 
     // roles

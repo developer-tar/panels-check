@@ -19,10 +19,10 @@ Route::group(['prefix' => 'auth', 'as' => 'employee.auth.', 'middleware'=> 'empl
     Route::get('/sign-up', [AuthController::class, 'signUp'])->name('sign-up');
     Route::post('/sign-up-process', [AuthController::class, 'signUpProcess'])->name('sign-up-process');
     Route::post('/authenticate', [AuthController::class, 'authenticate'])->name('authenticate');
-    Route::post('logout', [AuthController::class, 'logout'])->name('logout');
+   
 });
 Route::group(['middleware' => 'employee.auth'], function () {
-
+    Route::post('logout', [AuthController::class, 'logout'])->name('employee.logout');
     Route::get('/', function () {
         return to_route('employee.dashboard.index');
     });

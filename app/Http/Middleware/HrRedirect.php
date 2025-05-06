@@ -16,6 +16,7 @@ class HrRedirect
      */
     public function handle(Request $request, Closure $next): Response
     {
+        
         if(Auth::guard('hr')->check()){
             return to_route('hr.dashboard.index');
           }

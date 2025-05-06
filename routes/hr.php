@@ -21,7 +21,7 @@ Route::group(['prefix' => 'auth', 'as' => 'hr.auth.', 'middleware' => 'hr.guest'
     Route::get('sign-up', [AuthController::class, 'signUp'])->name('sign-up');
     Route::post('sign-up-process', [AuthController::class, 'signUpProcess'])->name('sign-up-process');
     Route::post('authenticate', [AuthController::class, 'authenticate'])->name('authenticate');
-    Route::post('logout', [AuthController::class, 'logout'])->name('logout');
+
 });
 Route::group(['middleware' => 'hr.auth'], function () {
 
@@ -35,17 +35,21 @@ Route::group(['middleware' => 'hr.auth'], function () {
     Route::get('/profile', function () {
         return view('hr.profile');
     })->name('hr.profile');
-
+    Route::post('logout', [AuthController::class, 'logout'])->name('hr.logout');
 
 
     Route::group(['prefix' => 'dashboard', 'as' => 'hr.dashboard.'], function () {
         Route::get('/', [DashboardController::class, 'index'])->name('index');
     });
     Route::group(['prefix' => 'user', 'as' => 'hr.user.'], function () {
-        Route::get('/', [UsersController::class, 'index'])->name('index');
+        Route::get('/', action: [UsersController::class, 'index'])->name('index');
         Route::get('create', [UsersController::class, 'create'])->name('create');
         Route::post('store', [UsersController::class, 'store'])->name('store');
         Route::get('{id}/edit', [UsersController::class, 'edit'])->name('edit');
+        Route::get('/pending_request', [UsersController::class, 'pendingRequest'])->name('pending.request');
+        Route::post('{user}/approve', [UsersController::class, 'approve'])->name('approve');
+        Route::post('{user}/reject', [UsersController::class, 'reject'])->name('reject');
+
     });
 
     // roles
