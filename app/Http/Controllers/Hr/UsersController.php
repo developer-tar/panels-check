@@ -183,9 +183,19 @@ class UsersController extends Controller
     }
 
     public function profile(){
+        $companyId = null;
+        $companyDetails = null;
+        if(Auth::guard('hr')->check()){
+                $details = User::with('company')->where('id',Auth::guard('hr')->user()->id)->first();
+                if($details->company?->id){
+                    $companyId = $details->company->id;
+                    $companyDetails = $details->company;
+                }
+        }
+        
         $companies = $this->companyService->getCompanies();
 
-        return view('hr.profile')->with('companies',$companies);
+        return view('hr.profile', compact('companies', 'companyId', 'companyDetails'));
 
     }
 }

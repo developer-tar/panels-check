@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('company_name');
             $table->string('email')->unique();
             $table->string('phone')->nullable();
-            $table->string('type')->comment('1 =>LLC , 2=>PVTLTD, 3 => Coorporation');
+            $table->string('type')->comment('1 =>LLC , 2=>PVTLTD, 3 => Coorporation')->nullable();
             $table->string('registration_number');
             $table->string('website_url');
             $table->foreignId('domain_id')->nullable()->index();
