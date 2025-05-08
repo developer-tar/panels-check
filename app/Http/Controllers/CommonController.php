@@ -76,7 +76,7 @@ class CommonController extends Controller {
             if ($request->hasFile('path') && $user) {
                 $imagePath = $this->storeImage($request->file('path'), 'companies');
                 $storagePath = 'storage/' . $imagePath;
-                dd('dd');
+        
                 Media::updateOrCreate(
                     [
                         'model_name' => User::class,

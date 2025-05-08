@@ -23,7 +23,7 @@ Route::group(['prefix' => 'auth', 'as' => 'admin.auth.', 'middleware' => 'guest'
 
 });
 
-Route::group(['middleware' => 'admin.auth'], function () {
+Route::group(['middleware' => 'set.auth:admin'], function () {
     Route::post('logout', action: [AuthController::class, 'logout'])->name('admin.logout');
     Route::get('/', function () {
         return to_route('admin.dashboard.index');

@@ -54,5 +54,11 @@ return [
         'REJECTED' => 'rejected',
 
     ],
+    
+    'warning_messge' => [
+        'login' => 'You must be logged in to access this area.', 
+        'permission' => 'You do not have permission to access this area.',
+    ],
+    
 
 ];

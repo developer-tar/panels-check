@@ -5,23 +5,18 @@
     <div class="mb-6 flex flex-wrap items-center justify-between gap-4 lg:mb-8">
         <h2 class="h2">Profile</h2>
     </div>
-    @php
-    $user = null;
-    if(Auth::guard('hr')->user()){
-
-    $user = Auth::guard('hr')->user();
-    }
-
-    @endphp
+    
     <div class="grid grid-cols-12 gap-4 xxxxxl:gap-6">
         <div class="col-span-12 lg:col-span-6">
 
-            <form class="box xxl:p-8 xxxl:p-10" method="post" action="{{route('personal.profile')}}">
+            <form class="box xxl:p-8 xxxl:p-10" method="post" action="{{route('personal.profile')}}" enctype="multipart/form-data">
                 @csrf
                 <p class="text-lg font-medium mb-4">Profile Photo(optional)</p>
                 <div class="flex flex-wrap gap-6 xxl:gap-10 items-center bb-dashed mb-6 pb-6 gap-check">
                     <!-- Fixed-size Image Preview -->
-                    <img id="imagePreview" src="{{ asset('assets/images/placeholder.png') }}"
+
+
+                    <img id="imagePreview" src=" {{ asset('assets/images/placeholder.png') }}"
                         class="h-20 w-20 object-cover rounded border" alt="placeholder" />
 
                     <div class="flex gap-4">
@@ -42,6 +37,10 @@
                 <div class="mt-6 xl:mt-8 grid grid-cols-2 gap-4 xxxxxl:gap-6">
 
                     <input type='hidden' value="{{config('constants.roles_inverse.hr')}}" name="role" />
+                    @if($user && $media)
+                    <input type='hidden' value="" name="removeImage" id="removeImage" />
+                    @endif
+
                     <div class="col-span-2 md:col-span-1">
                         <label for="fname" class="md:text-lg font-medium block mb-4">
                             First Name

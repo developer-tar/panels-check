@@ -14,14 +14,14 @@ use Illuminate\Support\Facades\Route;
 
 
 //auth 
-Route::group(['prefix' => 'auth', 'as' => 'employee.auth.', 'middleware'=> 'employee.guest'], function () {
+Route::group(['prefix' => 'auth', 'as' => 'employee.auth.', 'middleware'=> 'set.guest:employee'], function () {
     Route::get('/sign-in', [AuthController::class, 'signIn'])->name('sign-in');
     Route::get('/sign-up', [AuthController::class, 'signUp'])->name('sign-up');
     Route::post('/sign-up-process', [AuthController::class, 'signUpProcess'])->name('sign-up-process');
     Route::post('/authenticate', [AuthController::class, 'authenticate'])->name('authenticate');
    
 });
-Route::group(['middleware' => 'employee.auth'], function () {
+Route::group(['middleware' => 'set.auth:employee'], function () {
     Route::post('logout', [AuthController::class, 'logout'])->name('employee.logout');
     Route::get('/', function () {
         return to_route('employee.dashboard.index');

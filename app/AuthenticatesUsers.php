@@ -18,7 +18,7 @@ trait AuthenticatesUsers
 
             if ($user && $user->roles()->whereNot('name', Str::upper($role))->exists()) {
                 Auth::guard($role)->logout();
-                return back()->with('error', 'You do not have permission to access this area.');
+                return back()->with('error', config('constants.warning_messge.permission'));
 
             }
 

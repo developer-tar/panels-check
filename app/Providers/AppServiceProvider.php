@@ -6,6 +6,8 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\View;
 class AppServiceProvider extends ServiceProvider {
     /**
      * Register any application services.
@@ -18,7 +20,17 @@ class AppServiceProvider extends ServiceProvider {
      * Bootstrap any application services.
      */
     public function boot(): void {
-        
+
+        View::composer('*', function ($view) {
+           
+            $guard = app()->bound('activeGuard') ? app('activeGuard') : null;
+            dd($guard);
+            $user = $guard ? Auth::guard($guard)->user() : null;
+            dd($user);
+            $media = $user && method_exists($user, 'media') ? $user->media()->first() : null;
+            dd($media);
+            $view->with(compact('user', 'media', 'guard'));
+        });
         Gate::define('create-company', function (User $user) {
             
             return $user->isAdmin()

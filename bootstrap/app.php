@@ -21,15 +21,9 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
        
-        $middleware->alias([
-            'admin.auth' => \App\Http\Middleware\AdminAuthenticate::class,
-            'hr.auth' => \App\Http\Middleware\HrAuthenticate::class,
-            'vendor.auth' => \App\Http\Middleware\VendorAuthenticate::class,        
-            'admin.guest' => \App\Http\Middleware\AdminRedirect::class,
-            'hr.guest' => \App\Http\Middleware\HrRedirect::class,
-            'vendor.guest' => \App\Http\Middleware\VendorRedirect::class,  
-            'employee.guest' => \App\Http\Middleware\EmployeeRedirect::class,
-            'employee.auth' => \App\Http\Middleware\EmployeeAuthenticate::class,   
+        $middleware->alias([  
+            'set.guest' => \App\Http\Middleware\RoleRedirect::class,
+            'set.auth' => \App\Http\Middleware\RoleAuthenticate::class,   
         ]);
 
     })

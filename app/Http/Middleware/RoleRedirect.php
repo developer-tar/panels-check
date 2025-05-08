@@ -2,23 +2,26 @@
 
 namespace App\Http\Middleware;
 
-use Auth;
+
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class AdminRedirect
+class RoleRedirect
 {
     /**
      * Handle an incoming request.
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next): Response
+    public function handle(Request $request, Closure $next,  $role): Response
     {
-        if(Auth::guard('admin')->check()){
-          return to_route('admin.dashboard.index');
-        }
+        
+        if(Auth::guard($role)->check()){
+            app()->singleton('activeGuard', fn () => $role);
+            return to_route($role.'.dashboard.index');
+          }
         return $next($request);
     }
 }
