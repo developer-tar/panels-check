@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommonController;
 use App\Http\Controllers\Hr\AuthController;
 use App\Http\Controllers\Hr\ComplianceController;
 use App\Http\Controllers\Hr\BenefitsEnrollController;
@@ -36,7 +37,7 @@ Route::group(['middleware' => 'hr.auth'], function () {
     Route::get('profile', [UsersController::class, 'profile'])->name('hr.profile');
     Route::post('logout', [AuthController::class, 'logout'])->name('hr.logout');
 
-
+    
     Route::group(['prefix' => 'dashboard', 'as' => 'hr.dashboard.'], function () {
         Route::get('/', [DashboardController::class, 'index'])->name('index');
     });

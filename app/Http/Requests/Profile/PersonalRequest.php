@@ -3,9 +3,10 @@
 namespace App\Http\Requests\Profile;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 
-
-class Personal extends FormRequest {
+class PersonalRequest extends FormRequest {
     /**
      * Determine if the user is authorized to make this request.
      */
@@ -22,17 +23,15 @@ class Personal extends FormRequest {
         $rules = [
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
-            'current_salary_per_annum' => 'required|numeric',
+            'current_salary_per_annum' => 'required|numeric|min:0',
             'experience_in_years' => 'required|integer|min:0',
             'experience_in_month' => 'required|integer|min:0|max:11',
             'user_age' => 'required|integer|min:16',
-            'user_email' => 'required|email|unique:users,email',
             'gender' => 'required|in:' . implode(',', config('constants.gender')),
-            'user_phone' => 'required|integer',
-         
+            'user_phone' => 'nullable|integer',
             'path' => 'nullable|image|max:2048',
         ];
-       
+
 
         return $rules;
     }

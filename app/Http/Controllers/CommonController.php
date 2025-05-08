@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Profile\Company as RequestsCompany;
-use App\Http\Requests\Profile\Personal;
+use App\Http\Requests\Profile\PersonalRequest;
 use App\ImageUploadTrait;
 use App\Models\Company;
 use App\Models\Media;
@@ -52,28 +52,31 @@ class CommonController extends Controller {
             return redirect()->back()->with('error', 'Something went wrong');
         }
     }
-    public function personalProfile(Personal $request)
+    public function personalProfile(PersonalRequest $request)
     {
+       
         try {
+            dd($request->all());
             DB::beginTransaction();
     
             $data = $request->except('_token', 'path', 'role');
             $data['age'] = $request->user_age;
             $data['email'] = $request->user_email;
             $data['phone'] = $request->user_phone;
-    
+            unset($data['user_age'], $data['user_email'], $data['user_phone']);
+           
             $user = null;
     
             if ($request->role == config('constants.roles_inverse.hr')) {
                 $user = User::find(Auth::guard('hr')->id());
                 $user->update($data);
             }
-    
+            
             // Handle file upload
             if ($request->hasFile('path') && $user) {
                 $imagePath = $this->storeImage($request->file('path'), 'companies');
                 $storagePath = 'storage/' . $imagePath;
-    
+                dd('dd');
                 Media::updateOrCreate(
                     [
                         'model_name' => User::class,
@@ -90,7 +93,7 @@ class CommonController extends Controller {
             return back()->with('success', 'Profile Updated Successfully');
         } catch (\Exception $e) {
             DB::rollBack();
-            \Log::error('Profile Update Error: ' . $e->getMessage());
+            
             return back()->with('error', 'Something went wrong');
         }
     }

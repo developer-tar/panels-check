@@ -15,22 +15,32 @@
     @endphp
     <div class="grid grid-cols-12 gap-4 xxxxxl:gap-6">
         <div class="col-span-12 lg:col-span-6">
-            <div class="box xxl:p-8 xxxl:p-10">
 
+            <form class="box xxl:p-8 xxxl:p-10" method="post" action="{{route('personal.profile')}}">
+                @csrf
                 <p class="text-lg font-medium mb-4">Profile Photo(optional)</p>
-                <div class="flex flex-wrap gap-6 xxl:gap-10 items-center bb-dashed mb-6 pb-6">
-                    <img src="{{ asset('assets/images/placeholder.png') }}" width="120" height="120" class="rounded-xl"
-                        alt="img" />
+                <div class="flex flex-wrap gap-6 xxl:gap-10 items-center bb-dashed mb-6 pb-6 gap-check">
+                    <!-- Fixed-size Image Preview -->
+                    <img id="imagePreview" src="{{ asset('assets/images/placeholder.png') }}"
+                        class="h-20 w-20 object-cover rounded border" alt="placeholder" />
+
                     <div class="flex gap-4">
-                        <label for="photo-upload" class="btn-primary">
-                            Upload Photo
-                        </label>
-                        <input type="file" id="photo-upload" class="hidden" />
-                        <button class="btn-outline">Cancel</button>
+                        <input type="file" name="path" id="photo" class="hidden" accept="image/*" />
+                        <label for="photo" class="btn-primary cursor-pointer">Upload Profile pic </label>
+                        <button type="button" class="btn-outline" onclick="resetImage()" id="resetbtn">Cancel</button>
+                    </div>
+                    <div class="flex">
+
+                        @error('path')
+                        <div class="text-red-500 text-sm mt-1">
+                            {{ $message }}
+                        </div>
+                        @enderror
+
                     </div>
                 </div>
-                <form class="mt-6 xl:mt-8 grid grid-cols-2 gap-4 xxxxxl:gap-6" method="post" action="{{route('personal.profile')}}">
-                    @csrf
+                <div class="mt-6 xl:mt-8 grid grid-cols-2 gap-4 xxxxxl:gap-6">
+
                     <input type='hidden' value="{{config('constants.roles_inverse.hr')}}" name="role" />
                     <div class="col-span-2 md:col-span-1">
                         <label for="fname" class="md:text-lg font-medium block mb-4">
@@ -64,7 +74,7 @@
                         </label>
                         <input type="email"
                             class="w-full text-sm bg-primary/5 dark:bg-bg3 border border-n30 dark:border-n500 rounded-3xl px-3 md:px-6 py-2 md:py-3"
-                            placeholder="Enter Email" id="user_email" value="{{ old('user_email',$user?->email) }}" name="user_email" />
+                            placeholder="Enter Email" id="user_email" value="{{ old('user_email',$user?->email) }}" name="user_email" readonly />
                         @error('user_email')
                         <div class="text-red-500 text-sm mt-1">
                             {{ $message }}
@@ -158,12 +168,12 @@
                     <div class="col-span-2">
 
                         <div class="flex mt-6 xxl:mt-10 gap-4">
-                            <button class="btn-primary px-5">Save Changes</button>
-                            <button class="btn-outline px-5">Cancel</button>
+                            <button type="submit" class="btn-primary px-5">Save Changes</button>
+
                         </div>
                     </div>
-                </form>
-            </div>
+                </div>
+            </form>
             <!-- Credit card scores -->
 
         </div>
@@ -172,7 +182,7 @@
             <div class="box xxl:p-8 xxxl:p-10">
 
                 <h3 class="text-lg h4 bb-dashed mb-4 pb-4 md:mb-6 md:pb-6">Company details </h3>
-                <div class="mt-6 xl:mt-8 grid grid-cols-2 gap-4 xxxxxl:gap-6" method="post" action="{{route('company.profile')}}">
+                <div class="mt-6 xl:mt-8 grid grid-cols-2 gap-4 xxxxxl:gap-6">
                     <div class="col-span-2">
                         <label for="company_name_readonly" class="md:text-lg font-medium block mb-4">
                             Name
@@ -318,7 +328,7 @@
 
                         <div class="flex mt-6 xxl:mt-10 gap-4">
                             <button class="btn-primary px-5">Save Changes</button>
-                            <button class="btn-outline px-5">Cancel</button>
+
                         </div>
                     </div>
 
@@ -330,11 +340,14 @@
 </div>
 
 
+@endsection
+@push('script')
+@include('common.sign-in-script')
 <script>
     function toggleOtherCompany() {
         const select = document.getElementById('company');
         const otherField = document.getElementById('company_name_block');
-        const selectedValue = select.value;
+        const selectedValue = select?.value;
 
         const emailField = document.getElementById('email');
         const phoneField = document.getElementById('phone');
@@ -344,7 +357,9 @@
 
 
         if (selectedValue === 'other') {
-            otherField.style.display = 'block';
+            if (otherField?.style.display) {
+                otherField.style.display = 'block';
+            }
 
             // Make fields editable
             emailField.readOnly = false;
@@ -363,7 +378,9 @@
 
 
         } else {
-            otherField.style.display = 'none';
+            if (otherField?.style.display) {
+                otherField.style.display = 'none';
+            }
 
             fetch(`/get-company-data/${selectedValue}`)
                 .then(response => {
@@ -399,8 +416,13 @@
     document.addEventListener("DOMContentLoaded", function() {
         // Initialize Nice Select
         $('select.nc-select').niceSelect();
-        toggleOtherCompany();
-        document.getElementById('company').addEventListener('change', toggleOtherCompany);
+
+        let companyDiv = document.getElementById('company');
+        if (companyDiv?.length()) {
+            toggleOtherCompany();
+            companyDiv.addEventListener('change', toggleOtherCompany);
+        }
+
     });
 </script>
-@endsection
+@endpush
