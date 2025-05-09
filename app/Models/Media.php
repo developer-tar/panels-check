@@ -12,6 +12,7 @@ class Media extends Model {
         'model_id',
         'path',
         'type',
+        'folder_name'
     ];  
 
     protected $hidden = [

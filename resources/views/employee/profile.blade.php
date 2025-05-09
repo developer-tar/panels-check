@@ -177,7 +177,38 @@
                     </div>
                 </form>
                 <!-- Credit card scores -->
+                <div class="box xxl:p-8 xxxl:p-10 mt-3">
+                <h4 class="h4 bb-dashed mb-4 pb-4 md:mb-6 md:pb-6">Identity Verification</h4>
+                <form class="mt-6 xl:mt-8 grid grid-cols-2 gap-4 xxxl:gap-6" method="post" action="{{ route('employee.user.identity.verify') }}"  enctype="multipart/form-data">
+                    @csrf
+                    
+                    <div class="flex flex-wrap gap-6 xxl:gap-10 items-center  mb-6 pb-6 gap-check">
+                        <!-- Fixed-size Image Preview -->
 
+                        <div class="flex gap-4">
+                            <input type="file" name="identity_file" id="identity_file" class="hidden" accept=".pdf,.docx,.txt" />
+                            <label for="identity_file" class="btn-primary cursor-pointer">Upload Docx </label>
+                          
+                        </div>
+                        <div class="flex">
+
+                            @error('identity_file')
+                                <div class="text-red-500 text-sm mt-1">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+
+                        </div>
+                    </div>
+                   
+                
+                    <div class="col-span-2 flex pt-4 gap-4">
+                        <button type="submit" class="btn-primary px-5" >Submission </button>
+                      
+                    </div>
+                   
+                </form>
+            </div>
             </div>
             <div class="col-span-12 lg:col-span-6">
 

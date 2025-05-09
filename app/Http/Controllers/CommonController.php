@@ -86,18 +86,21 @@ class CommonController extends Controller
             
             // Handle file upload
             if ($request->hasFile('path') && $user) {
-                
-                $imagePath = $this->storeImage($request->file('path'), 'companies');
+                $file = $request->file('path');
+                $extension = $file->getClientOriginalExtension();
+                $imagePath = $this->storeImage($file, 'personal_profile');
                 $storagePath = 'storage/' . $imagePath;
 
                 Media::updateOrCreate(
                     [
                         'model_name' => User::class,
-                        'model_id' => $user->id
+                        'model_id' => $user->id,
+                        'folder_name' => 'personal_profile',
                     ],
                     [
                         'path' => $storagePath,
-                        'type' => config('constants.path.image'),
+                        'type' => getFileType($extension),
+                        'folder_name' => 'personal_profile',
                     ]
                 );
             }

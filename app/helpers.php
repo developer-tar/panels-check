@@ -13,4 +13,15 @@ if (!function_exists('getCurrentAuthenticatedUser')) {
 
         return null;
     }
+    if (!function_exists('getFileType')) {
+        function getFileType($extension)
+        {
+            return match ($extension) {
+                'jpg', 'jpeg', 'png', 'gif' => config('constants.path.image'),
+                'mp4', 'avi', 'mkv' => config('constants.path.video'),
+                'pdf' => config('constants.path.pdf'),
+                default => config('constants.path.others'),
+            };
+        }
+    }
 }

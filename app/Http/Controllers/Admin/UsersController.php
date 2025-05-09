@@ -84,14 +84,17 @@ class UsersController extends Controller {
 
             // Handle file upload
             if ($request->hasFile('path')) {
-                $imagePath = $this->storeImage($request->file('path'), 'companies');
+                $file = $request->file('path');
+                $extension = $file->getClientOriginalExtension();
+                $imagePath = $this->storeImage($file, 'personal_profile');
                 $storagePath = 'storage/' . $imagePath;
 
                 Media::create([
                     'model_name' => User::class,
                     'model_id' => $user->id,
                     'path' => $storagePath,
-                    'type' => config('constants.path.image'),
+                    'folder_name' => 'personal_profile',
+                    'type' => getFileType($extension),
                 ]);
             }
             if ($user && $request->filled('role_id')) {

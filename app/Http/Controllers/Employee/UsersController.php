@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Employee;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Profile\CreditScoreRequest;
+use App\Http\Requests\Profile\IdentityVerifyRequest;
+use App\ImageUploadTrait;
+use App\Models\Media;
 use App\Models\User;
 use App\Services\CompanyService;
 use Illuminate\Http\Request;
@@ -12,6 +15,7 @@ use Illuminate\Support\Facades\DB;
 
 class UsersController extends Controller
 {
+    use ImageUploadTrait;
 
     private $name = 'employee';
     protected $companyService;
@@ -76,10 +80,43 @@ class UsersController extends Controller
             $data['dbr_calculation'] = $dbr;
             $data['credit_limit'] = $creditLimit;
             $data['avaiable_limit'] = $availableLimit;
-         
+
             User::where('id', Auth::guard('employee')->user()->id)->update($data);
 
             return back()->with('success', config('constants.user_credit_score_message'));
+        } catch (\Exception $e) {
+            DB::rollBack();
+            \Log::info('error_message company create', ['message' => $e->getMessage()]);
+            return redirect()->back()->with('error', config('constants.wrong_message'));
+        }
+    }
+    public function identityVerify(IdentityVerifyRequest $request)
+    {
+        try {
+            $user = User::find(Auth::guard('employee')->user()->id);
+            
+            // Handle file upload
+            if ($request->hasFile('identity_file') && $user) {
+                $file = $request->file('identity_file');
+                $extension = $file->getClientOriginalExtension();
+                   
+                $imagePath = $this->storeImage($file, 'identity_verify');
+                $storagePath = 'storage/' . $imagePath;
+
+                Media::updateOrCreate(
+                    [
+                        'model_name' => User::class,
+                        'model_id' => $user->id,
+                        'folder_name' => 'identity_verify',
+                    ],
+                    [
+                        'path' => $storagePath,
+                        'type' => getFileType($extension),
+                        'folder_name' => 'identity_verify',
+                    ]
+                );
+            }
+            return back()->with('success', config('constants.kyc_verify_message'));
         } catch (\Exception $e) {
             DB::rollBack();
             \Log::info('error_message company create', ['message' => $e->getMessage()]);

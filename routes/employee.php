@@ -55,6 +55,7 @@ Route::group(['middleware' => 'set.auth:employee'], function () {
         Route::get('profile', [UsersController::class, 'profile'])->name('profile');
         Route::get('{id}/edit', [UsersController::class, 'edit'])->name('edit');
         Route::post('credit/score', [UsersController::class, 'creditScore'])->name('credit.score');
+        Route::post('identity/verify', [UsersController::class, 'identityVerify'])->name('identity.verify');
     });
 
     // roles

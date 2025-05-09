@@ -52,14 +52,17 @@ class CompanyController extends Controller
 
             // Handle file upload
             if ($request->hasFile('path')) {
-                $imagePath = $this->storeImage($request->file('path'), 'companies');
+                $file = $request->file('path');
+                $extension = $file->getClientOriginalExtension();
+                $imagePath = $this->storeImage($file, 'companies');
                 $storagePath = 'storage/' . $imagePath;
 
                 Media::create([
                     'model_name' => Company::class,
                     'model_id' => $company->id,
                     'path' => $storagePath,
-                    'type' => config('constants.path.image'),
+                    'folder_name' => 'companies',
+                    'type' => getFileType($extension),
                 ]);
             }
 

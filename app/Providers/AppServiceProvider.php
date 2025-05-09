@@ -29,7 +29,8 @@ class AppServiceProvider extends ServiceProvider {
             if ($user) {
                 // Re-fetch the user to ensure relationships work properly (optional)
                 $user = User::find($user->id);
-                $media = $user->media()->first()?->path; 
+                $media = $user->media()->where('folder_name','personal_profile')->first()?->path;
+               
             }
                 // dd($user, $media, $guard);
             $view->with(compact('user', 'media', 'guard'));
