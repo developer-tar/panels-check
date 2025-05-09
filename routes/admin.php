@@ -52,8 +52,11 @@ Route::group(['middleware' => 'set.auth:admin'], function () {
         Route::post('store', [UsersController::class, 'store'])->name('store');
         Route::get('{id}/edit', [UsersController::class, 'edit'])->name('edit');
         Route::get('/kyc/pending_request', [UsersController::class, 'kycPendingRequest'])->name('kyc.pending.request');
+        Route::get('/pending_request', [UsersController::class, 'pendingRequest'])->name('pending.request');
         Route::post('{user}/approve', [UsersController::class, 'approve'])->name('approve');
         Route::post('{user}/reject', [UsersController::class, 'reject'])->name('reject');
+        Route::post('{user}/approve/status', [UsersController::class, 'approveStatus'])->name('approve.status');
+        Route::post('{user}/reject/status', [UsersController::class, 'rejectStatus'])->name('reject.status');
     });
 
     // roles

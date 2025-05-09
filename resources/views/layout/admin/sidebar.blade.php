@@ -100,6 +100,12 @@
                                         <span>Kyc pending request</span>
                                     </a>
                                 </li>
+                                <li>
+                                    <a href="{{ route('admin.user.pending.request') }}" class="submenu-link">
+                                        <i class="las la-minus text-xl"></i>
+                                        <span>Pending request</span>
+                                    </a>
+                                </li>
 
                             </ul>
 

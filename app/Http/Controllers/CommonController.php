@@ -60,6 +60,7 @@ class CommonController extends Controller {
             $data['age'] = $request->user_age;
             $data['email'] = $request->user_email;
             $data['phone'] = $request->user_phone;
+            
             unset($data['user_age'], $data['user_email'], $data['user_phone']);
 
             $user = null;

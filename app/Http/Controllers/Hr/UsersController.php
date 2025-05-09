@@ -111,13 +111,14 @@ class UsersController extends Controller {
     }
     public function pendingRequest() {
         $approvalStatus = true;
+        
         $user = User::where('id', Auth::guard('hr')->user()->id)
-            ->whereIn('status', [config('user_approval_status.pending'), config('user_approval_status.rejected')])
+            ->whereIn('status', [config('constants.user_approval_status.pending'), config('constants.user_approval_status.rejected')])
             ->first();
         if($user){
             $approvalStatus = false;
         }
-        dd($approvalStatus);
+     
         $users = User::with(['media:id,model_id,path', 'company:id,company_name', 'roles:id,name'])
 
             ->where(['status' => config('constants.user_approval_status.pending'), 'company_id' => Auth::guard('hr')->user()->company_id])
@@ -163,21 +164,21 @@ class UsersController extends Controller {
                 ];
             });
 
-        return view($this->name . '.users.pendingRequest')->with('users', $users);
+        return view($this->name . '.users.pendingRequest',compact('users','approvalStatus'));
     }
 
     public function approve(User $user) {
         $user->status = config('constants.user_approval_status.approved'); // Or just 'approved'
         $user->save();
 
-        return back()->with('success', 'User approved successfully.');
+        return back()->with('success', config('constants.warning_messge.status.approval'));
     }
 
     public function reject(User $user) {
         $user->status = config('constants.user_approval_status.rejected'); // Or just 'rejected'
         $user->save();
 
-        return back()->with('success', 'User rejected successfully.');
+        return back()->with('success', config('constants.warning_messge.status.rejected'));
     }
 
     public function profile() {

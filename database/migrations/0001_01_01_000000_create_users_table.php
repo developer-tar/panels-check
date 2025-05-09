@@ -29,8 +29,8 @@ return new class extends Migration
             $table->string('location')->nullable();
             $table->string('primary_address')->nullable();
             $table->string('zip_code')->nullable();
-            $table->tinyInteger('privacy')->default(1)->nullable()->comment('1= anyone, 2 = friends 3= friends of friends, 4= no one');
-            $table->tinyInteger('status')->default(1)->nullable()->comment('1= pending, 2 = approved 3= rejected');
+            $table->tinyInteger('privacy')->default(config('constants.user_approval_status.pending'))->nullable()->comment('1= anyone, 2 = friends 3= friends of friends, 4= no one');
+            $table->tinyInteger('status')->default(config('constants.user_approval_status.pending'))->nullable()->comment('1= pending, 2 = approved 3= rejected');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

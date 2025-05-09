@@ -49,16 +49,23 @@ return [
 
     ],
     'user_approval_status_reverse' => [
-        'PENDING' => 'pending', 
+        'PENDING' => 'pending',
         'APPROVED' => 'approved',
         'REJECTED' => 'rejected',
 
     ],
-    
+
     'warning_messge' => [
-        'login' => 'You must be logged in to access this area.', 
+        'login' => 'You must be logged in to access this area.',
         'permission' => 'You do not have permission to access this area.',
+        'kyc' => [
+            'approval' => 'User kyc approved successfully.',
+            'rejected' => 'User kyc rejected successfully.'
+        ],
+        'status' => [
+            'approval' => 'User  approved successfully.',
+            'rejected' => 'User  rejected successfully.'
+        ]
     ],
-    
 
 ];

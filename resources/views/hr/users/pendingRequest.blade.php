@@ -71,121 +71,88 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @if($approvalStatus)
                         @if($users->isNotEmpty())
                         @foreach($users as $user)
                         <tr class="even:bg-secondary/5 dark:even:bg-bg3">
                             <td class="py-2 px-6">
                                 <div class="flex items-center gap-3">
                                     @if(isset($user['media']))
-                                    <img src="{{ asset($user['media']) }}" width="100" height="32" class="rounded-full"
-                                        alt="payment medium icon" />
+                                    <img src="{{ asset($user['media']) }}" width="100" height="32" class="rounded-full" alt="user image" />
                                     @else
                                     <p class="font-medium mb-1">N/A</p>
                                     @endif
-
                                 </div>
                             </td>
                             <td class="py-2 px-6">
                                 <div class="flex items-center gap-3">
-                                    @if(isset($user['company_name']))
-                                    <p class="font-medium mb-1">{{ $user['company_name'] }}</p>
-                                    @else
-                                    <p class="font-medium mb-1">N/A</p>
-                                    @endif
-
+                                    <p class="font-medium mb-1">{{ $user['company_name'] ?? 'N/A' }}</p>
                                 </div>
-
                             </td>
                             <td class="py-2 px-6">
-                                <div class="flex items-center gap-3">
-                                    <p class="font-medium mb-1">{{ $user['name'] }}</p>
-                                </div>
-
+                                <p class="font-medium mb-1">{{ $user['name'] ?? 'N/A' }}</p>
                             </td>
                             <td class="py-2">
-                                <div>
-                                    @if(isset($user['age']))
-                                    <p class="font-medium mb-1">{{ $user['age'] }}</p>
-                                    @else
-                                    <p class="font-medium mb-1">N/A</p>
-                                    @endif
-
-
-                                </div>
+                                <p class="font-medium mb-1">{{ $user['age'] ?? 'N/A' }}</p>
                             </td>
                             <td class="py-2">
-                                <div>
-                                    @if(isset($user['country']))
-                                    <p class="font-medium mb-1">{{ $user['country'] }}</p>
-                                    @else
-                                    <p class="font-medium mb-1">N/A</p>
-                                    @endif
-
-
-                                </div>
+                                <p class="font-medium mb-1">{{ $user['country'] ?? 'N/A' }}</p>
                             </td>
                             <td class="py-2">
-                                <div>
-                                    @if(isset($user['salary']))
-                                    <p class="font-medium mb-1">{{ $user['salary'] }}</p>
-                                    @else
-                                    <p class="font-medium mb-1">N/A</p>
-                                    @endif
-
-                                </div>
+                                <p class="font-medium mb-1">{{ $user['salary'] ?? 'N/A' }}</p>
                             </td>
                             <td class="py-2">
-                                <div>
-                                    @if(isset($user['exp']))
-                                    <p class="font-medium mb-1">{{ $user['exp'] }}</p>
-                                    @else
-                                    <p class="font-medium mb-1">N/A</p>
-                                    @endif
-                                </div>
+                                <p class="font-medium mb-1">{{ $user['exp'] ?? 'N/A' }}</p>
                             </td>
                             <td class="py-2">
-                                <div>
-                                    @if(isset($user['email']))
-                                    <p class="font-medium mb-1">{{ $user['email'] }}</p>
-                                    @else
-                                    <p class="font-medium mb-1">N/A</p>
-                                    @endif
-                                </div>
+                                <p class="font-medium mb-1">{{ $user['email'] ?? 'N/A' }}</p>
                             </td>
                             <td class="py-2 text-center">
                                 <div class="flex gap-2 justify-center">
                                     <form method="POST" action="{{ route('hr.user.approve', $user['id']) }}">
                                         @csrf
-
-                                        <button type="submit"
-                                            class="text-xs px-3 py-1 rounded-full bg-green-100 text-green-600 hover:bg-green-200">
+                                        <button type="submit" class="text-xs px-3 py-1 rounded-full bg-green-100 text-green-600 hover:bg-green-200">
                                             Approve
                                         </button>
                                     </form>
                                     <form method="POST" action="{{ route('hr.user.reject', $user['id']) }}">
                                         @csrf
-                                        <button type="submit"
-                                            class="text-xs px-3 py-1 rounded-full bg-red-100 text-red-600 hover:bg-red-200">
+                                        <button type="submit" class="text-xs px-3 py-1 rounded-full bg-red-100 text-red-600 hover:bg-red-200">
                                             Reject
                                         </button>
                                     </form>
                                 </div>
                             </td>
-
-
                         </tr>
                         @endforeach
                         @else
-                        <tr class="even:bg-secondary/5 dark:even:bg-bg3">
+                        <tr>
                             <td class="py-2 text-center" colspan="10">
-                                <div class="text-xs px-3 py-1 rounded-full"><b><h4>No Pending Request</h4></b>
+                                <div class="text-xs px-3 py-1 rounded-full">
+                                    <b>
+                                        <h4>No Pending Request</h4>
+                                    </b>
+                                </div>
+                            </td>
+                        </tr>
+                        @endif
+                        @else
+                        <tr>
+                            <td class="py-2 text-center" colspan="10">
+                                <div class="text-xs px-3 py-1 rounded-full">
+                                    <b>
+                                        <h4>Wait for approval of your profile</h4>
+                                    </b>
                                 </div>
                             </td>
                         </tr>
                         @endif
                     </tbody>
+
                 </table>
             </div>
+
+
             @if($users->isNotEmpty())
             <div class="flex col-span-12 gap-4 sm:justify-between justify-center items-center flex-wrap">
                 <p>
