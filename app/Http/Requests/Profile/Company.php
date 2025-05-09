@@ -32,7 +32,7 @@ class Company extends FormRequest {
         ];
 
         // Add conditional rule after defining $rules
-        if (request()->company_id === 'other') {
+        if (request()->company_id === 'other' || isset(request()->notAnyCompanyYet)) {
             $rules['company_name'] = ['required', 'string', 'max:255'];
         }
 

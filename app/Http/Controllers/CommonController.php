@@ -13,11 +13,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
-class CommonController extends Controller {
+class CommonController extends Controller
+{
 
     use ImageUploadTrait;
 
-    public function getCompanyData($id) {
+    public function getCompanyData($id)
+    {
         $company = Company::findOrFail($id);
 
         return response()->json([
@@ -31,14 +33,22 @@ class CommonController extends Controller {
             // Add other fields as needed
         ]);
     }
-    public function companyProfile(RequestsCompany  $request) {
+    public function companyProfile(RequestsCompany $request)
+    {
         try {
+
             DB::beginTransaction();
             if ($request->company_id == 'other') {
                 $company = Company::create($request->except('path', '_token'));
+            } elseif (isset($request->notAnyCompanyYet)) {
+
+                $company = Company::create($request->except('_token', 'role', 'notAnyCompanyYet'));
+
             } else {
+
                 $company = Company::where('email', $request->email)->first();
             }
+
             if ($request->role == config('constants.roles_inverse.hr') && $company) {
 
                 User::where('id', Auth::guard('hr')->user()->id)
@@ -49,10 +59,12 @@ class CommonController extends Controller {
             return back()->with('success', 'Company Profile Created');
         } catch (Exception $e) {
             DB::rollBack();
+            dd($e->getMessage());
             return redirect()->back()->with('error', 'Something went wrong');
         }
     }
-    public function personalProfile(PersonalRequest $request) {
+    public function personalProfile(PersonalRequest $request)
+    {
 
         try {
             DB::beginTransaction();
@@ -60,7 +72,7 @@ class CommonController extends Controller {
             $data['age'] = $request->user_age;
             $data['email'] = $request->user_email;
             $data['phone'] = $request->user_phone;
-            
+
             unset($data['user_age'], $data['user_email'], $data['user_phone']);
 
             $user = null;

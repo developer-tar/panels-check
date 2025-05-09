@@ -193,7 +193,7 @@ class UsersController extends Controller {
         }
 
         $companies = $this->companyService->getCompanies();
-
+       
         return view('hr.profile', compact('companies', 'companyId', 'companyDetails'));
     }
 }
