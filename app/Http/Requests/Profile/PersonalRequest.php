@@ -6,11 +6,13 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 
-class PersonalRequest extends FormRequest {
+class PersonalRequest extends FormRequest
+{
     /**
      * Determine if the user is authorized to make this request.
      */
-    public function authorize() {
+    public function authorize()
+    {
         return true;
     }
 
@@ -19,18 +21,24 @@ class PersonalRequest extends FormRequest {
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
-    public function rules(): array {
+    public function rules(): array
+    {
         $rules = [
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
-            'current_salary_per_annum' => 'required|numeric|min:0',
             'experience_in_years' => 'required|integer|min:0',
             'experience_in_month' => 'required|integer|min:0|max:11',
             'user_age' => 'required|integer|min:16',
             'gender' => 'required|in:' . implode(',', config('constants.gender')),
-            'user_phone' => 'nullable|integer',
+            'user_phone' => 'nullable|integer|min:10',
             'path' => 'nullable|image|max:2048',
         ];
+
+        // Conditionally add or override rule
+        if (request()->filled('role') && request()->role === config('constants.roles_inverse.hr')) {
+            $rules['current_salary_per_annum'] = 'required|numeric|min:0';
+        }
+
 
 
         return $rules;

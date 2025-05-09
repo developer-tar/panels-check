@@ -49,18 +49,18 @@ class CommonController extends Controller
                 $company = Company::where('email', $request->email)->first();
             }
 
-            if ($request->role == config('constants.roles_inverse.hr') && $company) {
+            if (isset($request->role) && $company) {
 
-                User::where('id', Auth::guard('hr')->user()->id)
+                User::where('id', Auth::guard(strtolower($request->role))->user()->id)
                     ->update(['company_id' => $company->id]);
             }
 
             DB::commit();
-            return back()->with('success', 'Company Profile Created');
+            return back()->with('success', config('constants.company_success_message'));
         } catch (Exception $e) {
             DB::rollBack();
-            dd($e->getMessage());
-            return redirect()->back()->with('error', 'Something went wrong');
+            \Log::info('error_message company create', ['message' =>$e->getMessage()]);
+            return redirect()->back()->with('error', config('constants.wrong_message'));
         }
     }
     public function personalProfile(PersonalRequest $request)
@@ -77,13 +77,16 @@ class CommonController extends Controller
 
             $user = null;
 
-            if ($request->role == config('constants.roles_inverse.hr')) {
-                $user = User::find(Auth::guard('hr')->id());
+            if (isset($request->role)) {
+                
+                $user = User::find(Auth::guard(strtolower($request->role))->id());
+                
                 $user->update($data);
             }
-
+            
             // Handle file upload
             if ($request->hasFile('path') && $user) {
+                
                 $imagePath = $this->storeImage($request->file('path'), 'companies');
                 $storagePath = 'storage/' . $imagePath;
 
@@ -102,11 +105,11 @@ class CommonController extends Controller
                 $user->media()->limit(1)->delete();
             }
             DB::commit();
-            return back()->with('success', 'Profile Updated Successfully');
+            return back()->with('success', config('constants.profile_update'));
         } catch (\Exception $e) {
             DB::rollBack();
 
-            return back()->with('error', 'Something went wrong');
+            return back()->with('error', config('constants.wrong_message'));
         }
     }
 }

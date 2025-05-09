@@ -56,7 +56,10 @@
 <div id="customizer-container" class="z-[60] w-full"></div>
 
 @stack('page-js')
-
+@stack('script')
+@include('common.sign-in-script')
+@include('common.preview-image')
+@include('common.toster-message')
 @vite(['resources/js/employee/app.js'])
 
 </body>

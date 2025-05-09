@@ -126,7 +126,7 @@
                         </li>
                         <!-- personal profile -->
                         <li class="menu-li">
-                            <a href="{{route('employee.profile')}}" class="menu-link">
+                            <a href="{{route('employee.user.profile')}}" class="menu-link">
                                 <i class="las la-user"></i>
                                 <span>Personal profile</span>
                             </a>

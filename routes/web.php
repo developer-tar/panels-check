@@ -1,19 +1,7 @@
 <?php
 
-use App\Http\Controllers\AccountsController;
-use App\Http\Controllers\AuthenticationController;
-use App\Http\Controllers\CardsController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\InvoicingController;
-use App\Http\Controllers\PaymentController;
-use App\Http\Controllers\PrivateTransferController;
-use App\Http\Controllers\ReportController;
-use App\Http\Controllers\SettingsController;
-use App\Http\Controllers\SupportController;
-use App\Http\Controllers\TradingController;
-use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\CommonController;
 
 /*

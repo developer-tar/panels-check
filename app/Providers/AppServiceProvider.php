@@ -22,7 +22,7 @@ class AppServiceProvider extends ServiceProvider {
     public function boot(): void {
         View::composer('*', function ($view) {
             $guard = app()->bound('activeGuard') ? app('activeGuard') : null;
-        
+            
             $user = $guard ? Auth::guard($guard)->user() : null;
             $media = null;
         
@@ -31,7 +31,7 @@ class AppServiceProvider extends ServiceProvider {
                 $user = User::find($user->id);
                 $media = $user->media()->first()?->path; 
             }
-            
+                // dd($user, $media, $guard);
             $view->with(compact('user', 'media', 'guard'));
         });
         

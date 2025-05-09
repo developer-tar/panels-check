@@ -67,5 +67,9 @@ return [
             'rejected' => 'User  rejected successfully.'
         ]
     ],
+    'company_success_message' => 'Company Profile Created',
+    'profile_update' => 'Profile Updated Successfully',
+    'wrong_message' => 'Something went wrong',
+    'user_credit_score_message' => 'User Credit score Updated successfully.',
 
 ];

@@ -26,9 +26,7 @@ Route::group(['middleware' => 'set.auth:employee'], function () {
     Route::get('/', function () {
         return to_route('employee.dashboard.index');
     });
-    Route::get('/profile', function () {
-        return view('employee.profile');
-    })->name('employee.profile');
+    
 
     Route::get('/transaction', function () {
         return view('employee.transaction');
@@ -52,9 +50,11 @@ Route::group(['middleware' => 'set.auth:employee'], function () {
         Route::get('/', [DashboardController::class, 'index'])->name('index');
     });
     Route::group(['prefix' => 'user', 'as' => 'employee.user.'], function () {
-        Route::get('/', [UsersController::class, 'index'])->name('index');
+        Route::get('', [UsersController::class, 'index'])->name('index');
         Route::get('create', [UsersController::class, 'create'])->name('create');
+        Route::get('profile', [UsersController::class, 'profile'])->name('profile');
         Route::get('{id}/edit', [UsersController::class, 'edit'])->name('edit');
+        Route::post('credit/score', [UsersController::class, 'creditScore'])->name('credit.score');
     });
 
     // roles

@@ -94,6 +94,11 @@
                                 class="w-full text-sm bg-primary/5 dark:bg-bg3 border border-n30 dark:border-n500 rounded-3xl px-3 md:px-6 py-2 md:py-3"
                                 placeholder="Enter Phone" id="user_phone" value="{{ old('user_phone', $user?->phone)}}"
                                 name='user_phone' />
+                                @error('user_phone')
+                                <div class="text-red-500 text-sm mt-1">
+                                    {{ $message }}
+                                </div>
+                            @enderror
 
                         </div>
                         <div class="col-span-2">
@@ -267,8 +272,10 @@
                                 <input type="hidden" value="1" name="notAnyCompanyYet"/>
                                 @endif
                                 <input type="hidden" value="{{ config('constants.company.type.LLC') }}" name="type"/>
-                            <div class="col-span-2" style="display: @if($companies->isNotempty()) none @else block @endif;"
-                                id="company_name_block">
+                                @php
+                                $displayStyle = ($companies->isEmpty() || old('company_id') == 'other') ? 'block' : 'none';
+                            @endphp
+                                <div class="col-span-2" style="display: {{ $displayStyle }};" id="company_name_block">
                                 <label for="company_name" class="md:text-lg font-medium block mb-4">
                                     Name
                                 </label>
@@ -380,7 +387,7 @@
             const websiteUrlField = document.getElementById('website_url');
             const descriptionField = document.getElementById('description');
             const registrationField = document.getElementById('registration_number');
-
+            const typeField = document.getElementById('type');
 
             if (selectedValue === 'other') {
                 if (otherField?.style.display) {
@@ -414,7 +421,7 @@
                         return response.json();
                     })
                     .then(data => {
-                        console.log(data);
+                      
                         // Fill fields and make them read-only / disabled
                         emailField.value = data?.email || '';
                         emailField.readOnly = true;
@@ -430,6 +437,7 @@
 
                         registrationField.value = data?.registration_number || '';
                         registrationField.readOnly = true;
+                        typeField.value = data?.type || '';
 
                     })
                     .catch(error => {

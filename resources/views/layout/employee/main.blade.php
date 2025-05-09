@@ -10,6 +10,5 @@
 <main class="main-content has-sidebar">
     @yield('content')
 </main>
-@include('common.preview-image');
-@include('common.toster-message');
+
 @include('layout.employee.footer')
