@@ -446,7 +446,7 @@
                     </div>
 
                     <div class="col-span-2 flex pt-4 gap-4">
-                        <button type="button" class="btn-primary px-5" >Save Changes</button>
+                        <button type="submit" class="btn-primary px-5" >Save Changes</button>
                         <button class="btn-outline px-5">Cancel</button>
                     </div>
                     <h3>Results</h3>

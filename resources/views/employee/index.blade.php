@@ -4,19 +4,19 @@
     <div class="main-inner">
         <div class="mb-6 flex flex-wrap items-center justify-between gap-4 lg:mb-8">
             <h2 class="h2">Dashboard</h2>
-        
+
         </div>
 
         <div class="grid grid-cols-12 gap-4 xxl:gap-6">
             <!-- Statistics -->
             <div class="box col-span-12 bg-n0 dark:bg-bg4 min-[650px]:col-span-6 xxxl:col-span-3">
                 <div class="bb-dashed mb-4 flex items-center justify-between pb-4 lg:mb-6 lg:pb-6">
-                    <span class="font-medium">Credit scores</span>
+                    <span class="font-medium">Credit scores/Limit</span>
                     @include('partials._horizontal-options')
                 </div>
                 <div class="flex items-center justify-between">
                     <div>
-                        <h4 class="h4 mb-4">100</h4>
+                        <h4 class="h4 mb-4">{{ $user?->credit_limit ?? '0'}}</h4>
                         <span class="flex items-center gap-1 whitespace-nowrap text-primary">
                             <i class="las la-arrow-up text-lg"></i> 42 AVG
                         </span>
@@ -26,7 +26,47 @@
                         <div class="progress-chart"></div>
                     </div>
                 </div>
-                
+
+            </div>
+
+            <div class="box col-span-12 bg-n0 dark:bg-bg4 min-[650px]:col-span-6 xxxl:col-span-3">
+                <div class="bb-dashed mb-4 flex items-center justify-between pb-4 lg:mb-6 lg:pb-6">
+                    <span class="font-medium">DBR Calculation</span>
+                    @include('partials._horizontal-options')
+                </div>
+                <div class="flex items-center justify-between">
+                    <div>
+                        <h4 class="h4 mb-4">{{ $user?->dbr_calculation ?? '0'}}</h4>
+                        <span class="flex items-center gap-1 whitespace-nowrap text-primary">
+                            <i class="las la-arrow-up text-lg"></i> 42 AVG
+                        </span>
+                    </div>
+                    <div
+                        class="-my-3 shrink-0 ltr:translate-x-3 xl:ltr:translate-x-7 xxxl:ltr:translate-x-2 4xl:ltr:translate-x-9 rtl:-translate-x-3 xl:rtl:-translate-x-7 xxxl:rtl:-translate-x-2 4xl:rtl:-translate-x-9">
+                        <div class="progress-chart"></div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="box col-span-12 bg-n0 dark:bg-bg4 min-[650px]:col-span-6 xxxl:col-span-3">
+                <div class="bb-dashed mb-4 flex items-center justify-between pb-4 lg:mb-6 lg:pb-6">
+                    <span class="font-medium">Available Score/limit</span>
+                    @include('partials._horizontal-options')
+                </div>
+                <div class="flex items-center justify-between">
+                    <div>
+                        <h4 class="h4 mb-4">{{ $user?->avaiable_limit ?? '0'}}</h4>
+                        <span class="flex items-center gap-1 whitespace-nowrap text-primary">
+                            <i class="las la-arrow-up text-lg"></i> 42 AVG
+                        </span>
+                    </div>
+                    <div
+                        class="-my-3 shrink-0 ltr:translate-x-3 xl:ltr:translate-x-7 xxxl:ltr:translate-x-2 4xl:ltr:translate-x-9 rtl:-translate-x-3 xl:rtl:-translate-x-7 xxxl:rtl:-translate-x-2 4xl:rtl:-translate-x-9">
+                        <div class="progress-chart"></div>
+                    </div>
+                </div>
+
             </div>
             <div class="box col-span-12 bg-n0 dark:bg-bg4 min-[650px]:col-span-6 xxxl:col-span-3">
                 <div class="bb-dashed mb-4 flex items-center justify-between pb-4 lg:mb-6 lg:pb-6">
@@ -45,7 +85,7 @@
                         <div class="progress-chart"></div>
                     </div>
                 </div>
-                
+
             </div>
             <div class="box col-span-12 bg-n0 dark:bg-bg4 min-[650px]:col-span-6 xxxl:col-span-3">
                 <div class="bb-dashed mb-4 flex items-center justify-between pb-4 lg:mb-6 lg:pb-6">
@@ -64,7 +104,7 @@
                         <div class="progress-chart"></div>
                     </div>
                 </div>
-                
+
             </div>
             <div class="box col-span-12 bg-n0 dark:bg-bg4 min-[650px]:col-span-6 xxxl:col-span-3">
                 <div class="bb-dashed mb-4 flex items-center justify-between pb-4 lg:mb-6 lg:pb-6">
@@ -156,7 +196,7 @@
             <div class="box col-span-12 lg:col-span-6">
                 <div class="bb-dashed mb-4 flex flex-wrap items-center justify-between gap-4 pb-4 lg:mb-6 lg:pb-6">
                     <h4 class="h4">Latest Transaction</h4>
-                   @include('partials._horizontal-options')
+                    @include('partials._horizontal-options')
 
                 </div>
                 <div class="overflow-x-auto">
@@ -237,8 +277,8 @@
                             <tr class="even:bg-secondary/5 dark:even:bg-bg3">
                                 <td class="px-6 py-2">
                                     <div class="flex items-center gap-3">
-                                        <img src="{{ asset('assets/images/visa.png') }}" width="32" height="32" class="rounded-full"
-                                            alt="payment medium icon" />
+                                        <img src="{{ asset('assets/images/visa.png') }}" width="32" height="32"
+                                            class="rounded-full" alt="payment medium icon" />
                                         <div>
                                             <p class="mb-1 font-medium">
                                                 Massive Dynamic INV-90874
@@ -311,7 +351,7 @@
             <div class="box col-span-12 lg:col-span-6">
                 <div class="bb-dashed mb-4 flex flex-wrap items-center justify-between gap-4 pb-4 lg:mb-6 lg:pb-6">
                     <h4 class="h4">Transaction Account</h4>
-                   @include('partials._horizontal-options')
+                    @include('partials._horizontal-options')
 
                 </div>
                 <div class="overflow-x-auto">
@@ -331,8 +371,8 @@
                             <tr key="John Snow - Metal" class="even:bg-secondary/5 dark:even:bg-bg3">
                                 <td class="px-6 py-2">
                                     <div class="flex items-center gap-3">
-                                        <img src="{{ asset('assets/images/card-sm-1.png') }}" width="60" height="40" class="rounded"
-                                            alt="payment medium icon" />
+                                        <img src="{{ asset('assets/images/card-sm-1.png') }}" width="60" height="40"
+                                            class="rounded" alt="payment medium icon" />
                                         <div>
                                             <p class="mb-1 font-medium">John Snow - Metal</p>
                                             <span class="text-xs">**4291 - Exp: 12/26</span>
@@ -349,8 +389,8 @@
                             <tr key="John Snow - Virtual" class="even:bg-secondary/5 dark:even:bg-bg3">
                                 <td class="px-6 py-2">
                                     <div class="flex items-center gap-3">
-                                        <img src="{{ asset('assets/images/card-sm-2.png') }}" width="60" height="40" class="rounded"
-                                            alt="payment medium icon" />
+                                        <img src="{{ asset('assets/images/card-sm-2.png') }}" width="60" height="40"
+                                            class="rounded" alt="payment medium icon" />
                                         <div>
                                             <p class="mb-1 font-medium">John Snow - Virtual</p>
                                             <span class="text-xs">**4291 - Exp: 12/26</span>
@@ -367,8 +407,8 @@
                             <tr key="Ben Abramov - Metal" class="even:bg-secondary/5 dark:even:bg-bg3">
                                 <td class="px-6 py-2">
                                     <div class="flex items-center gap-3">
-                                        <img src="{{ asset('assets/images/card-sm-3.png') }}" width="60" height="40" class="rounded"
-                                            alt="payment medium icon" />
+                                        <img src="{{ asset('assets/images/card-sm-3.png') }}" width="60" height="40"
+                                            class="rounded" alt="payment medium icon" />
                                         <div>
                                             <p class="mb-1 font-medium">Ben Abramov - Metal</p>
                                             <span class="text-xs">**4291 - Exp: 12/26</span>
@@ -385,8 +425,8 @@
                             <tr key="John Cina - Virtual" class="even:bg-secondary/5 dark:even:bg-bg3">
                                 <td class="px-6 py-2">
                                     <div class="flex items-center gap-3">
-                                        <img src="{{ asset('assets/images/card-sm-8.png') }}" width="60" height="40" class="rounded"
-                                            alt="payment medium icon" />
+                                        <img src="{{ asset('assets/images/card-sm-8.png') }}" width="60" height="40"
+                                            class="rounded" alt="payment medium icon" />
                                         <div>
                                             <p class="mb-1 font-medium">John Cina - Virtual</p>
                                             <span class="text-xs">**4291 - Exp: 12/26</span>
@@ -403,8 +443,8 @@
                             <tr key="Kane Methew - Metal" class="even:bg-secondary/5 dark:even:bg-bg3">
                                 <td class="px-6 py-2">
                                     <div class="flex items-center gap-3">
-                                        <img src="{{ asset('assets/images/card-sm-4.png') }}" width="60" height="40" class="rounded"
-                                            alt="payment medium icon" />
+                                        <img src="{{ asset('assets/images/card-sm-4.png') }}" width="60" height="40"
+                                            class="rounded" alt="payment medium icon" />
                                         <div>
                                             <p class="mb-1 font-medium">Kane Methew - Metal</p>
                                             <span class="text-xs">**4291 - Exp: 12/26</span>
@@ -421,8 +461,8 @@
                             <tr key="Jane Alam - Virtual" class="even:bg-secondary/5 dark:even:bg-bg3">
                                 <td class="px-6 py-2">
                                     <div class="flex items-center gap-3">
-                                        <img src="{{ asset('assets/images/card-sm-5.png') }}" width="60" height="40" class="rounded"
-                                            alt="payment medium icon" />
+                                        <img src="{{ asset('assets/images/card-sm-5.png') }}" width="60" height="40"
+                                            class="rounded" alt="payment medium icon" />
                                         <div>
                                             <p class="mb-1 font-medium">Jane Alam - Virtual</p>
                                             <span class="text-xs">**4291 - Exp: 12/26</span>
@@ -439,8 +479,8 @@
                             <tr key="Jabed Miah - Metal" class="even:bg-secondary/5 dark:even:bg-bg3">
                                 <td class="px-6 py-2">
                                     <div class="flex items-center gap-3">
-                                        <img src="{{ asset('assets/images/card-sm-6.png') }}" width="60" height="40" class="rounded"
-                                            alt="payment medium icon" />
+                                        <img src="{{ asset('assets/images/card-sm-6.png') }}" width="60" height="40"
+                                            class="rounded" alt="payment medium icon" />
                                         <div>
                                             <p class="mb-1 font-medium">Jabed Miah - Metal</p>
                                             <span class="text-xs">**4291 - Exp: 12/26</span>
@@ -457,8 +497,8 @@
                             <tr key="Bablu Sheikh - Virtual" class="even:bg-secondary/5 dark:even:bg-bg3">
                                 <td class="px-6 py-2">
                                     <div class="flex items-center gap-3">
-                                        <img src="{{ asset('assets/images/card-sm-7.png') }}" width="60" height="40" class="rounded"
-                                            alt="payment medium icon" />
+                                        <img src="{{ asset('assets/images/card-sm-7.png') }}" width="60" height="40"
+                                            class="rounded" alt="payment medium icon" />
                                         <div>
                                             <p class="mb-1 font-medium">Bablu Sheikh - Virtual</p>
                                             <span class="text-xs">**4291 - Exp: 12/26</span>
