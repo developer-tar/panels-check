@@ -20,17 +20,21 @@ class AppServiceProvider extends ServiceProvider {
      * Bootstrap any application services.
      */
     public function boot(): void {
-
         View::composer('*', function ($view) {
-           
             $guard = app()->bound('activeGuard') ? app('activeGuard') : null;
-            dd($guard);
+        
             $user = $guard ? Auth::guard($guard)->user() : null;
-            dd($user);
-            $media = $user && method_exists($user, 'media') ? $user->media()->first() : null;
-            dd($media);
+            $media = null;
+        
+            if ($user) {
+                // Re-fetch the user to ensure relationships work properly (optional)
+                $user = User::find($user->id);
+                $media = $user->media()->first()?->path; 
+            }
+            
             $view->with(compact('user', 'media', 'guard'));
         });
+        
         Gate::define('create-company', function (User $user) {
             
             return $user->isAdmin()

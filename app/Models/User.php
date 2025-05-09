@@ -72,5 +72,5 @@ class User extends Authenticatable {
     public function media()
     {
         return $this->hasMany(Media::class, 'model_id')->where('model_name', User::class);
-
+    }
 }

@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class CommonController extends Controller {
-    
+
     use ImageUploadTrait;
 
     public function getCompanyData($id) {
@@ -52,31 +52,28 @@ class CommonController extends Controller {
             return redirect()->back()->with('error', 'Something went wrong');
         }
     }
-    public function personalProfile(PersonalRequest $request)
-    {
-       
+    public function personalProfile(PersonalRequest $request) {
+
         try {
-            dd($request->all());
             DB::beginTransaction();
-    
             $data = $request->except('_token', 'path', 'role');
             $data['age'] = $request->user_age;
             $data['email'] = $request->user_email;
             $data['phone'] = $request->user_phone;
             unset($data['user_age'], $data['user_email'], $data['user_phone']);
-           
+
             $user = null;
-    
+
             if ($request->role == config('constants.roles_inverse.hr')) {
                 $user = User::find(Auth::guard('hr')->id());
                 $user->update($data);
             }
-            
+
             // Handle file upload
             if ($request->hasFile('path') && $user) {
                 $imagePath = $this->storeImage($request->file('path'), 'companies');
                 $storagePath = 'storage/' . $imagePath;
-        
+
                 Media::updateOrCreate(
                     [
                         'model_name' => User::class,
@@ -88,14 +85,15 @@ class CommonController extends Controller {
                     ]
                 );
             }
-    
+            if ($request->filled('removeImage')) {
+                $user->media()->limit(1)->delete();
+            }
             DB::commit();
             return back()->with('success', 'Profile Updated Successfully');
         } catch (\Exception $e) {
             DB::rollBack();
-            
+
             return back()->with('error', 'Something went wrong');
         }
     }
-    
 }

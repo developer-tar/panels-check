@@ -1,8 +1,7 @@
 <script>
   const photoInput = document.getElementById('photo');
   const previewImg = document.getElementById('imagePreview');
-  const placeholder = '{{ asset('
-  assets / images / placeholder.png ') }}';
+  const placeholder = '{{ asset('assets/images/placeholder.png') }}';
 
   photoInput.addEventListener('change', function(event) {
     const file = event.target.files[0];
@@ -13,7 +12,7 @@
 
 
   document.getElementById('resetbtn').addEventListener('click', function() {
-    // Reset file input by wrapping in form and calling reset()
+    
     const removeImage = document.getElementById('removeImage');
     if (removeImage) {
       document.getElementById('removeImage').value = 1;

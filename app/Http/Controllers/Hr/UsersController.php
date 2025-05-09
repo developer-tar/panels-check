@@ -13,17 +13,14 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use PDO;
 
-class UsersController extends Controller
-{
+class UsersController extends Controller {
     use ImageUploadTrait;
     private $name = 'hr';
     protected $companyService;
-    public function __construct(CompanyService $companyService)
-    {
+    public function __construct(CompanyService $companyService) {
         $this->companyService = $companyService;
     }
-    public function index()
-    {
+    public function index() {
 
         $users = User::with(['media:id,model_id,path', 'company:id,company_name', 'roles:id,name'])
             ->whereNot('id', Auth::guard('hr')->id())->where('company_id', '=', Auth::guard('hr')->user()->company_id)
@@ -70,20 +67,17 @@ class UsersController extends Controller
         return view($this->name . '.users.index')->with('users', $users);
     }
 
-    public function create()
-    {
+    public function create() {
         $companies = $this->companyService->getCompanies('hr');
 
         return view($this->name . '.users.create')->with('companies', $companies);
     }
 
 
-    public function edit($id)
-    {
+    public function edit($id) {
         return view($this->name . '.users.edit');
     }
-    public function store(UserStoreRequest $request)
-    {
+    public function store(UserStoreRequest $request) {
         try {
             DB::beginTransaction();
 
@@ -115,9 +109,15 @@ class UsersController extends Controller
             return redirect()->back()->with('error', 'Something went wrong');
         }
     }
-    public function pendingRequest()
-    {
-        // dd(Auth::guard('hr')->user()?->company_id);
+    public function pendingRequest() {
+        $approvalStatus = true;
+        $user = User::where('id', Auth::guard('hr')->user()->id)
+            ->whereIn('status', [config('user_approval_status.pending'), config('user_approval_status.rejected')])
+            ->first();
+        if($user){
+            $approvalStatus = false;
+        }
+        dd($approvalStatus);
         $users = User::with(['media:id,model_id,path', 'company:id,company_name', 'roles:id,name'])
 
             ->where(['status' => config('constants.user_approval_status.pending'), 'company_id' => Auth::guard('hr')->user()->company_id])
@@ -162,40 +162,37 @@ class UsersController extends Controller
                     'kyc_status' => ucfirst($kycStatus),
                 ];
             });
-           
+
         return view($this->name . '.users.pendingRequest')->with('users', $users);
     }
 
-    public function approve(User $user)
-    {
+    public function approve(User $user) {
         $user->status = config('constants.user_approval_status.approved'); // Or just 'approved'
         $user->save();
 
         return back()->with('success', 'User approved successfully.');
     }
 
-    public function reject(User $user)
-    {
+    public function reject(User $user) {
         $user->status = config('constants.user_approval_status.rejected'); // Or just 'rejected'
         $user->save();
 
         return back()->with('success', 'User rejected successfully.');
     }
 
-    public function profile(){
+    public function profile() {
         $companyId = null;
         $companyDetails = null;
-        if(Auth::guard('hr')->check()){
-                $details = User::with('company')->where('id',Auth::guard('hr')->user()->id)->first();
-                if($details->company?->id){
-                    $companyId = $details->company->id;
-                    $companyDetails = $details->company;
-                }
+        if (Auth::guard('hr')->check()) {
+            $details = User::with('company')->where('id', Auth::guard('hr')->user()->id)->first();
+            if ($details->company?->id) {
+                $companyId = $details->company->id;
+                $companyDetails = $details->company;
+            }
         }
-        
+
         $companies = $this->companyService->getCompanies();
 
         return view('hr.profile', compact('companies', 'companyId', 'companyDetails'));
-
     }
 }

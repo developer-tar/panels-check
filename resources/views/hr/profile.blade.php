@@ -15,14 +15,14 @@
                 <div class="flex flex-wrap gap-6 xxl:gap-10 items-center bb-dashed mb-6 pb-6 gap-check">
                     <!-- Fixed-size Image Preview -->
 
-
-                    <img id="imagePreview" src=" {{ asset('assets/images/placeholder.png') }}"
+                   
+                    <img id="imagePreview" src="  @if($media) {{ asset($media) }}  @else {{ asset('assets/images/placeholder.png') }} @endif"
                         class="h-20 w-20 object-cover rounded border" alt="placeholder" />
 
                     <div class="flex gap-4">
                         <input type="file" name="path" id="photo" class="hidden" accept="image/*" />
                         <label for="photo" class="btn-primary cursor-pointer">Upload Profile pic </label>
-                        <button type="button" class="btn-outline" onclick="resetImage()" id="resetbtn">Cancel</button>
+                        <button type="button" class="btn-outline" id="resetbtn">Cancel</button>
                     </div>
                     <div class="flex">
 
