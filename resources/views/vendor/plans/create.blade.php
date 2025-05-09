@@ -127,7 +127,7 @@
         <div class="flex items-center justify-center">
           <label for="automatice_reminder" class="flex items-center cursor-pointer">
           <div class="relative">
-            <input type="checkbox" id="automatice_reminder" class="custom-checkbox sr-only" checked="" {{ old('automatice_reminder') }}>
+            <input type="checkbox" id="automatice_reminder" class="custom-checkbox sr-only"   {{ old('automatice_reminder') ? 'checked' : '' }}>
             <div class="block w-14 h-8 rounded-full bg bg-primary"></div>
             <div class="dot absolute left-1 top-1 bg-white w-6 h-6 rounded-full transition translate-x-full">
             </div>
