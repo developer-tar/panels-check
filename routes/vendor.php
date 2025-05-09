@@ -32,9 +32,9 @@ Route::group(['middleware' => 'set.auth:vendor'], function () {
         return view('vendor.chat');
     })->name('vendor.transfer.chat');
 
-    Route::get('/profile', function () {
-        return view('vendor.profile');
-    })->name('vendor.profile');
+    // Route::get('/profile', function () {
+    //     return view('vendor.profile');
+    // })->name('vendor.profile');
 
     Route::get('/transaction', function () {
         return view('vendor.transaction');
@@ -49,6 +49,7 @@ Route::group(['middleware' => 'set.auth:vendor'], function () {
         Route::get('/', [UsersController::class, 'index'])->name('index');
         Route::get('create', [UsersController::class, 'create'])->name('create');
         Route::get('{id}/edit', [UsersController::class, 'edit'])->name('edit');
+        Route::get('profile', [UsersController::class, 'profile'])->name('profile');
     });
 
     // roles
@@ -64,6 +65,7 @@ Route::group(['middleware' => 'set.auth:vendor'], function () {
     Route::group(['prefix' => 'plan', 'as' => 'vendor.plan.'], function () {
         Route::get('/', [PlansController::class, 'index'])->name('index');
         Route::get('create', [PlansController::class, 'create'])->name('create');
+        Route::post('store', [PlansController::class, 'store'])->name('store');
         Route::get('{id?}/edit', [PlansController::class, 'edit'])->name('edit');
     });
 

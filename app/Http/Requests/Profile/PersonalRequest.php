@@ -27,15 +27,16 @@ class PersonalRequest extends FormRequest
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
             'experience_in_years' => 'required|integer|min:0',
-            'experience_in_month' => 'required|integer|min:0|max:11',
+            'experience_in_month' => 'required|integer|min:0|max:12',
             'user_age' => 'required|integer|min:16',
             'gender' => 'required|in:' . implode(',', config('constants.gender')),
-            'user_phone' => 'nullable|integer|min:10',
+           'user_phone' => 'nullable|integer|min:0',
             'path' => 'nullable|image|max:2048',
+            'user_email' => 'required|email|unique:users,email,' . auth()->guard(strtolower(request()->role))->id(),
         ];
 
         // Conditionally add or override rule
-        if (request()->filled('role') && request()->role === config('constants.roles_inverse.hr')) {
+        if (request()->filled('role') && (request()->role === config('constants.roles_inverse.hr')|| request()->role === config('constants.roles_inverse.vendor'))) {
             $rules['current_salary_per_annum'] = 'required|numeric|min:0';
         }
 

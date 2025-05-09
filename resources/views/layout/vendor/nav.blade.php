@@ -157,7 +157,7 @@
                     </div>
                     <ul class="flex w-[250px] flex-col p-4">
                         <li>
-                            <a href="{{ route('vendor.profile') }}"
+                            <a href="{{ route('vendor.user.profile') }}"
                                 class="flex items-center gap-2 rounded-md p-2 duration-300 hover:bg-primary hover:text-n0">
                                 <span>
                                     <i class="las la-user mt-1 text-xl"></i>

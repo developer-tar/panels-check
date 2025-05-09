@@ -172,7 +172,7 @@
                             </button>
                             <ul class="submenu-hide submenu">
                                 <li>
-                                    <a href="{{ route('vendor.profile') }}" class="submenu-link">
+                                    <a href="{{ route('vendor.user.profile') }}" class="submenu-link">
                                         <i class="las la-minus text-xl"></i>
                                         <span>Profile</span>
                                     </a>

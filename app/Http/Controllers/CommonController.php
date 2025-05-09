@@ -111,7 +111,7 @@ class CommonController extends Controller
             return back()->with('success', config('constants.profile_update'));
         } catch (\Exception $e) {
             DB::rollBack();
-
+            dd($e->getMessage());
             return back()->with('error', config('constants.wrong_message'));
         }
     }
