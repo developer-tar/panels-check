@@ -118,6 +118,7 @@ class UsersController extends Controller {
         $user = User::where('id', Auth::guard('hr')->user()->id)
             ->whereIn('status', [config('constants.user_approval_status.pending'), config('constants.user_approval_status.rejected')])
             ->first();
+            
         if($user){
             
             $approvalStatus = false;
@@ -130,8 +131,8 @@ class UsersController extends Controller {
             ->whereHas('roles', function ($query) {
                 $query->where('name', config('constants.roles_inverse.employee'));
             })
-            ->get()
-            ->transform(function ($user) {
+            ->paginate(10)
+            ->through(function ($user) {
                 // Experience formatting
                 $expYears = $user->experience_in_years ?? 0;
                 $expMonths = $user->experience_in_month ?? 0;

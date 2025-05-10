@@ -150,13 +150,25 @@
         </div>
 
       </div>
-
+     
       <div class="col-span-2 flex gap-4 md:gap-6 mt-2">
+      @if($user?->status == config('constants.user_approval_status.approved'))
         <button class="btn-primary" type="submit">
         Save
         </button>
 
-      </div>
+    
+      @elseif($user?->status == config('constants.user_approval_status.pending'))
+      <div class="text-blue-500 text-sm mt-1">
+      Complete your profile and Wait for Admin decision  
+        </div>
+        @elseif($user?->status == config('constants.user_approval_status.rejected'))
+        <div class="text-red-500 text-sm mt-1">
+         Profile has been rejected
+        </div>
+        @endif
+        </div>
+       
     </form>
     </div>
   </div>

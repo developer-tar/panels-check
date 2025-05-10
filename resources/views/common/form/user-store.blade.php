@@ -7,16 +7,25 @@
 
   @endphp
   @csrf
+  <input type="hidden" name="role" value="{{ $guard }}">
   <div class="mb-6 flex flex-wrap items-center gap-5 xl:gap-10">
     <!-- Fixed-size Image Preview -->
     <img id="imagePreview" src="{{ asset('assets/images/placeholder.png') }}"
-      class="h-20 w-20 object-cover rounded border" alt="placeholder" />
+      ut="h-20 w-20 object-cover rounded border" alt="placeholder" />
 
     <div class="flex gap-4">
       <input type="file" name="path" id="photo" class="hidden" accept="image/*" />
       <label for="photo" class="btn-primary cursor-pointer">Upload Profile pic </label>
       <button type="button" class="btn-outline" onclick="resetImage()" id="resetbtn">Cancel</button>
     </div>
+    <div class="flex">
+    @error('path')
+      <div class="text-red-500 text-sm mt-1">
+      {{ $message }}
+      </div>
+    @enderror
+    </div>
+   
   </div>
   <div class="grid grid-cols-2 gap-4 xxxl:gap-6">
     <div class="col-span-2 md:col-span-1">
@@ -224,7 +233,7 @@
       @if($user?->status == config('constants.user_approval_status.pending'))
       <div class="col-span-2 flex gap-4 md:gap-6 mt-2">
         <div class="text-red-500 text-sm mt-1">
-        Wait for Admin decision
+        Complete your profile and Wait for Admin decision 
         </div>
 
       </div>

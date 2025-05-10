@@ -19,6 +19,9 @@ class Benefit extends Model
         'automatice_reminder',
         'customization_notes'
     ];
+    public function company(){
+        return $this->belongsTo(Company::class);
+    }
     public function domain(){
         return $this->belongsTo(Domain::class);
     }

@@ -192,7 +192,7 @@ class UsersController extends Controller {
                     ? array_search($user->country_id, config('constants.country'))
                     : null;
 
-
+                
                 $kycStatus = isset($user->kyc_status)
                     ? array_search($user->kyc_status, config('constants.user_approval_status'))
                     : null;
@@ -210,6 +210,7 @@ class UsersController extends Controller {
                     'kyc_status' => ucfirst($kycStatus),
                 ];
             });
+            
 
         return view($this->name . '.users.PendingRequest')->with('users', $users);
     }

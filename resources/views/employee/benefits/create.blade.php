@@ -9,7 +9,7 @@
 
     <div class="box mb-4 xxxl:mb-6">
     <div class="mb-6 pb-6 bb-dashed flex justify-between items-center">
-      <h4 class="h4">Giving a new Benefit to Employee</h4>
+      <h4 class="h4">Applying a new Benefit for claim</h4>
     </div>
     <form method="post" enctype="multipart/form-data" action="{{ route('employee.benefit.store') }}">
       @csrf
@@ -31,7 +31,7 @@
       </div>
       <div class="col-span-2">
 
-      @if($companies->isNotempty())
+     
       <div class="col-span-2  md:col-span-1">
 
         <label for="company_id" class="mb-4 md:text-lg font-medium block">
@@ -39,6 +39,7 @@
         </label>
         <select name="company_id" id="company_id" class="nc-select full" onchange="checkValue()">
         <option selected disabled>Select Company</option>
+        @if($companies->isNotempty())
         @foreach($companies as $company)
         <option 
             value="{{ $company['company_id'] }}-{{ $company['domain_id'] }}" 
@@ -46,6 +47,9 @@
             {{ $company['name'] }}
         </option>
       @endforeach
+      @else
+      <option value="" selected disabled>No company exist for giving loan</option>
+      @endif
         </select>
         @error('company_id')
       <div class="text-red-500 text-sm mt-1">
@@ -53,7 +57,7 @@
       </div>
       @enderror
       </div>
-    @endif
+    
       <div class="col-span-2">
         <label for="claim_amount_required" class="mb-4 md:text-lg font-medium block">
         Claim amount($)
@@ -76,19 +80,25 @@
         placeholder="Description for taking the benefit..." rows="5" id="reason_for_takng_the_benefit" name="reason_for_takng_the_benefit" >{{ old('reason_for_takng_the_benefit') }}</textarea>
       </div>
       <div class="col-span-2 flex gap-4 md:gap-6 mt-2">
-        @if($user?->status == config('constants.user_approval_status.approved') && $user?->kyc_status == config('constants.user_approval_status.approved'))
+        @if($user?->status == config('constants.user_approval_status.approved') && $user?->kyc_status == config('constants.user_approval_status.approved') && $companies->isNotEmpty())
+        
+        
         <button class="btn-primary" type="submit">
         Claim
         </button>
         
         @elseif($user?->status == config('constants.user_approval_status.pending') || $user?->kyc_status == config('constants.user_approval_status.pending'))
         <div class="text-blue-500 text-sm mt-1">
-        Wait for Admin decision
+        Complete your profile and Wait for Admin decision 
         </div>
         
         @elseif($user?->status == config('constants.user_approval_status.rejected') && $user?->kyc_status == config('constants.user_approval_status.rejected'))
         <div class="text-red-500 text-sm mt-1">
          Profile has been rejected
+        </div>
+        @elseif($companies->isEmpty())
+        <div class="text-red-500 text-sm mt-1">
+         No company exist for providing loan
         </div>
         @else
         <div class="text-red-500 text-sm mt-1">

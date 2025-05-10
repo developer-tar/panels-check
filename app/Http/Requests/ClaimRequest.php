@@ -29,4 +29,10 @@ class ClaimRequest extends FormRequest
 
         ];
     }
+    public function messages(): array
+    {
+        return [
+            'claim_file.required' => 'Please upload the file.',
+        ];
+    }
 }

@@ -44,7 +44,7 @@ class PlansController extends Controller
             $data['user_id'] = Auth::guard('vendor')->user()->id;
             
             Benefit::create( $data);
-            return redirect()->route('vendor.plan.index')->with('success', 'Benefit Created Successfully');
+            return redirect()->route($this->name.'.plan.index')->with('success', 'Benefit Created Successfully');
         } catch (\Exception $e) {
             DB::rollBack();
             dd($e->getMessage());

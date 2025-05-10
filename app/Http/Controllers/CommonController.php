@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CompanyStoreRequest;
 use App\Http\Requests\Profile\Company as RequestsCompany;
 use App\Http\Requests\Profile\PersonalRequest;
 use App\ImageUploadTrait;
 use App\Models\Benefit;
 use App\Models\Company;
+use App\Models\Domain;
 use App\Models\Media;
 use App\Models\User;
 use Exception;
@@ -34,13 +36,21 @@ class CommonController extends Controller
             // Add other fields as needed
         ]);
     }
+    
+
     public function companyProfile(RequestsCompany $request)
     {
         try {
 
             DB::beginTransaction();
             if ($request->company_id == 'other') {
-                $company = Company::create($request->except('path', '_token'));
+                $data = $request->except('path', '_token');
+               
+                if(isset($request->role) && $request->role == 'VENDOR'){
+                        $data['domain_id'] = Domain::first()?->id;
+                }
+               
+                $company = Company::create($data);
             } elseif (isset($request->notAnyCompanyYet)) {
 
                 $company = Company::create($request->except('_token', 'role', 'notAnyCompanyYet'));

@@ -64,22 +64,21 @@ class BenefitsEnrollController extends Controller
 
     public function create()
     {
-
-        $companies = Company::with([
-            'domain:id,name'
-        ])->where('status', config('constants.status.active'))->get();
-
-        $companies = $companies->filter(function ($company) {
-            return $company->domain?->name;
-        })->map(function ($company) {
-            $domainName = "({$company->domain->name})";
+        
+        $companies = Benefit::with(['company:id,company_name','domain:id,name'])->get();
+        
+        $companies = $companies->filter(function ($claim) {
+            return $claim->domain?->name;
+        })->map(function ($claim) {
+            $domainName = "({$claim->domain->name})";
             return [
-                'company_id' => $company->id,
-                'domain_id' => $company?->domain?->id,
-                'name' => $company->company_name . ' ' . $domainName,
+                'company_id' => $claim->company_id,
+                'domain_id' => $claim?->domain_id,
+                'name' => $claim?->company?->company_name . ' ' . $domainName,
             ];
         });
-
+        
+       
 
         return view($this->name . '.benefits.create')->with('companies', $companies);
     }

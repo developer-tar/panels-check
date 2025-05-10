@@ -8,7 +8,7 @@
     <div class="main-inner">
         <div class="mb-6 flex flex-wrap items-center justify-between gap-4 lg:mb-8">
             <h2 class="h2">Benefit Management</h2>
-            <a href="{{route('hr.benefit.create')}}" class="btn-primary inline-flex items-center">
+            <a href="{{route('employee.benefit.create')}}" class="btn-primary inline-flex items-center">
                 <i class="las la-plus-circle text-base md:text-lg"></i>
                 <span class="ml-1">Assign a benefit</span>
             </a>

@@ -26,7 +26,7 @@ class UserStoreRequest extends FormRequest {
             'path' => 'nullable|image|max:2048',
         ];
 
-        if (Auth::guard('admin')->check()) {
+        if (isset(request()->role) && request()->role !='hr') {
             $rules['role_id'] = 'required|in:' . implode(',', config('constants.roles'));
         }
 

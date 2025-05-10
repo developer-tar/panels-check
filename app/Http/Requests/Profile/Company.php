@@ -24,16 +24,16 @@ class Company extends FormRequest {
             'email'                => ['required', 'email', 'max:255'],
             'phone'                => ['nullable', 'string', 'max:20'],
             'registration_number' => ['required', 'string', 'max:100'],
-            'website_url'          => ['required', 'url', 'max:255'],
+            'website_url'         => ['required', 'url', 'max:255'],
             'domain_id'           => ['nullable', 'integer'],
             'status'              => ['nullable', 'in:1,2'],
             'description'         => ['nullable', 'string'],
             'path'                => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
         ];
-
-        // Add conditional rule after defining $rules
-        if (request()->company_id === 'other' || isset(request()->notAnyCompanyYet)) {
+        
+        if (request()->company_id === 'other' || request()->has('notAnyCompanyYet')) {
             $rules['company_name'] = ['required', 'string', 'max:255'];
+            $rules['email'][] = 'unique:companies,email'; // append to existing rules
         }
 
         return $rules;
