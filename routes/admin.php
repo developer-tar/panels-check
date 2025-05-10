@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 
 //auth
-Route::group(['prefix' => 'auth', 'as' => 'admin.auth.', 'middleware' => 'guest'], function () {
+Route::group(['prefix' => 'auth', 'as' => 'admin.auth.', 'middleware' => 'set.guest:admin'], function () {
     Route::get('sign-in', [AuthController::class, 'signIn'])->name('sign-in');
     Route::get('sign-up', [AuthController::class, 'signUp'])->name('sign-up');
     Route::post('sign-up-process', [AuthController::class, 'signUpProcess'])->name('sign-up-process');

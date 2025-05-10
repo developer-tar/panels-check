@@ -35,30 +35,28 @@ class AppServiceProvider extends ServiceProvider
             $totalPendingBenefitEnrolled = null;
             $totalApprovedBenefit = null;
             $totalVendorPendingRequest = null;
-            $totalVendorApprovedRequest = null;
-            $totalVendorRejectedRequest = null;
-            $totalNoOfEmployeeInCompany = null;
-            $totalNoOfClaimsEnrolledByEmp = null;
+            $totalVendorApprovedRequest = 0;
+            $totalVendorRejectedRequest = 0;
+            $totalNoOfEmployeeInCompany = 0;
+            $totalNoOfClaimsEnrolledByEmp = 0;
             if ($user) {
                 // Re-fetch the user to ensure relationships work properly (optional)
                 $user = User::find($user->id);
                 $media = $user->media()->where('folder_name', 'personal_profile')->first()?->path;
 
                 $compyId = Company::where('id', $user?->company_id)->value('id');
-
-                $totalNoOfEmployeeInCompany = User::where('company_id', $compyId)->count(); 
-                
-                $statuses = Claim::where('company_id', $compyId)
-                    ->selectRaw('status, COUNT(*) as count')
-                    ->groupBy('status')
-                    ->pluck('count', 'status');
-                // $statuses->count());
-                $totalNoOfClaimsEnrolledByEmp = $statuses->count();
-                $totalVendorPendingRequest = $statuses[config('constants.user_approval_status.pending')] ?? 0;
-                $totalVendorApprovedRequest = $statuses[config('constants.user_approval_status.approved')] ?? 0;
-                $totalVendorRejectedRequest = $statuses[config('constants.user_approval_status.rejected')] ?? 0;
-
-              
+                if ($compyId) {
+                    $totalNoOfEmployeeInCompany = User::where('company_id', $compyId)->count();
+                    $statuses = Claim::where('company_id', $compyId)
+                        ->selectRaw('status, COUNT(*) as count')
+                        ->groupBy('status')
+                        ->pluck('count', 'status');
+                    // $statuses->count());
+                    $totalNoOfClaimsEnrolledByEmp = $statuses->count();
+                    $totalVendorPendingRequest = $statuses[config('constants.user_approval_status.pending')] ?? 0;
+                    $totalVendorApprovedRequest = $statuses[config('constants.user_approval_status.approved')] ?? 0;
+                    $totalVendorRejectedRequest = $statuses[config('constants.user_approval_status.rejected')] ?? 0;
+                }
                 $user->load('claims'); // Only once
 
                 $totalBenefitEnrolled = $user->claims->count();
