@@ -54,11 +54,7 @@ return new class extends Migration
 
         });
         
-        User::create(['first_name' => 'admin','email' => 'admin@yopmail.com','password'=> bcrypt('admin123')]);
-        User::create(['first_name' => 'hr','email' => 'hr@yopmail.com','password'=> bcrypt('hr123')]);
-        User::create(['first_name' => 'employee','email' => 'employee@yopmail.com','password'=> bcrypt('employee123')]);
-        User::create(['first_name' => 'vendor','email' => 'vendor@yopmail.com','password'=> bcrypt('vendor123')]);
-        
+        User::create(['first_name' => 'admin','email' => 'admin@yopmail.com','password'=> bcrypt('admin123')]);        
     }
 
     /**
