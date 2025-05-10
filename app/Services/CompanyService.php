@@ -50,6 +50,7 @@ class CompanyService
                 return 'no record found';
 
             }
+            
 
             // Otherwise return the company info
             return [

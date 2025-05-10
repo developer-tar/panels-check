@@ -36,7 +36,7 @@ class AppServiceProvider extends ServiceProvider {
                
                
             }
-                // dd($user, $media, $guard,$company);
+                
             $view->with(compact('user', 'media', 'guard', 'compyId'));
         });
         

@@ -19,3 +19,5 @@ Route::get('/', [DashboardController::class, 'index'])->name('home');
 Route::get('/get-company-data/{id}', [CommonController::class, 'getCompanyData']);
 Route::post('/company-profile', [CommonController::class, 'companyProfile'])->name('company.profile');
 Route::post('/personal-profile', [CommonController::class, 'personalProfile'])->name('personal.profile');
+
+Route::get('/get-coverage-limit/{value}', [CommonController::class, 'getCoverageLimit']);

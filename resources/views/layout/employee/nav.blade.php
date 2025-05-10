@@ -41,10 +41,10 @@
                         class="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-primary text-xs text-n0">
                         @php 
                         $count = 0;
-                        if($user?->kyc_status != config('constants.user_approval_status_inverse.1')){
+                        if($user?->kyc_status != config('constants.user_approval_status.pending')){
                             $count++;
                         }
-                        if($user?->status  != config('constants.user_approval_status_inverse.1')){
+                        if($user?->status  != config('constants.user_approval_status.pending')){
                             $count++;
                         }
                         @endphp
@@ -59,7 +59,7 @@
                      
                     </div>
                     <ul class="flex w-[300px] flex-col p-4">
-                        @if($user?->kyc_status != config('constants.user_approval_status_inverse.1'))
+                        @if($user?->kyc_status != config('constants.user_approval_status.pending'))
                         <div class="flex cursor-pointer gap-2 rounded-md p-2 duration-300 hover:bg-primary/10">
                             
                             <div class="text-sm">
@@ -71,7 +71,7 @@
                             </div>
                         </div>
                         @endif
-                        @if($user?->status != config('constants.user_approval_status_inverse.1'))
+                        @if($user?->status != config('constants.user_approval_status.pending'))
                         <div class="flex cursor-pointer gap-2 rounded-md p-2 duration-300 hover:bg-primary/10">
                             
                             <div class="text-sm">

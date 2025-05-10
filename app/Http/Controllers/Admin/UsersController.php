@@ -22,6 +22,7 @@ class UsersController extends Controller {
         $this->companyService = $companyService;
     }
     public function index() {
+ 
         $users = User::with(['media:id,model_id,path', 'company:id,company_name', 'roles:id,name'])
             ->where('id', '!=', Auth::guard('admin')->id())
             ->paginate(10)
@@ -56,7 +57,6 @@ class UsersController extends Controller {
                     'exp' => $exp,
                     'country' => $countryName,
                     'user_status' => ucfirst($status),
-                    'media' => $user->media->first()?->path,
                     'role' => $user->roles->first()?->name,
                     'kyc_status' => ucfirst($kycStatus),
                 ];

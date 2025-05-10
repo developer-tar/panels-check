@@ -78,6 +78,7 @@ Route::group(['middleware' => 'set.auth:employee'], function () {
     Route::group(['prefix' => 'benefit', 'as' => 'employee.benefit.'], function () {
         Route::get('/', [BenefitsEnrollController::class, 'index'])->name('index');
         Route::get('create', [BenefitsEnrollController::class, 'create'])->name('create');
+        Route::post('store', [BenefitsEnrollController::class, 'store'])->name('store');
         Route::get('{id?}/edit', [BenefitsEnrollController::class, 'edit'])->name('edit');
     });
 

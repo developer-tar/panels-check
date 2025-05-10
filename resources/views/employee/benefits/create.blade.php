@@ -11,59 +11,92 @@
     <div class="mb-6 pb-6 bb-dashed flex justify-between items-center">
       <h4 class="h4">Giving a new Benefit to Employee</h4>
     </div>
-    <form>
-    <div class="mb-6 flex flex-wrap items-center gap-5 xl:gap-10">
-        <img src="{{ asset('assets/images/placeholder.png') }}" class="h-20 w-20 lg:h-auto lg:w-auto"
-          alt="placeholder" />
-        <div class="flex gap-4">
-          <input type="file" name="photo" id="photo" class="hidden" />
-          <label for="photo" class="btn-primary"> Upload Document </label>
-          <button class="btn-outline">Cancel</button>
-        </div>
-      </div>
-      <div class="grid grid-cols-2 gap-4 xxxl:gap-6">
-      <div class="col-span-2 md:col-span-1">
-        <label for="date" class="md:text-lg font-medium block mb-4">
-        Select company
-        </label>
-        <select name="sort" class="nc-select full">
-        <option value="day">Netset </option>
-        <option value="week">Luminoguru</option>
+    <form method="post" enctype="multipart/form-data" action="{{ route('employee.benefit.store') }}">
+      @csrf
+      <div class="mb-6 flex flex-wrap items-center gap-5 xl:gap-10">
 
-        </select>
+      <div class="flex gap-4">
+        <input type="file" name="claim_file" id="claim_file" class="hidden" accept=".pdf,.docx,.txt"  />
+        <label for="claim_file" class="btn-primary"> Upload Document </label>
+
       </div>
-      <div class="col-span-2 md:col-span-1">
-        <label for="date" class="md:text-lg font-medium block mb-4">
-        Select Domain
+      <div class="flex">
+ 
+      @error('claim_file')
+      <div class="text-red-500 text-sm mt-1">
+      {{ $message }}
+      </div>
+      @enderror
+      </div>
+      </div>
+      <div class="col-span-2">
+
+      @if($companies->isNotempty())
+      <div class="col-span-2  md:col-span-1">
+
+        <label for="company_id" class="mb-4 md:text-lg font-medium block">
+        Select Company
         </label>
-        <select name="sort" class="nc-select full">
-        <option value="day">Healthcare </option>
-        <option value="week">Retirement </option>
-        <option value="day"> Plan A</option>
+        <select name="company_id" id="company_id" class="nc-select full" onchange="checkValue()">
+        <option selected disabled>Select Company</option>
+        @foreach($companies as $company)
+        <option 
+            value="{{ $company['company_id'] }}-{{ $company['domain_id'] }}" 
+            {{ old('company_id') == $company['company_id'] . '-' . $company['domain_id'] ? 'selected' : '' }}>
+            {{ $company['name'] }}
+        </option>
+      @endforeach
         </select>
+        @error('company_id')
+      <div class="text-red-500 text-sm mt-1">
+      {{ $message }}
       </div>
-    <div class="col-span-2">
-        <label for="medium" class="mb-4 md:text-lg font-medium block">
-       Claim amount($)
+      @enderror
+      </div>
+    @endif
+      <div class="col-span-2">
+        <label for="claim_amount_required" class="mb-4 md:text-lg font-medium block">
+        Claim amount($)
         </label>
         <input type="number"
         class="w-full text-sm  bg-secondary/5 dark:bg-bg3 !border border-n30 dark:border-n500 rounded-3xl px-3 md:px-6 py-2 md:py-3"
-        placeholder="Enter name" id="name" required />
+        placeholder="Enter name" id="claim_amount_required"  name="claim_amount_required"   {{ old('claim_amount_required')}}/>
+        @error('claim_amount_required')
+      <div class="text-red-500 text-sm mt-1">
+      {{ $message }}
+      </div>
+      @enderror
       </div>
       <div class="col-span-2 md:col-span-2">
-        <label for="desc" class="md:text-lg font-medium block mb-4">
+        <label for="reason_for_takng_the_benefit" class="md:text-lg font-medium block mb-4">
         Reason for taking the benefits
         </label>
         <textarea
         class="w-full text-sm  bg-n0 dark:bg-bg4 border border-n30 dark:border-n500 rounded-3xl px-3 md:px-6 py-2 md:py-3"
-        placeholder="Enter Description..." rows="5" id="desc" required></textarea>
+        placeholder="Description for taking the benefit..." rows="5" id="reason_for_takng_the_benefit" name="reason_for_takng_the_benefit" >{{ old('reason_for_takng_the_benefit') }}</textarea>
       </div>
       <div class="col-span-2 flex gap-4 md:gap-6 mt-2">
+        @if($user?->status == config('constants.user_approval_status.approved') && $user?->kyc_status == config('constants.user_approval_status.approved'))
         <button class="btn-primary" type="submit">
-        Claim 
+        Claim
         </button>
+        
+        @elseif($user?->status == config('constants.user_approval_status.pending') || $user?->kyc_status == config('constants.user_approval_status.pending'))
+        <div class="text-blue-500 text-sm mt-1">
+        Wait for Admin decision
+        </div>
+        
+        @elseif($user?->status == config('constants.user_approval_status.rejected') && $user?->kyc_status == config('constants.user_approval_status.rejected'))
+        <div class="text-red-500 text-sm mt-1">
+         Profile has been rejected
+        </div>
+        @else
+        <div class="text-red-500 text-sm mt-1">
+         Contact to admin
+        </div>
+        @endif
 
-        <button data-modal-target="modal1" class="btn-primary" type="button">Comparison</button>
+        <!-- <button data-modal-target="modal1" class="btn-primary" type="button">Comparison</button> -->
         <!-- Modal element -->
         <div id="modal1" class="fixed inset-0 items-center justify-center z-[99] hidden">
         <div class="f-center h-screen w-screen">
@@ -121,3 +154,27 @@
     </div>
   </div>
 @endsection
+@push('script')
+<script>
+
+function checkValue() {
+  let value = document.getElementById('company_id');
+  const claimLimit = document.getElementById('claim_amount_required'); 
+  value = value?.value
+  
+  fetch(`/get-coverage-limit/${value}`)
+                    .then(response => {
+                        if (!response.ok) throw new Error('Network response was not ok');
+                        return response.json();
+                    })
+                    .then(data => {
+                      claimLimit.value = data?.coverage_limit || '';
+                        
+                    })
+                    .catch(error => {
+                        console.error('Error fetching company data:', error);
+                    });
+}
+
+</script>
+@endpush

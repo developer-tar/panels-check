@@ -40,71 +40,46 @@
                     <i class="las la-bell text-2xl"></i>
                     <span
                         class="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-primary text-xs text-n0">
-                        2
+                        @php 
+                        $count = 0;
+                        if($user?->status  != config('constants.user_approval_status.pending')){
+                            $count++;
+                        }
+                        @endphp
+                       
+                        {{ $count }}
+                       
                     </span>
                 </button>
                 <div id="notification"
                     class="hide absolute top-full z-20 origin-[60%_0] rounded-md bg-n0 shadow-[0px_6px_30px_0px_rgba(0,0,0,0.08)] duration-300 dark:bg-bg4 ltr:-right-[110px] sm:ltr:right-0 sm:ltr:origin-top-right rtl:-left-[120px] sm:rtl:left-0 sm:rtl:origin-top-left">
                     <div class="flex items-center justify-between border-b p-3 dark:border-n500 lg:px-4">
                         <h5 class="h5">Notifications</h5>
-                        <a href="#" class="text-sm text-primary"> View All </a>
+                        
                     </div>
                     <ul class="flex w-[300px] flex-col p-4">
+                       
+                        @if($user?->status != config('constants.user_approval_status.pending'))
                         <div class="flex cursor-pointer gap-2 rounded-md p-2 duration-300 hover:bg-primary/10">
-                            <img src="{{ asset('assets/images/user-3.png') }}" width="44" height="40"
-                                class="shrink-0 rounded-full" alt="img" />
+                            
                             <div class="text-sm">
                                 <div class="flex gap-1">
-                                    <span class="font-medium">Benjamin</span>
-                                    <span>Sent a message</span>
+                                    <span class="font-medium">Profile has been {{ config('constants.user_approval_status_inverse.'.$user?->status) }}</span>
                                 </div>
-                                <span class="text-xs text-n100 dark:text-n50">1 hour ago</span>
+                                
                             </div>
                         </div>
-                        <div class="flex cursor-pointer gap-2 rounded-md p-2 duration-300 hover:bg-primary/10">
-                            <img src="{{ asset('assets/images/user-4.png') }}" width="44" height="40"
-                                class="shrink-0 rounded-full" alt="img" />
-                            <div class="text-sm">
-                                <div class="flex gap-1">
-                                    <span class="font-medium">Benjamin</span>
-                                    <span>Left a Comment</span>
-                                </div>
-                                <span class="text-xs text-n100 dark:text-n50">1 hour ago</span>
-                            </div>
-                        </div>
-                        <div class="flex cursor-pointer gap-2 rounded-md p-2 duration-300 hover:bg-primary/10">
-                            <img src="{{ asset('assets/images/user-5.png') }}" width="44" height="40"
-                                class="shrink-0 rounded-full" alt="img" />
-                            <div class="text-sm">
-                                <div class="flex gap-1">
-                                    <span class="font-medium">Benjamin</span>
-                                    <span>Sent a message</span>
-                                </div>
-                                <span class="text-xs text-n100 dark:text-n50">2 hour ago</span>
-                            </div>
-                        </div>
-                        <div class="flex cursor-pointer gap-2 rounded-md p-2 duration-300 hover:bg-primary/10">
-                            <img src="{{ asset('assets/images/user-7.png') }}" width="44" height="40"
-                                class="shrink-0 rounded-full" alt="img" />
-                            <div class="text-sm">
-                                <div class="flex gap-1">
-                                    <span class="font-medium">Samuel</span>
-                                    <span>Uploaded a file</span>
-                                </div>
-                                <span class="text-xs text-n100 dark:text-n50">Yesterday</span>
-                            </div>
-                        </div>
-                        <div class="flex cursor-pointer gap-2 rounded-md p-2 duration-300 hover:bg-primary/10">
-                            <img src="{{ asset('assets/images/user-7.png') }}" width="44" height="40"
-                                class="shrink-0 rounded-full" alt="img" />
-                            <div class="text-sm">
+                        @endif
+                        <!-- <div class="flex cursor-pointer gap-2 rounded-md p-2 duration-300 hover:bg-primary/10"> -->
+                          
+                            <!-- <div class="text-sm">
                                 <div class="flex gap-1">
                                     <span class="font-medium">David</span>
                                     <span>Left a Comment</span>
                                 </div>
                                 <span class="text-xs text-n100 dark:text-n50">Yesterday</span>
-                            </div>
-                        </div>
+                            </div> -->
+                        <!-- </div> -->
                     </ul>
                 </div>
             </div>
@@ -114,7 +89,7 @@
                 <i class="lab la-facebook-messenger"></i>
                 <span
                     class="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-primary text-xs text-n0">
-                    3
+                  2
                 </span>
             </a>
             <!-- language dropdown -->

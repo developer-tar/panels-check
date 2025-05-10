@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Profile\Company as RequestsCompany;
 use App\Http\Requests\Profile\PersonalRequest;
 use App\ImageUploadTrait;
+use App\Models\Benefit;
 use App\Models\Company;
 use App\Models\Media;
 use App\Models\User;
@@ -59,7 +60,7 @@ class CommonController extends Controller
             return back()->with('success', config('constants.company_success_message'));
         } catch (Exception $e) {
             DB::rollBack();
-            \Log::info('error_message company create', ['message' =>$e->getMessage()]);
+            \Log::info('error_message company create', ['message' => $e->getMessage()]);
             return redirect()->back()->with('error', config('constants.wrong_message'));
         }
     }
@@ -78,12 +79,12 @@ class CommonController extends Controller
             $user = null;
 
             if (isset($request->role)) {
-                
+
                 $user = User::find(Auth::guard(strtolower($request->role))->id());
-                
+
                 $user->update($data);
             }
-            
+
             // Handle file upload
             if ($request->hasFile('path') && $user) {
                 $file = $request->file('path');
@@ -111,8 +112,23 @@ class CommonController extends Controller
             return back()->with('success', config('constants.profile_update'));
         } catch (\Exception $e) {
             DB::rollBack();
-            
+
             return back()->with('error', config('constants.wrong_message'));
         }
     }
+    public function getCoverageLimit($combinedId)
+    {
+      
+        [$companyId, $domainId] = explode('-', $combinedId);   
+        $coverageLimit = Benefit::where(['company_id' => $companyId, 'domain_id' => $domainId])->value('coverage_limit');
+       
+        if (!isset($coverageLimit)) {
+            $coverageLimit = null;
+        }
+        return response()->json([
+            'coverage_limit' => $coverageLimit,
+
+        ]);
+    }
+
 }

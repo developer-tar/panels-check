@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('claims', function (Blueprint $table) {
             $table->id();
             $table->foreignId('company_id')->nullable()->index();
-            $table->foreignId('users_id')->nullable()->index();
+            $table->foreignId('user_id')->nullable()->index();
             $table->foreignId('domain_id')->index();
-            $table->string('claim_amount');
+            $table->string('claim_amount_required');
             $table->longtext('reason_for_takng_the_benefit');
             $table->tinyInteger('status')->default(1)->comment('1= pending, 2 = approved 3= rejected');
             $table->softDeletes();
