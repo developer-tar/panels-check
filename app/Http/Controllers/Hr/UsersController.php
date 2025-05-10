@@ -179,7 +179,7 @@ class UsersController extends Controller {
     }
 
     public function reject(User $user) {
-        dd('dd');
+        
         $user->status = config('constants.user_approval_status.rejected'); // Or just 'rejected'
         $user->save();
 

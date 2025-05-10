@@ -91,6 +91,8 @@ Route::group(['middleware' => 'set.auth:vendor'], function () {
     });
 
     Route::get('/claims-billing', [DashboardController::class, 'claimsBilling'])->name('vendor.claims.billing');
+    Route::post('{claim}/approve/status', [DashboardController::class, 'approveStatus'])->name('vendor.approve.status');
+    Route::post('{claim}/reject/status', [DashboardController::class, 'rejectStatus'])->name('vendor.reject.status');
 
     // Notification
     Route::group(['prefix' => 'notification', 'as' => 'vendor.notification.'], function () {

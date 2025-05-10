@@ -285,6 +285,7 @@ const assetSeries = [
 // Progress chart
 const progressCharts = document.querySelectorAll('.progress-chart');
 if (progressCharts.length) {
+  const avgValue = parseFloat(el.getAttribute('data-avg')) || 0;
   progressCharts.forEach((el) => {
     const chart = new ApexCharts(el, {
       chart: {
@@ -295,7 +296,7 @@ if (progressCharts.length) {
           enabled: false,
         },
       },
-      series: ['33.5'],
+      series: [avgValue],
       legend: {
         show: false,
       },
@@ -318,7 +319,7 @@ if (progressCharts.length) {
           },
         },
       },
-      labels: ['33.5%'],
+      labels: [`${avgValue}%`],
     });
     chart.render();
   });

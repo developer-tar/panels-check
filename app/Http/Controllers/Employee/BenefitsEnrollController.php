@@ -10,6 +10,7 @@ use App\Models\Claim;
 use App\Models\Company;
 use App\Models\Media;
 use App\Services\CompanyService;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -28,9 +29,37 @@ class BenefitsEnrollController extends Controller
 
     public function index()
     {
+        $claims = Claim::with(['media:id,model_id,path', 'company:id,company_name', 'domain:id,name'])
+            ->where('user_id', Auth::guard('employee')->user()->id)
+            ->paginate(10)
+            ->through(function ($claim) {
+                $benefit = Benefit::select('coverage_limit', 'start_period', 'end_period')->where(['domain_id' => $claim?->domain?->id, 'company_id' => $claim?->company?->id])->first();
+                $status = null;
+                if ($claim?->status == config('constants.user_approval_status.pending')) {
+                    $status = 'submission';
+                }
+                if ($claim?->status == config('constants.user_approval_status.approved')) {
+                    $status = 'Approved';
+                }
+                if ($claim?->status == config('constants.user_approval_status.rejected')) {
+                    $status = 'Rejected';
+                }
+                return [
+                    'path' => $claim?->media?->path,
+                    'company_name' => $claim?->company?->company_name,
+                    'domain_name' => $claim?->domain?->name,
+                    'claim_amount' => $claim?->claim_amount_required,
+                    'company_claim_amount' => $benefit?->coverage_limit,
+                    'start_period' => $benefit?->start_period,
+                    'end_period' => $benefit?->end_period,
+                    'enrolled_at' => $claim?->created_at ? Carbon::parse($claim?->created_at)->diffForHumans() : null,
+                    'status' => $status,
 
-        dd(Claim::with(['media:id,name'])->where('user_id', Auth::guard('employee')->user()->id)->get());
-        return view($this->name . '.benefits.index');
+
+                ];
+            });
+            
+        return view($this->name . '.benefits.index')->with('claims',$claims);
     }
 
     public function create()
@@ -66,21 +95,21 @@ class BenefitsEnrollController extends Controller
             if ($request->filled('company_id')) {
                 [$companyId, $domainId] = explode('-', $request->company_id);
             }
-            $data = $request->except('_token','claim_file');
+            $data = $request->except('_token', 'claim_file');
             $data['user_id'] = Auth::guard('employee')->user()->id;
             $data['company_id'] = $companyId ?? null;
             $data['domain_id'] = $domainId ?? null;
 
             $claim = Claim::create($data);
-        
-              
+
+
             if ($request->hasFile('claim_file') && $claim) {
                 $file = $request->file('claim_file');
                 $extension = $file->getClientOriginalExtension();
 
                 $imagePath = $this->storeImage($file, 'claim_verify');
                 $storagePath = 'storage/' . $imagePath;
-                
+
                 $media = Media::updateOrCreate(
                     [
                         'model_name' => Claim::class,

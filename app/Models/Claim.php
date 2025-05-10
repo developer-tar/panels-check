@@ -17,6 +17,12 @@ class Claim extends Model
     ];
     public function media()
     {
-        return $this->hasMany(Media::class, 'model_id')->where('model_name', Claim::class, 'folder_name' , 'claim_verify');
+        return $this->hasOne(Media::class, 'model_id')->where(['model_name'=> Claim::class, 'folder_name' => 'claim_verify']);
+    }
+    public function company(){
+        return $this->belongsTo(Company::class);
+    }
+    public function domain(){
+        return $this->belongsTo(Domain::class);
     }
 }

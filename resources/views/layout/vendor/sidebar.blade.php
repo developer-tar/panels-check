@@ -40,7 +40,7 @@
                         <li class="menu-li">
                             <a href="{{route('vendor.claims.billing')}}" class="menu-link">
                                 <i class="las la-money-check"></i>
-                                <span>claim Management</span>
+                                <span>Request Management</span>
                             </a>
                         </li>
                         <!-- tracking logs -->

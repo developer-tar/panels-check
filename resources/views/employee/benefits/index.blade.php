@@ -8,9 +8,9 @@
     <div class="main-inner">
         <div class="mb-6 flex flex-wrap items-center justify-between gap-4 lg:mb-8">
             <h2 class="h2">Benefit Management</h2>
-            <a href="{{route('employee.benefit.create')}}" class="btn-primary inline-flex items-center">
+            <a href="{{route('hr.benefit.create')}}" class="btn-primary inline-flex items-center">
                 <i class="las la-plus-circle text-base md:text-lg"></i>
-                <span class="ml-1">Get a new benefit</span>
+                <span class="ml-1">Assign a benefit</span>
             </a>
         </div>
 
@@ -47,185 +47,137 @@
                             <tr class="bg-secondary/5 dark:bg-bg3">
                                 <th class="text-start !py-5 px-6 min-w-[230px] cursor-pointer">
                                     <div class="flex items-center gap-1">
-                                        Plan name
+                                        Docx
                                     </div>
                                 </th>
-                                
+                                <th class="text-start !py-5 px-6 min-w-[230px] cursor-pointer">
+                                    <div class="flex items-center gap-1">
+                                        Company Name
+                                    </div>
+                                </th>
                                 <th class="text-start !py-5 min-w-[130px] cursor-pointer">
                                     <div class="flex items-center gap-1">
-                                        Plan start period
+                                        Domain Name
                                     </div>
                                 </th>
 
                                 <th class="text-start !py-5 min-w-[130px] cursor-pointer">
                                     <div class="flex items-center gap-1">
-                                        Plan end period
+                                        Claim Amount
                                     </div>
                                 </th>
                                 <th class="text-start !py-5 min-w-[130px] cursor-pointer">
                                     <div class="flex items-center gap-1">
-                                        Enrolled<br> Status
+                                        Company <br>Claim<br> Amount
                                     </div>
                                 </th>
                                 <th class="text-start !py-5 min-w-[130px] cursor-pointer">
                                     <div class="flex items-center gap-1">
-                                        Enrolled at
+                                        Start Period
                                     </div>
                                 </th>
-                                <th class="text-center !py-5" data-sortable="false">Action</th>
+                                <th class="text-start !py-5 min-w-[130px] cursor-pointer">
+                                    <div class="flex items-center gap-1">
+                                        End Period
+                                    </div>
+                                </th>
+                                <th class="text-start !py-5 min-w-[130px] cursor-pointer">
+                                    <div class="flex items-center gap-1">
+                                        Enrolled<br> At
+                                    </div>
+                                </th>
+                                <th class="text-start !py-5 min-w-[130px] cursor-pointer">
+                                    <div class="flex items-center gap-1">
+                                        Status
+                                    </div>
+                                </th>
+
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="even:bg-secondary/5 dark:even:bg-bg3">
-                                <td class="py-2 px-6">
-                                    <div class="flex items-center gap-3">
-                                        <p class="font-medium mb-1">Healthcare</p>
-                                    </div>
-                                </td>
-                               
-
-                                <td class="py-2">
-                                    <div>
-                                        <p class="font-medium">2025-09-12</p>
-
-                                    </div>
-                                </td>
-                                <td class="py-2">
-                                    <div>
-                                        <p class="font-medium">2026-09-12</p>
-
-                                    </div>
-                                </td>
-
-                                <td class="py-2">
-                                    <span
-                                        class="block text-xs w-28 xxl:w-36 text-center rounded-[30px] dark:border-n500 border border-n30 py-2 bg-primary/10 dark:bg-bg3 text-primary">
-                                        Approval
-                                    </span>
-                                </td>
-                                <td class="py-2">
-                                    <div>
-                                        <p class="font-medium">2026-01-12</p>
-
-                                    </div>
-                                </td>
-                                <td class="py-2">
-                                    <div class="flex justify-center">
-                                        <div class="relative">
-                                            <i class="las la-ellipsis-v horiz-option-btn cursor-pointer popover-button"></i>
-                                            <ul class="horiz-option popover-content">
-                                                <li>
-                                                    <a href="{{route('employee.benefit.edit', 12)}}" class="single-option">
-                                                        Edit
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="/delete-url" class="single-option">
-                                                        Delete
-                                                    </a>
-                                                </li>
-                                            </ul>
+                            @if($claims->isNotEmpty())
+                            @foreach($claims as $claim)
+                                <tr class="even:bg-secondary/5 dark:even:bg-bg3">
+                                    <td class="py-2 px-6">
+                                        <div class="flex items-center gap-3">
+                                            @if($claim['path'])
+                                                <a href="{{ asset($claim['path']) }}" download class="text-blue-500 underline">
+                                                    Download
+                                                </a>
+                                            @else
+                                                <span class="text-gray-500">No document</span>
+                                            @endif
+                                        </div>
+                                    </td>
+                                    <td class="py-2 px-6">
+                                        <div class="flex items-center gap-3">
+                                            <p class="font-medium mb-1">{{ $claim['company_name'] ?? "N/A" }}</p>
                                         </div>
 
-                                    </div>
-                                </td>
-                            </tr>
+                                    </td>
 
-                            <tr class="even:bg-secondary/5 dark:even:bg-bg3">
-                                <td class="py-2 px-6">
-                                    <div class="flex items-center gap-3">
-                                        <p class="font-medium mb-1">Plan B</p>
-                                    </div>
-                                </td>
-                                
+                                    <td class="py-2">
+                                        <div>
+                                            <p class="font-medium">{{ $claim['domain_name'] ?? "N/A" }}</p>
 
-                                <td class="py-2">
-                                    <div>
-                                        <p class="font-medium">2025-09-12</p>
-
-                                    </div>
-                                </td>
-                                <td class="py-2">
-                                    <div>
-                                        <p class="font-medium">2026-09-12</p>
-
-                                    </div>
-                                </td>
-
-                                <td class="py-2">
-                                    <span
-                                        class="block text-xs w-28 xxl:w-36 text-center rounded-[30px] dark:border-n500 border border-n30 py-2 bg-danger/10 dark:bg-bg3 text-danger">
-                                        Rejected
-                                    </span>
-                                </td>
-                                <td class="py-2">
-                                    <div>
-                                        <p class="font-medium">2026-01-12</p>
-
-                                    </div>
-                                </td>
-                                <td class="py-2">
-                                    <div class="flex justify-center">
-                                        <div class="relative">
-                                            <i class="las la-ellipsis-v horiz-option-btn cursor-pointer popover-button"></i>
-                                            <ul class="horiz-option popover-content">
-                                                <li>
-                                                    <a href="{{route('employee.benefit.edit', 12)}}" class="single-option">
-                                                        Edit
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="/delete-url" class="single-option">
-                                                        Delete
-                                                    </a>
-                                                </li>
-                                            </ul>
                                         </div>
+                                    </td>
+                                    <td class="py-2">
+                                        <div>
+                                            <p class="font-medium">{{ $claim['claim_amount'] ?? "N/A" }}</p>
 
-                                    </div>
-                                </td>
-                            </tr>
+                                        </div>
+                                    </td>
+                                    <td class="py-2">
+                                        <div>
+                                            <p class="font-medium">{{ $claim['company_claim_amount'] ?? "N/A" }}</p>
+
+                                        </div>
+                                    </td>
+                                    <td class="py-2">
+                                        <div>
+                                            <p class="font-medium">{{ $claim['start_period'] ?? "N/A" }}</p>
+
+                                        </div>
+                                    </td>
+                                    <td class="py-2">
+                                        <div>
+                                            <p class="font-medium">{{ $claim['end_period'] ?? "N/A" }}</p>
+
+                                        </div>
+                                    </td>
+
+                                    <td class="py-2">
+                                        <div>
+                                            <p class="font-medium">{{ $claim['enrolled_at'] ?? "N/A" }}</p>
+
+                                        </div>
+                                    </td>
+
+                                    <td class="py-2">
+                                        <div>
+                                            <p class="font-medium">{{ $claim['status'] ?? "N/A" }}</p>
+
+                                        </div>
+                                    </td>
+
+
+                                </tr>
+                            @endforeach
+                            @endif
                         </tbody>
                     </table>
                 </div>
+                @if($claims->isNotEmpty())
                 <div class="flex col-span-12 gap-4 sm:justify-between justify-center items-center flex-wrap">
                     <p>
-                        Showing 1 to 2 of 2 entries
+                        Showing {{ $claims->firstItem() }} to {{ $claims->lastItem() }} of {{ $claims->total() }}
+                        entries
                     </p>
 
-                    <ul class="flex gap-2 md:gap-3 flex-wrap md:font-semibold items-center">
-                        <li>
-                            <button
-                                class="hover:bg-primary text-primary rtl:rotate-180 hover:text-n0 border md:w-10 duration-300 md:h-10 w-8 h-8 flex items-center rounded-full justify-center border-primary">
-                                <i class="las la-angle-left text-lg"></i>
-                            </button>
-                        </li>
-                        <li>
-                            <button
-                                class="hover:bg-primary text-n0 bg-primary hover:text-n0 border md:w-10 duration-300 md:h-10 w-8 h-8 flex items-center rounded-full justify-center border-primary">
-                                1
-                            </button>
-                        </li>
-                        <li>
-                            <button
-                                class="hover:bg-primary text-primary hover:text-n0 border md:w-10 duration-300 md:h-10 w-8 h-8 flex items-center rounded-full justify-center border-primary">
-                                2
-                            </button>
-                        </li>
-                        <li>
-                            <button
-                                class="hover:bg-primary text-primary hover:text-n0 border md:w-10 duration-300 md:h-10 w-8 h-8 flex items-center rounded-full justify-center border-primary">
-                                3
-                            </button>
-                        </li>
-                        <li>
-                            <button
-                                class="hover:bg-primary text-primary hover:text-n0 rtl:rotate-180 border md:w-10 duration-300 md:h-10 w-8 h-8 flex items-center rounded-full justify-center border-primary">
-                                <i class="las la-angle-right text-lg"></i>
-                            </button>
-                        </li>
-                    </ul>
+                    {{ $claims->onEachSide(1)->links('common.pagination') }}
                 </div>
+                @endif
             </div>
 
         </div>

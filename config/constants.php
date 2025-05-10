@@ -71,7 +71,12 @@ return [
         'status' => [
             'approval' => 'User  approved successfully.',
             'rejected' => 'User  rejected successfully.'
-        ]
+        ],
+
+        'claim_status' => [
+            'approval' => 'Claim  approved successfully.',
+            'rejected' => 'Claim  rejected successfully.'
+        ],
     ],
     'company_success_message' => 'Company Profile Created',
     'profile_update' => 'Profile Updated Successfully',
