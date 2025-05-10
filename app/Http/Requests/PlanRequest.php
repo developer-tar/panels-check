@@ -11,8 +11,7 @@ class PlanRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        
-            return true;
+        return true;
     }
 
     /**
@@ -23,16 +22,13 @@ class PlanRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'company_name' => ['required', 'string', 'max:255', 'unique:companies,company_name'],
-            'email' => ['required', 'email', 'max:255', 'unique:companies,email'],
-            'phone' => ['nullable', 'string', 'max:20'],
-            'type' => ['required', 'string', 'max:50'],
-            'registration_number' => ['required', 'string', 'max:100'],
-            'website_url' => ['required', 'url', 'max:255'],
-            'domain_id' => ['nullable', 'integer'],
-            'description' => ['required', 'string'],
-            'path' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
-
+            'domain_id' => ['required', 'integer'],
+            'start_period' => ['required', 'date'],
+            'end_period' => ['required', 'date', 'after:start_period'],
+            'coverage_limit' => ['required', 'numeric'],
+            'eliegibility_rules' => ['required', 'string'],
+            'automatice_reminder' => ['nullable', 'boolean'],
+            'customization_notes' => ['required', 'string'],
         ];
     }
 }

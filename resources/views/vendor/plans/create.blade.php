@@ -12,17 +12,14 @@
       <h4 class="h4">Creating</h4>
     </div>
     <form method="post" action="{{ route('vendor.plan.store') }}">
-
+      @csrf
+      <input type="hidden" name="company_id" value="{{ $compyId ?? '' }}">
       <div class="grid grid-cols-2 gap-4 xxxl:gap-6">
-
-
       <div class="col-span-2 md:col-span-1">
         <label for="name" class="mb-4 md:text-lg font-medium block">
         Select Domain Name
         </label>
-        <select name="sort" class="nc-select full">
-
-
+        <select name="domain_id" class="nc-select full">
         @foreach($domains as $domain)
 
         @if($domain != 'no record found')
@@ -46,24 +43,24 @@
 
 
       <div class="col-span-2 md:col-span-1">
-        <label for="coverge_limit" class="mb-4 md:text-lg font-medium block">
+        <label for="coverage_limit" class="mb-4 md:text-lg font-medium block">
         Coverage Limit($)
         </label>
         <input type="number"
         class="w-full text-sm  bg-secondary/5 dark:bg-bg3 !border border-n30 dark:border-n500 rounded-3xl px-3 md:px-6 py-2 md:py-3"
-        placeholder="Enter coverage limit" id="coverge_limit" value="{{ old('coverge_limit')}}"
-        name='coverge_limit' />
-        @error('user_phone')
+        placeholder="Enter coverage limit" id="coverage_limit" value="{{ old('coverage_limit')}}"
+        name='coverage_limit' />
+        @error('coverage_limit')
       <div class="text-red-500 text-sm mt-1">
       {{ $message }}
       </div>
       @enderror
       </div>
       <div class="col-span-2 md:col-span-1">
-        <label for="medium" class="mb-4 md:text-lg font-medium block">
+        <label for="start_period" class="mb-4 md:text-lg font-medium block">
         Start Period
         </label>
-        <input type="number"
+        <input type="text"
         class="w-full text-sm  bg-secondary/5 dark:bg-bg3 !border border-n30 dark:border-n500 rounded-3xl px-3 md:px-6 py-2 md:py-3"
         placeholder="Enter start period" id="start_period" value="{{ old('start_period')}}" name='start_period' />
         @error('start_period')
@@ -73,10 +70,10 @@
       @enderror
       </div>
       <div class="col-span-2 md:col-span-1">
-        <label for="medium" class="mb-4 md:text-lg font-medium block">
+        <label for="end_period" class="mb-4 md:text-lg font-medium block">
         End Period
         </label>
-        <input type="number"
+        <input type="text"
         class="w-full text-sm  bg-secondary/5 dark:bg-bg3 !border border-n30 dark:border-n500 rounded-3xl px-3 md:px-6 py-2 md:py-3"
         placeholder="Enter end period" id="end_period" value="{{ old('end_period')}}" name='end_period' />
         @error('end_period')
@@ -93,8 +90,8 @@
         </label>
         <textarea
         class="w-full text-sm  bg-n0 dark:bg-bg4 border border-n30 dark:border-n500 rounded-3xl px-3 md:px-6 py-2 md:py-3"
-        placeholder="Enter eligibility rules..." rows="5"
-        id="eliegibility_rules">{{ old('eliegibility_rules') }}</textarea>
+        placeholder="Enter eligibility rules..." rows="5" id="eliegibility_rules"
+        name="eliegibility_rules">{{ old('eliegibility_rules') }}</textarea>
         @error('eliegibility_rules')
       <div class="text-red-500 text-sm mt-1">
       {{ $message }}
@@ -107,8 +104,8 @@
         </label>
         <textarea
         class="w-full text-sm  bg-n0 dark:bg-bg4 border border-n30 dark:border-n500 rounded-3xl px-3 md:px-6 py-2 md:py-3"
-        placeholder="Enter customization notes..." rows="5"
-        id="customization_notes">{{ old('customization_notes') }}</textarea>
+        placeholder="Enter customization notes..." rows="5" id="customization_notes"
+        name="customization_notes">{{ old('customization_notes') }}</textarea>
         @error('customization_notes')
       <div class="text-red-500 text-sm mt-1">
       {{ $message }}
@@ -125,15 +122,31 @@
           <span class="text-xs md:text-sm">Automatic reminder for open enrollment user </span>
         </div>
         <div class="flex items-center justify-center">
-          <label for="automatice_reminder" class="flex items-center cursor-pointer">
-          <div class="relative">
-            <input type="checkbox" id="automatice_reminder" class="custom-checkbox sr-only"   {{ old('automatice_reminder') ? 'checked' : '' }}>
-            <div class="block w-14 h-8 rounded-full bg bg-primary"></div>
-            <div class="dot absolute left-1 top-1 bg-white w-6 h-6 rounded-full transition translate-x-full">
-            </div>
-          </div>
-          </label>
+    <label for="automatice_reminder" class="flex items-center cursor-pointer">
+        <div class="relative">
+            <!-- Hidden fallback for unchecked checkbox -->
+            <input type="hidden" name="automatice_reminder" value="0">
+            
+            <input type="checkbox"
+                   id="automatice_reminder"
+                   name="automatice_reminder"
+                   value="1"
+                   class="custom-checkbox sr-only"
+                   {{ old('automatice_reminder') ? 'checked' : '' }}>
+
+            <div class="block w-14 h-8 rounded-full bg bg-primary/20"></div>
+            <div class="dot absolute left-1 top-1 bg-white w-6 h-6 rounded-full transition"></div>
         </div>
+    </label>
+
+    @error('automatice_reminder')
+        <div class="text-red-500 text-sm mt-1">
+            {{ $message }}
+        </div>
+    @enderror
+</div>
+
+
         </div>
 
       </div>

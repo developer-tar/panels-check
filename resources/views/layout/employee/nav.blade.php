@@ -10,9 +10,8 @@
                 id="sidebar-toggle-btn">
                 <i class="las la-angle-left text-lg"></i>
             </button>
-
-
         </div>
+
         <div class="flex items-center gap-3 sm:gap-4 xxl:gap-6">
             <!-- mobile Search  -->
             <div class="relative lg:hidden">
@@ -40,71 +39,60 @@
                     <i class="las la-bell text-2xl"></i>
                     <span
                         class="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-primary text-xs text-n0">
-                        2
+                        @php 
+                        $count = 0;
+                        if($user?->kyc_status != config('constants.user_approval_status.pending')){
+                            $count++;
+                        }
+                        if($user?->status  != config('constants.user_approval_status.pending')){
+                            $count++;
+                        }
+                        @endphp
+                       
+                        {{ $count }}
                     </span>
                 </button>
                 <div id="notification"
                     class="hide absolute top-full z-20 origin-[60%_0] rounded-md bg-n0 shadow-[0px_6px_30px_0px_rgba(0,0,0,0.08)] duration-300 dark:bg-bg4 ltr:-right-[110px] sm:ltr:right-0 sm:ltr:origin-top-right rtl:-left-[120px] sm:rtl:left-0 sm:rtl:origin-top-left">
                     <div class="flex items-center justify-between border-b p-3 dark:border-n500 lg:px-4">
                         <h5 class="h5">Notifications</h5>
-                        <a href="#" class="text-sm text-primary"> View All </a>
+                     
                     </div>
                     <ul class="flex w-[300px] flex-col p-4">
+                        @if($user?->kyc_status != config('constants.user_approval_status.pending'))
                         <div class="flex cursor-pointer gap-2 rounded-md p-2 duration-300 hover:bg-primary/10">
-                            <img src="{{ asset('assets/images/user-3.png') }}" width="44" height="40"
-                                class="shrink-0 rounded-full" alt="img" />
+                            
                             <div class="text-sm">
                                 <div class="flex gap-1">
-                                    <span class="font-medium">Benjamin</span>
-                                    <span>Sent a message</span>
+                                    <span class="font-medium">Identity verification has been {{ config('constants.user_approval_status.pending') }}</span>
+                                  
                                 </div>
-                                <span class="text-xs text-n100 dark:text-n50">1 hour ago</span>
+                                
                             </div>
                         </div>
+                        @endif
+                        @if($user?->status != config('constants.user_approval_status.pending'))
                         <div class="flex cursor-pointer gap-2 rounded-md p-2 duration-300 hover:bg-primary/10">
-                            <img src="{{ asset('assets/images/user-4.png') }}" width="44" height="40"
-                                class="shrink-0 rounded-full" alt="img" />
+                            
                             <div class="text-sm">
                                 <div class="flex gap-1">
-                                    <span class="font-medium">Benjamin</span>
-                                    <span>Left a Comment</span>
+                                    <span class="font-medium"> has </span>
+                                  
                                 </div>
-                                <span class="text-xs text-n100 dark:text-n50">1 hour ago</span>
+                                
                             </div>
                         </div>
-                        <div class="flex cursor-pointer gap-2 rounded-md p-2 duration-300 hover:bg-primary/10">
-                            <img src="{{ asset('assets/images/user-5.png') }}" width="44" height="40"
-                                class="shrink-0 rounded-full" alt="img" />
-                            <div class="text-sm">
-                                <div class="flex gap-1">
-                                    <span class="font-medium">Benjamin</span>
-                                    <span>Sent a message</span>
-                                </div>
-                                <span class="text-xs text-n100 dark:text-n50">2 hour ago</span>
-                            </div>
-                        </div>
-                        <div class="flex cursor-pointer gap-2 rounded-md p-2 duration-300 hover:bg-primary/10">
-                            <img src="{{ asset('assets/images/user-7.png') }}" width="44" height="40"
-                                class="shrink-0 rounded-full" alt="img" />
-                            <div class="text-sm">
-                                <div class="flex gap-1">
-                                    <span class="font-medium">Samuel</span>
-                                    <span>Uploaded a file</span>
-                                </div>
-                                <span class="text-xs text-n100 dark:text-n50">Yesterday</span>
-                            </div>
-                        </div>
-                        <div class="flex cursor-pointer gap-2 rounded-md p-2 duration-300 hover:bg-primary/10">
-                            <img src="{{ asset('assets/images/user-7.png') }}" width="44" height="40"
-                                class="shrink-0 rounded-full" alt="img" />
-                            <div class="text-sm">
+                        @endif
+                        <!-- <div class="flex cursor-pointer gap-2 rounded-md p-2 duration-300 hover:bg-primary/10"> -->
+                          
+                            <!-- <div class="text-sm">
                                 <div class="flex gap-1">
                                     <span class="font-medium">David</span>
                                     <span>Left a Comment</span>
                                 </div>
                                 <span class="text-xs text-n100 dark:text-n50">Yesterday</span>
-                            </div>
-                        </div>
+                            </div> -->
+                        <!-- </div> -->
                     </ul>
                 </div>
             </div>
@@ -150,8 +138,8 @@
                 <div id="profile"
                     class="hide absolute top-full z-20 rounded-md bg-n0 shadow-[0px_6px_30px_0px_rgba(0,0,0,0.08)] duration-300 dark:bg-bg4 ltr:right-0 ltr:origin-top-right rtl:left-0 rtl:origin-top-left">
                     <div class="flex flex-col items-center border-b p-3 text-center dark:border-n500 lg:p-4">
-                    <img src="@if($media) {{ asset($media) }}  @else {{ asset('assets/images/user-big-4.png') }} @endif" width="60" height="60"
-                            class="rounded-full" alt="profile img" />
+                        <img src="@if($media) {{ asset($media) }}  @else {{ asset('assets/images/user-big-4.png') }} @endif"
+                            width="60" height="60" class="rounded-full" alt="profile img" />
                         <h6 class="h6 mt-2">{{$user?->full_name}}</h6>
                         <span class="text-sm">{{$user?->email}}</span>
                     </div>

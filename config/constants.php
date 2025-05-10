@@ -36,6 +36,7 @@ return [
         'EMPLOYEE' => 3,
         'VENDOR' => 4,
     ],
+    
     'roles_inverse' => [
         'admin' => 'ADMIN',
         'hr' => 'HR',

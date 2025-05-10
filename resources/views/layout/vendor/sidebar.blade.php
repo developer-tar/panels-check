@@ -27,44 +27,14 @@
                                 <span>Dashboard</span>
                             </a>
                         </li>
-
-                        <!-- plans -->
                         <li class="menu-li">
-                            <button class="menu-btn border-n30 bg-n0 dark:!border-n500 dark:bg-bg4">
-                                <span class="flex items-center justify-center gap-2">
-                                    <span class="menu-icon">
-                                        <i class="las la-chart-area"></i>
-                                    </span>
-                                    <span class="menu-title font-medium">Benefit plans</span>
-                                </span>
-                                <span class="plus-minus">
-                                    <i class="las la-plus text-xl"></i>
-                                    <i class="las la-minus text-xl"></i>
-                                </span>
-                                <span class="chevron-down hidden">
-                                    <i class="las la-angle-down text-base"></i>
-                                </span>
-                            </button>
-                            <ul class="submenu-hide submenu">
-                                <li>
-                                    <a href="{{ route('vendor.plan.index') }}" class="submenu-link">
-                                        <i class="las la-minus text-xl"></i>
-                                        <span>List/Manage</span>
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="{{ route('vendor.plan.create') }}" class="submenu-link">
-                                        <i class="las la-minus text-xl"></i>
-                                        <span>Add</span>
-                                    </a>
-                                </li>
-
-                            </ul>
-
-
+                            <a href="{{route('vendor.plan.index')}}" class="menu-link">
+                                <i class="las la-home"></i>
+                                <span>Benefit plans</span>
+                            </a>
                         </li>
-
+                        <!-- plans -->
+              
 
                         <!-- Claim Record-->
                         <li class="menu-li">

@@ -144,16 +144,16 @@
             <!-- Profile dropdown -->
             <div class="relative shrink-0">
                 <div id="profile-btn" class="w-10 cursor-pointer md:w-12">
-                    <img src="{{ asset('assets/images/user-big-4.png') }}" class="rounded-full" width="48" height="48"
-                        alt="profile img" />
+                <img src="@if($media) {{ asset($media) }}  @else {{ asset('assets/images/user-big-4.png') }} @endif" class="rounded-full" width="48" height="48"
+                alt="profile img" />
                 </div>
                 <div id="profile"
                     class="hide absolute top-full z-20 rounded-md bg-n0 shadow-[0px_6px_30px_0px_rgba(0,0,0,0.08)] duration-300 dark:bg-bg4 ltr:right-0 ltr:origin-top-right rtl:left-0 rtl:origin-top-left">
                     <div class="flex flex-col items-center border-b p-3 text-center dark:border-n500 lg:p-4">
-                        <img src="{{ asset('assets/images/user-big-4.png') }}" width="60" height="60"
+                    <img src="@if($media) {{ asset($media) }}  @else {{ asset('assets/images/user-big-4.png') }} @endif" width="60" height="60"
                             class="rounded-full" alt="profile img" />
-                        <h6 class="h6 mt-2">William James</h6>
-                        <span class="text-sm">james@mail.com</span>
+                        <h6 class="h6 mt-2">{{$user?->full_name}}</h6>
+                        <span class="text-sm">{{$user?->email}}</span>
                     </div>
                     <ul class="flex w-[250px] flex-col p-4">
                         <li>

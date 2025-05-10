@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('benefit', function (Blueprint $table) {
+        Schema::create('benefits', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->index();
             $table->foreignId('company_id')->index();

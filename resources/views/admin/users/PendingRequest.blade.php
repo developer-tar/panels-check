@@ -22,11 +22,7 @@
                     <table class="w-full whitespace-nowrap" id="payment-account">
                         <thead>
                             <tr class="bg-secondary/5 dark:bg-bg3">
-                                <th class="text-start !py-5 px-6 min-w-[230px] cursor-pointer">
-                                    <div class="flex items-center gap-1">
-                                        Profile
-                                    </div>
-                                </th>
+                               
                                 <th class="text-start !py-5 px-6 min-w-[230px] cursor-pointer">
                                     <div class="flex items-center gap-1">
                                         Company Name
@@ -37,6 +33,12 @@
                                         Name
                                     </div>
                                 </th>
+                                <th class="text-start !py-5 min-w-[130px] cursor-pointer">
+                                    <div class="flex items-center gap-1">
+                                        Role
+                                    </div>
+                                </th>
+
                                 <th class="text-start !py-5 px-6 min-w-[230px] cursor-pointer">
                                     <div class="flex items-center gap-1">
                                         Age
@@ -74,17 +76,7 @@
                         <tbody>
                             @foreach($users as $user)
                                 <tr class="even:bg-secondary/5 dark:even:bg-bg3">
-                                    <td class="py-2 px-6">
-                                        <div class="flex items-center gap-3">
-                                            @if(isset($user['media']))
-                                                <img src="{{ asset($user['media']) }}" width="100" height="32" class="rounded-full"
-                                                    alt="payment medium icon" />
-                                            @else
-                                                <p class="font-medium mb-1">N/A</p>
-                                            @endif
-
-                                        </div>
-                                    </td>
+                                    
                                     <td class="py-2 px-6">
                                         <div class="flex items-center gap-3">
                                          
@@ -97,6 +89,12 @@
                                     <td class="py-2 px-6">
                                         <div class="flex items-center gap-3">
                                             <p class="font-medium mb-1">{{ $user['name'] }}</p>
+                                        </div>
+
+                                    </td>
+                                    <td class="py-2 px-6">
+                                        <div class="flex items-center gap-3">
+                                            <p class="font-medium mb-1"><b>{{ $user['role'] }}</b></p>
                                         </div>
 
                                     </td>

@@ -108,7 +108,7 @@ class UsersController extends Controller {
             return redirect()->route($this->name . '.user.index')->with('success', 'User created successfully.');
         } catch (\Exception $e) {
             DB::rollBack();
-            dd($e->getMessage());
+         
             return redirect()->back()->with('error', 'Something went wrong');
         }
     }

@@ -109,15 +109,19 @@ class UsersController extends Controller {
             return redirect()->route($this->name . '.user.index')->with('success', 'HR created successfully.');
         } catch (\Exception $e) {
             DB::rollBack();
-            dd($e->getMessage());
+            
             return redirect()->back()->with('error', 'Something went wrong');
         }
     }
     public function kycPendingRequest() {
         $users = User::with(['media:id,model_id,path', 'company:id,company_name', 'roles:id,name'])
-
             ->whereNot('id', Auth::guard('admin')->id())->where(['kyc_status' => config('constants.user_approval_status.pending')])
-
+            ->whereHas('roles', function($q){
+                $q->where('name',config('constants.roles_inverse.employee'));
+            })
+            ->whereHas('media', function($q){
+                $q->where('folder_name','identity_verify');
+            })
             ->paginate(10)
             ->through(function ($user) {
                 // Experience formatting
@@ -132,11 +136,12 @@ class UsersController extends Controller {
                 $countryName = isset($user->country_id)
                     ? array_search($user->country_id, config('constants.country'))
                     : null;
-
+               
 
                 $kycStatus = isset($user->kyc_status)
                     ? array_search($user->kyc_status, config('constants.user_approval_status'))
                     : null;
+                       
                 return [
                     'id' => $user->id,
                     'company_name' => $user->company?->company_name,
@@ -146,12 +151,11 @@ class UsersController extends Controller {
                     'salary' => $user && isset($user->current_salary_per_annum) ? $user->current_salary_per_annum . '$' : null,
                     'exp' => $exp,
                     'country' => $countryName,
-                    'media' => $user->media->first()?->path,
-                    'role' => $user->roles->first()?->name,
+                    'identity_document' => $user->media->first()?->path,
                     'kyc_status' => ucfirst($kycStatus),
                 ];
             });
-
+        
         return view($this->name . '.users.kycPendingRequest')->with('users', $users);
     }
 
@@ -173,7 +177,6 @@ class UsersController extends Controller {
         $users = User::with(['media:id,model_id,path', 'company:id,company_name', 'roles:id,name'])
 
             ->whereNot('id', Auth::guard('admin')->id())->where(['status' => config('constants.user_approval_status.pending')])
-
             ->paginate(10)
             ->through(function ($user) {
                 // Experience formatting

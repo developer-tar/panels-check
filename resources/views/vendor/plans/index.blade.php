@@ -8,10 +8,13 @@
 <div class="main-inner">
     <div class="mb-6 flex flex-wrap items-center justify-between gap-4 lg:mb-8">
         <h2 class="h2">Plan Management</h2>
+        @if(!$benefit)
+    
         <a href="{{route('vendor.plan.create')}}" class="btn-primary inline-flex items-center">
             <i class="las la-plus-circle text-base md:text-lg"></i>
             <span class="ml-1">Add an new benefit plan</span>
         </a>
+        @endif
     </div>
 
     <div class="grid grid-cols-1 gap-4 xxl:gap-6">
@@ -70,190 +73,60 @@
                                     End
                                 </div>
                             </th>
-                            <th class="text-start !py-5 min-w-[130px] cursor-pointer">
-                                <div class="flex items-center gap-1">
-                                   No of Employee Enrolled
-                                </div>
-                            </th>
-                            <th class="text-start !py-5 min-w-[130px] cursor-pointer">
-                                <div class="flex items-center gap-1">
-                                    Reminder<br> Status
-                                </div>
-                            </th>
-                            
-                            <th class="text-center !py-5" data-sortable="false">Action</th>
                         </tr>
                     </thead>
                     <tbody>
+                      
+                        @if($benefit)
+                        
+                       
                         <tr class="even:bg-secondary/5 dark:even:bg-bg3">
                             <td class="py-2 px-6">
                                 <div class="flex items-center gap-3">
-                                <p class="font-medium mb-1">Healthcare</p>
+                                <p class="font-medium mb-1">{{ $benefit?->domain?->name  ?? "N/A"}}</p>
                                 </div>
                             </td>
                             <td class="py-2 px-6">
                                 <div class="flex items-center gap-3">
-                                    <p class="font-medium mb-1">1000$</p>
+                                    <p class="font-medium mb-1">{{ $benefit?->coverage_limit.'$'  ?? "N/A"}}</p>
                                 </div>
 
                             </td>
                             <td class="py-2">
                                 <div>
-                                    <p class="font-medium mb-1">The person should be...</p>
+                                    <p class="font-medium mb-1">{{ $benefit?->eliegibility_rules  ?? "N/A"}}</p>
 
                                 </div>
                             </td>
                             <td class="py-2">
                                 <div>
-                                    <p class="font-medium">2025-09-12</p>
+                                    <p class="font-medium">{{ $benefit?->start_period  ?? "N/A"}}</p>
 
                                 </div>
                             </td>
                             <td class="py-2">
                                 <div>
-                                    <p class="font-medium">2026-09-12</p>
+                                    <p class="font-medium">{{ $benefit?->end_period  ?? "N/A"}}</p>
 
                                 </div>
                             </td>
-                            <td class="py-2">
-                                <div>
-                                    <p class="font-medium">100</p>
-
-                                </div>
-                            </td>
-                            <td class="py-2">
-                                <span
-                                    class="block text-xs w-28 xxl:w-36 text-center rounded-[30px] dark:border-n500 border border-n30 py-2 bg-primary/10 dark:bg-bg3 text-primary">
-                                    Active
-                                </span>
-                            </td>
-                            <td class="py-2">
-                                <div class="flex justify-center">
-                                    <div class="relative">
-                                        <i class="las la-ellipsis-v horiz-option-btn cursor-pointer popover-button"></i>
-                                        <ul class="horiz-option popover-content">
-                                            <li>
-                                                <a href="{{route('vendor.plan.edit', 12)}}" class="single-option">
-                                                    Edit
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="/delete-url" class="single-option">
-                                                    Delete
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-
-                                </div>
-                            </td>
+                            
                         </tr>
-
-                        <tr class="old:bg-secondary/5 dark:even:bg-bg3">
-                            <td class="py-2 px-6">
+                      
+                        @else
+                        <tr class="even:bg-secondary/5 dark:even:bg-bg3">
+                            <td class="py-2 px-6" colspan="6">
                                 <div class="flex items-center gap-3">
-                                <p class="font-medium mb-1">Retirement</p>
+                                <p class="font-medium mb-1">No record found</p>
                                 </div>
                             </td>
-                            <td class="py-2 px-6">
-                                <div class="flex items-center gap-3">
-                                    <p class="font-medium mb-1">1000$</p>
-                                </div>
-
-                            </td>
-                            <td class="py-2">
-                                <div>
-                                    <p class="font-medium mb-1">The person should be...</p>
-
-                                </div>
-                            </td>
-                            <td class="py-2">
-                                <div>
-                                    <p class="font-medium">2025-09-12</p>
-
-                                </div>
-                            </td>
-                            <td class="py-2">
-                                <div>
-                                    <p class="font-medium">2026-09-12</p>
-
-                                </div>
-                            </td>
-                            <td class="py-2">
-                                <div>
-                                    <p class="font-medium">10</p>
-
-                                </div>
-                            </td>
-
-                            <td class="py-2">
-                                <span
-                                    class="block text-xs w-28 xxl:w-36 text-center rounded-[30px] dark:border-n500 border border-n30 py-2 bg-primary/10 dark:bg-bg3 text-primary">
-                                    Active
-                                </span>
-                            </td>
-                            <td class="py-2">
-                                <div class="flex justify-center">
-                                    <div class="relative">
-                                        <i class="las la-ellipsis-v horiz-option-btn cursor-pointer popover-button"></i>
-                                        <ul class="horiz-option popover-content">
-                                            <li>
-                                                <a href="{{route('vendor.plan.edit', 12)}}" class="single-option">
-                                                    Edit
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="/delete-url" class="single-option">
-                                                    Delete
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-
-                                </div>
-                            </td>
+                           
                         </tr>
+                        @endif
                     </tbody>
                 </table>
             </div>
-            <div class="flex col-span-12 gap-4 sm:justify-between justify-center items-center flex-wrap">
-                <p>
-                    Showing 1 to 2 of 2 entries
-                </p>
-
-                <ul class="flex gap-2 md:gap-3 flex-wrap md:font-semibold items-center">
-                    <li>
-                        <button
-                            class="hover:bg-primary text-primary rtl:rotate-180 hover:text-n0 border md:w-10 duration-300 md:h-10 w-8 h-8 flex items-center rounded-full justify-center border-primary">
-                            <i class="las la-angle-left text-lg"></i>
-                        </button>
-                    </li>
-                    <li>
-                        <button
-                            class="hover:bg-primary text-n0 bg-primary hover:text-n0 border md:w-10 duration-300 md:h-10 w-8 h-8 flex items-center rounded-full justify-center border-primary">
-                            1
-                        </button>
-                    </li>
-                    <li>
-                        <button
-                            class="hover:bg-primary text-primary hover:text-n0 border md:w-10 duration-300 md:h-10 w-8 h-8 flex items-center rounded-full justify-center border-primary">
-                            2
-                        </button>
-                    </li>
-                    <li>
-                        <button
-                            class="hover:bg-primary text-primary hover:text-n0 border md:w-10 duration-300 md:h-10 w-8 h-8 flex items-center rounded-full justify-center border-primary">
-                            3
-                        </button>
-                    </li>
-                    <li>
-                        <button
-                            class="hover:bg-primary text-primary hover:text-n0 rtl:rotate-180 border md:w-10 duration-300 md:h-10 w-8 h-8 flex items-center rounded-full justify-center border-primary">
-                            <i class="las la-angle-right text-lg"></i>
-                        </button>
-                    </li>
-                </ul>
-            </div>
+            
         </div>
 
     </div>

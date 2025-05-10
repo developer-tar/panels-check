@@ -94,12 +94,7 @@
                                         <span>Register</span>
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="{{ route('admin.user.kyc.pending.request') }}" class="submenu-link">
-                                        <i class="las la-minus text-xl"></i>
-                                        <span>Kyc pending request</span>
-                                    </a>
-                                </li>
+                                
                                 <li>
                                     <a href="{{ route('admin.user.pending.request') }}" class="submenu-link">
                                         <i class="las la-minus text-xl"></i>
@@ -108,8 +103,13 @@
                                 </li>
 
                             </ul>
+                        </li>
 
-
+                        <li class="menu-li">
+                            <a href="{{ route('admin.user.kyc.pending.request') }}" class="menu-link">
+                                <i class="las la-user"></i>
+                                <span>Identity Verification</span>
+                            </a>
                         </li>
                         <!-- Roles -->
                         <li class="menu-li">
