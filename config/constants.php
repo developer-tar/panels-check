@@ -36,7 +36,7 @@ return [
         'EMPLOYEE' => 3,
         'VENDOR' => 4,
     ],
-    
+
     'roles_inverse' => [
         'admin' => 'ADMIN',
         'hr' => 'HR',
@@ -49,11 +49,16 @@ return [
         'rejected' => 3,
 
     ],
+    'user_approval_status_inverse' => [
+        1 => 'pending',
+        2 => 'approved',
+        3 => 'rejected',
+
+    ],
     'user_approval_status_reverse' => [
         'PENDING' => 'pending',
         'APPROVED' => 'approved',
         'REJECTED' => 'rejected',
-
     ],
 
     'warning_messge' => [
@@ -73,6 +78,6 @@ return [
     'wrong_message' => 'Something went wrong',
     'user_credit_score_message' => 'User Credit score Updated successfully.',
     'kyc_verify_message' => 'Document Upload successfully.',
-    
-   
+
+
 ];

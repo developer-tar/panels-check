@@ -41,10 +41,10 @@
                         class="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-primary text-xs text-n0">
                         @php 
                         $count = 0;
-                        if($user?->kyc_status != config('constants.user_approval_status.pending')){
+                        if($user?->kyc_status != config('constants.user_approval_status_inverse.1')){
                             $count++;
                         }
-                        if($user?->status  != config('constants.user_approval_status.pending')){
+                        if($user?->status  != config('constants.user_approval_status_inverse.1')){
                             $count++;
                         }
                         @endphp
@@ -59,24 +59,24 @@
                      
                     </div>
                     <ul class="flex w-[300px] flex-col p-4">
-                        @if($user?->kyc_status != config('constants.user_approval_status.pending'))
+                        @if($user?->kyc_status != config('constants.user_approval_status_inverse.1'))
                         <div class="flex cursor-pointer gap-2 rounded-md p-2 duration-300 hover:bg-primary/10">
                             
                             <div class="text-sm">
                                 <div class="flex gap-1">
-                                    <span class="font-medium">Identity verification has been {{ config('constants.user_approval_status.pending') }}</span>
+                                    <span class="font-medium">Identity verification has been {{ config('constants.user_approval_status_inverse.'.$user?->kyc_status) }}</span>
                                   
                                 </div>
                                 
                             </div>
                         </div>
                         @endif
-                        @if($user?->status != config('constants.user_approval_status.pending'))
+                        @if($user?->status != config('constants.user_approval_status_inverse.1'))
                         <div class="flex cursor-pointer gap-2 rounded-md p-2 duration-300 hover:bg-primary/10">
                             
                             <div class="text-sm">
                                 <div class="flex gap-1">
-                                    <span class="font-medium"> has </span>
+                                    <span class="font-medium">Profile has been {{ config('constants.user_approval_status_inverse.'.$user?->status) }}</span>
                                   
                                 </div>
                                 
