@@ -179,35 +179,52 @@
                 <!-- Credit card scores -->
                 <div class="box xxl:p-8 xxxl:p-10 mt-3">
                 <h4 class="h4 bb-dashed mb-4 pb-4 md:mb-6 md:pb-6">Identity Verification</h4>
-                <form class="mt-6 xl:mt-8 grid grid-cols-2 gap-4 xxxl:gap-6" method="post" action="{{ route('employee.user.identity.verify') }}"  enctype="multipart/form-data">
-                    @csrf
-                    
-                    <div class="flex flex-wrap gap-6 xxl:gap-10 items-center  mb-6 pb-6 gap-check">
-                        <!-- Fixed-size Image Preview -->
+              <form class="mt-6 xl:mt-8 grid grid-cols-2 gap-4 xxxl:gap-6" method="post" action="{{ route('employee.user.identity.verify') }}" enctype="multipart/form-data">
+                        @csrf
 
-                        <div class="flex gap-4">
-                            <input type="file" name="identity_file" id="identity_file" class="hidden" accept=".pdf,.docx,.txt" />
-                            <label for="identity_file" class="btn-primary cursor-pointer">Upload Docx </label>
-                          
-                        </div>
-                        <div class="flex">
-
-                            @error('identity_file')
-                                <div class="text-red-500 text-sm mt-1">
-                                    {{ $message }}
-                                </div>
+                        <div class="col-span-2">
+                            <label for="identity_type" class="md:text-lg font-medium block mb-4">Document Type</label>
+                            <select id="identity_type" name="identity_type" class="nc-select full" onchange="handleDocTypeChange()">
+                                <option selected disabled>Select Document Type</option>
+                                <option value="aadhaar" {{ old('identity_type') == 'aadhaar' ? 'selected' : '' }}>Aadhaar Card</option>
+                                <option value="pan" {{ old('identity_type') == 'pan' ? 'selected' : '' }}>PAN Card</option>
+                                <option value="passport" {{ old('identity_type') == 'passport' ? 'selected' : '' }}>Passport</option>
+                                <option value="license" {{ old('identity_type') == 'license' ? 'selected' : '' }}>Driving License</option>
+                            </select>
+                            @error('identity_type')
+                                <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
                             @enderror
-
                         </div>
-                    </div>
-                   
-                
-                    <div class="col-span-2 flex pt-4 gap-4">
-                        <button type="submit" class="btn-primary px-5" >Submission </button>
-                      
-                    </div>
-                   
-                </form>
+
+                        <div class="col-span-2">
+                            <label id="identity_number_label" class="md:text-lg font-medium block mb-4">Document Number</label>
+                            <input type="text" class="w-full text-sm bg-primary/5 dark:bg-bg3 border border-n30 dark:border-n500 rounded-3xl px-3 md:px-6 py-2 md:py-3" placeholder="Enter Document Number" id="identity_number" name="identity_number" value="{{ old('identity_number') }}" />
+                            @error('identity_number')
+                                <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="col-span-2">
+                            <label for="identity_file" class="md:text-lg font-medium block mb-4">Upload Document</label>
+                            <div class="flex gap-4">
+                                <input type="file" name="identity_file" id="identity_file" class="hidden" accept=".pdf,.jpg,.jpeg,.png,.docx,.txt" />
+                                <label for="identity_file" class="btn-primary cursor-pointer">Choose File</label>
+                                <div id="filePreview" class="text-sm text-gray-600 mt-2">No file selected</div>
+                            </div>
+                            @error('identity_file')
+                                <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="col-span-2">
+                            <label for="identity_note" class="md:text-lg font-medium block mb-4">Notes (Optional)</label>
+                            <textarea class="w-full text-sm bg-primary/5 border border-n30 rounded-3xl px-3 md:px-6 py-2 md:py-3" placeholder="Enter any notes..." rows="3" id="identity_note" name="identity_note">{{ old('identity_note') }}</textarea>
+                        </div>
+
+                        <div class="col-span-2 flex pt-4 gap-4">
+                            <button type="submit" class="btn-primary px-5">Save Changes</button>
+                        </div>
+                    </form>
             </div>
             </div>
             <div class="col-span-12 lg:col-span-6">
@@ -499,6 +516,98 @@
 
 @endsection
 @push('script')
+
+@push('script')
+<script>
+    function handleDocTypeChange() {
+        const docType = document.getElementById('identity_type').value;
+        const label = document.getElementById('identity_number_label');
+        const input = document.getElementById('identity_number');
+
+        switch (docType) {
+            case 'aadhaar':
+                label.textContent = 'Aadhaar Number';
+                input.placeholder = 'Enter Aadhaar Number (XXXX-XXXX-XXXX)';
+                input.pattern = '\\d{4}-\\d{4}-\\d{4}';
+                break;
+            case 'pan':
+                label.textContent = 'PAN Number';
+                input.placeholder = 'Enter PAN Number (ABCDE1234F)';
+                input.pattern = '[A-Z]{5}[0-9]{4}[A-Z]{1}';
+                break;
+            case 'passport':
+                label.textContent = 'Passport Number';
+                input.placeholder = 'Enter Passport Number';
+                input.pattern = '.{5,20}';
+                break;
+            case 'license':
+                label.textContent = 'Driving License Number';
+                input.placeholder = 'Enter License Number';
+                input.pattern = '.{5,20}';
+                break;
+            default:
+                label.textContent = 'Document Number';
+                input.placeholder = 'Enter Document Number';
+                input.pattern = '.{3,20}';
+        }
+    }
+
+    document.getElementById("identity_file").addEventListener("change", function () {
+        const fileName = this.files[0]?.name;
+        document.getElementById("filePreview").innerText = fileName ? `Selected: ${fileName}` : "No file selected";
+    });
+
+    document.addEventListener("DOMContentLoaded", () => {
+        if (document.getElementById('identity_type').value) {
+            handleDocTypeChange();
+        }
+
+        document.getElementById('identity_type').addEventListener('change', handleDocTypeChange);
+
+        // Validation on submit
+        const form = document.getElementById('identityForm');
+        form.addEventListener('submit', function (e) {
+            let isValid = true;
+
+            // Clear previous errors
+            document.querySelectorAll('.text-red-500').forEach(el => el.remove());
+
+            // Document Type
+            const docType = document.getElementById('identity_type');
+            if (!docType.value) {
+                showError(docType, 'Please select document type');
+                isValid = false;
+            }
+
+            // Document Number
+            const docNumber = document.getElementById('identity_number');
+            if (!docNumber.value) {
+                showError(docNumber, 'Please enter document number');
+                isValid = false;
+            } else if (!docNumber.checkValidity()) {
+                showError(docNumber, 'Invalid document number format');
+                isValid = false;
+            }
+
+            // File
+            const fileInput = document.getElementById('identity_file');
+            if (!fileInput.value) {
+                showError(fileInput, 'Please upload a document file');
+                isValid = false;
+            }
+
+            if (!isValid) e.preventDefault();
+        });
+
+        function showError(element, message) {
+            const div = document.createElement('div');
+            div.className = 'text-red-500 text-sm mt-1';
+            div.textContent = message;
+            element.parentNode.appendChild(div);
+        }
+    });
+</script>
+@endpush
     <script>
         function toggleOtherCompany() {
             const select = document.getElementById('company');
