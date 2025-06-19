@@ -39,6 +39,7 @@ class AppServiceProvider extends ServiceProvider
             $totalVendorRejectedRequest = 0;
             $totalNoOfEmployeeInCompany = 0;
             $totalNoOfClaimsEnrolledByEmp = 0;
+            $notShowPopup = true;
             if ($user) {
                 // Re-fetch the user to ensure relationships work properly (optional)
                 $user = User::find($user->id);
@@ -68,10 +69,12 @@ class AppServiceProvider extends ServiceProvider
                 $totalPendingBenefitEnrolled = $user->claims
                     ->where('status', config('constants.user_approval_status.pending'))
                     ->count();
-
+                if ($user->status == config('constants.user_approval_status.pending') && $user->kyc_status == config('constants.user_approval_status.pending')) {
+                    $notShowPopup = false;
+                }
             }
 
-            $view->with(compact('user', 'media', 'guard', 'compyId', 'totalBenefitEnrolled', 'totalPendingBenefitEnrolled', 'totalApprovedBenefit', 'totalVendorPendingRequest', 'totalVendorApprovedRequest', 'totalVendorRejectedRequest', 'totalNoOfEmployeeInCompany', 'totalNoOfClaimsEnrolledByEmp'));
+            $view->with(compact('user', 'media', 'guard', 'compyId', 'totalBenefitEnrolled', 'totalPendingBenefitEnrolled', 'totalApprovedBenefit', 'totalVendorPendingRequest', 'totalVendorApprovedRequest', 'totalVendorRejectedRequest', 'totalNoOfEmployeeInCompany', 'totalNoOfClaimsEnrolledByEmp', 'notShowPopup'));
         });
 
         Gate::define('create-company', function (User $user) {

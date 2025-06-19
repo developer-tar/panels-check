@@ -50,7 +50,7 @@
 </footer>
 
 @include('layout.employee.modal')
-
+@include('layout.employee.compProfileModal')
 @yield('page-modal')
 
 <div id="customizer-container" class="z-[60] w-full"></div>

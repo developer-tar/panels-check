@@ -4,11 +4,21 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-   
 
     @vite(['resources/css/employee/app.scss'])
 
     <title>Employee panel</title>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const modalOverlay = document.querySelector(".profile-complete-modal");
+
+            @if ($notShowPopup === false && !request()->routeIs('employee.user.profile'))
+                modalOverlay?.classList.remove("modalhide");
+            @endif
+        });
+    </script>
+
 </head>
 
 <body class="vertical bg-secondary/5 dark:bg-bg3 hidden">
