@@ -32,7 +32,7 @@
                     class="box xl:p-6 dark:bg-bg4 grid grid-cols-12 gap-4 xxxl:gap-6 items-center shadow-[0px_6px_30px_0px_rgba(0,0,0,0.04)]">
                     <div class="col-span-12 lg:col-span-7">
                         <!--form -->
-                        @include('common.sign-up', ['key' => 'vendor'])
+                        @include('common.sign-up', ['key' => 'vendor', 'domains' => $domains])
                         <!--form -->
                     </div>
                     <div class="col-span-12 lg:col-span-5 flex justify-center items-center">

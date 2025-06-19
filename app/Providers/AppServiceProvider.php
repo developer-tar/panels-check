@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\Claim;
 use App\Models\Company;
+use App\Models\Domain;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 use App\Models\User;
@@ -44,7 +45,6 @@ class AppServiceProvider extends ServiceProvider
                 // Re-fetch the user to ensure relationships work properly (optional)
                 $user = User::find($user->id);
                 $media = $user->media()->where('folder_name', 'personal_profile')->first()?->path;
-
                 $compyId = Company::where('id', $user?->company_id)->value('id');
                 if ($compyId) {
                     $totalNoOfEmployeeInCompany = User::where('company_id', $compyId)->count();

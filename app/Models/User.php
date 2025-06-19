@@ -37,6 +37,7 @@ class User extends Authenticatable {
         'privacy',
         'status',
         'email_verified_at',
+        'domain_id'
 
     ];
     /**
@@ -74,6 +75,9 @@ class User extends Authenticatable {
         return $this->hasMany(Media::class, 'model_id')->where('model_name', User::class);
     }
     public function claims(){
-        return $this->hasMany(Claim::class);
+        return $this->hasMany(Claim::class, 'users_id');
+    }
+    public function domain(){
+        return $this->belongsTo(Domain::class);
     }
 }

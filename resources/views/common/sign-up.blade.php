@@ -24,6 +24,24 @@
                     placeholder="Doe" id="lname" name="last_name" value="{{ old('last_name') }}" />
             </div>
         </div>
+        @if($key == strtolower(config('constants.roles_inverse.vendor')))
+        <label for="domain" class="md:text-lg font-medium block mb-4">
+            Select your domain
+        </label>
+        <div class="mb-4">
+            <select id="domain" name="domain" class="nc-select full">
+                <option selected disabled>Select Domain</option>
+                @foreach($domains as $domain)
+                <option value="{{ $domain->id}}" {{ old('domain') == $domain->id ? 'selected' : '' }}>{{ $domain->name }}</option>
+                @endforeach
+            </select>
+            @error('domain')
+            <div class="text-red-500 text-sm mt-1">
+                {{ $message }}
+            </div>
+            @enderror
+        </div>
+        @endif
         <label for="email" class="md:text-lg font-medium block mb-4">
             Enter Your Email ID
         </label>
@@ -32,9 +50,9 @@
                 class="w-full text-sm bg-n0 dark:bg-bg4 border border-n30 dark:border-n500 rounded-3xl px-3 md:px-6 py-2 md:py-3 @error('email') is-invalid @enderror"
                 placeholder="Enter Your Email" id="email" name="email" value="{{ old('email') }}" />
             @error('email')
-                <div class="text-red-500 text-sm mt-1">
-                    {{ $message }}
-                </div>
+            <div class="text-red-500 text-sm mt-1">
+                {{ $message }}
+            </div>
             @enderror
         </div>
         <label for="password" class="md:text-lg font-medium block mb-4">
@@ -51,9 +69,9 @@
                     <i class="las la-eye-slash"></i>
                 </span>
                 @error('password')
-                    <div class="text-red-500 text-sm mt-1">
-                        {{ $message }}
-                    </div>
+                <div class="text-red-500 text-sm mt-1">
+                    {{ $message }}
+                </div>
                 @enderror
             </div>
         </div>

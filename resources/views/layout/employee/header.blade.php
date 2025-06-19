@@ -13,7 +13,7 @@
         document.addEventListener("DOMContentLoaded", function () {
             const modalOverlay = document.querySelector(".profile-complete-modal");
 
-            @if ($notShowPopup === false && !request()->routeIs('employee.user.profile'))
+            @if($notShowPopup === false && !request()->routeIs('employee.user.profile'))
                 modalOverlay?.classList.remove("modalhide");
             @endif
         });

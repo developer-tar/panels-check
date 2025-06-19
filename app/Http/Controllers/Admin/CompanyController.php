@@ -8,10 +8,8 @@ use App\ImageUploadTrait;
 use App\Models\Company;
 use App\Models\Domain;
 use App\Models\Media;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Services\CompanyService;
-use App\Http\Requests\CompanyCreateRequest;
 
 class CompanyController extends Controller
 {

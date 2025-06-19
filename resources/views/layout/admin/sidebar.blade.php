@@ -34,6 +34,42 @@
                                     <span class="menu-icon">
                                         <i class="las la-industry"></i>
                                     </span>
+                                    <span class="menu-title font-medium">Domains</span>
+                                </span>
+                                <span class="plus-minus">
+                                    <i class="las la-plus text-xl"></i>
+                                    <i class="las la-minus text-xl"></i>
+                                </span>
+                                <span class="chevron-down hidden">
+                                    <i class="las la-angle-down text-base"></i>
+                                </span>
+                            </button>
+                            <ul class="submenu-hide submenu">
+                                <li>
+                                    <a href="{{ route('admin.domain.index') }}" class="submenu-link">
+                                        <i class="las la-minus text-xl"></i>
+                                        <span>List/Manage</span>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="{{ route('admin.domain.create') }}" class="submenu-link">
+                                        <i class="las la-minus text-xl"></i>
+                                        <span>Add</span>
+                                    </a>
+                                </li>
+
+                            </ul>
+
+
+                        </li>
+                        <!-- Company  -->
+                        <li class="menu-li">
+                            <button class="menu-btn border-n30 bg-n0 dark:!border-n500 dark:bg-bg4">
+                                <span class="flex items-center justify-center gap-2">
+                                    <span class="menu-icon">
+                                        <i class="las la-industry"></i>
+                                    </span>
                                     <span class="menu-title font-medium">Company</span>
                                 </span>
                                 <span class="plus-minus">

@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\BenefitsEnrollController;
 use App\Http\Controllers\Admin\CompanyController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\DomainController;
 use App\Http\Controllers\Admin\HrController;
 use App\Http\Controllers\Admin\PlansController;
 use App\Http\Controllers\Admin\RolesController;
@@ -20,7 +21,6 @@ Route::group(['prefix' => 'auth', 'as' => 'admin.auth.', 'middleware' => 'set.gu
     Route::get('sign-up', [AuthController::class, 'signUp'])->name('sign-up');
     Route::post('sign-up-process', [AuthController::class, 'signUpProcess'])->name('sign-up-process');
     Route::post('authenticate', [AuthController::class, 'authenticate'])->name('authenticate');
-
 });
 
 Route::group(['middleware' => 'set.auth:admin'], function () {
@@ -112,7 +112,13 @@ Route::group(['middleware' => 'set.auth:admin'], function () {
         Route::get('/', [CompanyController::class, 'index'])->name('index');
         Route::get('create', [CompanyController::class, 'create'])->name('create');
         Route::post('store', [CompanyController::class, 'store'])->name('store');
-       
+
         Route::get('{id}/edit', [CompanyController::class, 'edit'])->name('edit');
+    });
+    //Domain management
+    Route::group(['prefix' => 'domain', 'as' => 'admin.domain.'], function () {
+        Route::get('/', [DomainController::class, 'index'])->name('index');
+        Route::get('create', [DomainController::class, 'create'])->name('create');
+        Route::post('store', [DomainController::class, 'store'])->name('store');
     });
 });

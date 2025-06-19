@@ -4,14 +4,15 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class SignUpRequest extends FormRequest
+class DomainStoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return true;
+        
+            return true;
     }
 
     /**
@@ -22,11 +23,8 @@ class SignUpRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'first_name' => ['required'],
-            'last_name'=> ['required'],
-            'email'    => ['required', 'email',  'unique:users,email'],
-            'password' => ['required'],
-            'domain' => ['required', 'integer'],
+            'name' => ['required', 'string', 'max:255', 'unique:domains,name'],
+            'description' => ['required', 'string'],
         ];
     }
 }
