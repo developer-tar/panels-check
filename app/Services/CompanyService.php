@@ -33,7 +33,7 @@ class CompanyService
         } else {
             $company = $company->get();
         }
-        // dd($company);
+
 
         return $company->transform(function ($company) use ($role) {
             // Prepare domain name for display

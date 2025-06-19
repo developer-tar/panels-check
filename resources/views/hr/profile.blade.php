@@ -7,14 +7,14 @@
         </div>
 
         <div class="grid grid-cols-12 gap-4 xxxxxl:gap-6">
-            <div class="col-span-12 lg:col-span-6">
+           <!-- <div class="col-span-12 lg:col-span-6">
 
                 <form class="box xxl:p-8 xxxl:p-10" method="post" action="{{route('personal.profile')}}"
                     enctype="multipart/form-data">
                     @csrf
                     <p class="text-lg font-medium mb-4">Profile Photo(optional)</p>
                     <div class="flex flex-wrap gap-6 xxl:gap-10 items-center bb-dashed mb-6 pb-6 gap-check">
-                        <!-- Fixed-size Image Preview -->
+                        Fixed-size Image Preview
 
 
                         <img id="imagePreview"
@@ -190,10 +190,10 @@
                         </div>
                     </div>
                 </form>
-                <!-- Credit card scores -->
+                Credit card scores
 
-            </div>
-            <div class="col-span-12 lg:col-span-6">
+            </div> -->
+            <div class="col-span-12 lg:col-span-12">
 
                 <div class="box xxl:p-8 xxxl:p-10">
 

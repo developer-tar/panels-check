@@ -4,13 +4,11 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class SignUpRequest extends FormRequest
-{
+class SignUpRequest extends FormRequest {
     /**
      * Determine if the user is authorized to make this request.
      */
-    public function authorize(): bool
-    {
+    public function authorize(): bool {
         return true;
     }
 
@@ -19,14 +17,18 @@ class SignUpRequest extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
-    public function rules(): array
-    {
-        return [
+    public function rules(): array {
+        $rules = [
             'first_name' => ['required'],
-            'last_name'=> ['required'],
-            'email'    => ['required', 'email',  'unique:users,email'],
-            'password' => ['required'],
-            'domain' => ['required', 'integer'],
+            'last_name'  => ['required'],
+            'email'      => ['required', 'email', 'unique:users,email'],
+            'password'   => ['required'],
         ];
+
+        if ($this->routeIs('vendor.auth.sign-up-process')) {
+            $rules['domain'] = ['required', 'integer'];
+        }
+
+        return $rules;
     }
 }
