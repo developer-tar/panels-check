@@ -37,7 +37,9 @@ class User extends Authenticatable {
         'privacy',
         'status',
         'email_verified_at',
-        'domain_id'
+        'domain_id', 
+        'doc_type',
+        'doc_number'
 
     ];
     /**

@@ -185,11 +185,10 @@
                         <div class="col-span-2">
                             <label for="identity_type" class="md:text-lg font-medium block mb-4">Document Type</label>
                             <select id="identity_type" name="identity_type" class="nc-select full" onchange="handleDocTypeChange()">
-                                <option selected disabled>Select Document Type</option>
-                                <option value="aadhaar" {{ old('identity_type') == 'aadhaar' ? 'selected' : '' }}>Aadhaar Card</option>
-                                <option value="pan" {{ old('identity_type') == 'pan' ? 'selected' : '' }}>PAN Card</option>
-                                <option value="passport" {{ old('identity_type') == 'passport' ? 'selected' : '' }}>Passport</option>
-                                <option value="license" {{ old('identity_type') == 'license' ? 'selected' : '' }}>Driving License</option>
+
+                            @foreach(config('constants.indentity_docs') as $key => $indentity_doc)
+                            <option value="{{ $key }}" {{ old('doc_type') == $key ? 'selected' : '' }}>{{ $indentity_doc }}</option>
+                            @endforeach
                             </select>
                             @error('identity_type')
                                 <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
@@ -216,11 +215,7 @@
                             @enderror
                         </div>
 
-                        <div class="col-span-2">
-                            <label for="identity_note" class="md:text-lg font-medium block mb-4">Notes (Optional)</label>
-                            <textarea class="w-full text-sm bg-primary/5 border border-n30 rounded-3xl px-3 md:px-6 py-2 md:py-3" placeholder="Enter any notes..." rows="3" id="identity_note" name="identity_note">{{ old('identity_note') }}</textarea>
-                        </div>
-
+                       
                         <div class="col-span-2 flex pt-4 gap-4">
                             <button type="submit" class="btn-primary px-5">Save Changes</button>
                         </div>
@@ -523,24 +518,24 @@
         const docType = document.getElementById('identity_type').value;
         const label = document.getElementById('identity_number_label');
         const input = document.getElementById('identity_number');
-
+        
         switch (docType) {
-            case 'aadhaar':
+            case '1':
                 label.textContent = 'Aadhaar Number';
                 input.placeholder = 'Enter Aadhaar Number (XXXX-XXXX-XXXX)';
                 input.pattern = '\\d{4}-\\d{4}-\\d{4}';
                 break;
-            case 'pan':
+            case '2':
                 label.textContent = 'PAN Number';
                 input.placeholder = 'Enter PAN Number (ABCDE1234F)';
                 input.pattern = '[A-Z]{5}[0-9]{4}[A-Z]{1}';
                 break;
-            case 'passport':
+            case '3':
                 label.textContent = 'Passport Number';
                 input.placeholder = 'Enter Passport Number';
                 input.pattern = '.{5,20}';
                 break;
-            case 'license':
+            case '4':
                 label.textContent = 'Driving License Number';
                 input.placeholder = 'Enter License Number';
                 input.pattern = '.{5,20}';

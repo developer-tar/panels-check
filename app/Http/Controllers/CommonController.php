@@ -41,13 +41,13 @@ class CommonController extends Controller
     public function companyProfile(RequestsCompany $request)
     {
         try {
-
+          
             DB::beginTransaction();
             if ($request->company_id == 'other') {
                 $data = $request->except('path', '_token');
                
                 if(isset($request->role) && $request->role == 'VENDOR'){
-                        $data['domain_id'] = Domain::first()?->id;
+                        $data['domain_id'] = Auth::guard('vendor')->user()->domain_id;
                 }
                
                 $company = Company::create($data);

@@ -116,6 +116,13 @@ class UsersController extends Controller
                     ]
                 );
             }
+            $user->update(
+                [
+                    'doc_type' => $request->input('identity_type'),
+                    'doc_number' => $request->input('identity_number')
+                ]
+            );
+
             return back()->with('success', config('constants.kyc_verify_message'));
         } catch (\Exception $e) {
             DB::rollBack();

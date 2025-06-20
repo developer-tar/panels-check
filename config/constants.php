@@ -84,5 +84,12 @@ return [
     'user_credit_score_message' => 'User Credit score Updated successfully.',
     'kyc_verify_message' => 'Document Upload successfully.',
 
+    'indentity_docs' => [
+        1 => 'Aadhaar Card',
+        2 => 'PAN Card',
+        3 => 'Passport',
+        4 => 'Driving License',
+    ]
+
 
 ];
