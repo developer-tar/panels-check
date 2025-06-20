@@ -45,56 +45,41 @@
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
                 <!-- Card 1 -->
                 <div class="box p-6 rounded-2xl shadow-sm border border-n30 dark:border-n500 bg-white dark:bg-bg3">
-                    <h3 class="text-lg font-semibold text-n900 dark:text-white mb-4">Latest Benefit Enrollment</h3>
+                    <h3 class="text-lg font-semibold text-n900 dark:text-white mb-4">Benefit</h3>
 
-                    @php
-                    $latest = $claims->sortByDesc('enrolled_at')->first();
-                    @endphp
-
-                    @if($latest)
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm text-gray-700 dark:text-gray-200">
                         <div>
-                            <p class="text-gray-500 dark:text-gray-400">Company Name</p>
-                            <p class="text-base font-semibold">{{ $latest['company_name'] ?? 'N/A' }}</p>
+                            <p class="text-gray-500 dark:text-gray-400">Domain</p>
+                            <p class="text-base font-semibold">{{ $claims->count() }}</p>
                         </div>
 
                         <div>
-                            <p class="text-gray-500 dark:text-gray-400">Domain Name</p>
-                            <p class="text-base font-semibold">{{ $latest['domain_name'] ?? 'N/A' }}</p>
+                            <p class="text-gray-500 dark:text-gray-400">Documents Uploaded</p>
+                            <p class="text-base font-semibold text-blue-600">{{ $claims->filter(fn($c) => $c['path'])->count() }}</p>
                         </div>
 
                         <div>
-                            <p class="text-gray-500 dark:text-gray-400">Claim Amount</p>
+                            <p class="text-gray-500 dark:text-gray-400">Total Claim Amount</p>
                             <p class="text-base font-semibold text-green-600">
-                                ₹{{ number_format($latest['claim_amount'] ?? 0, 2) }}
+                                ₹{{ number_format($claims->sum('claim_amount'), 2) }}
                             </p>
                         </div>
 
                         <div>
-                            <p class="text-gray-500 dark:text-gray-400">Company Claim Amount</p>
+                            <p class="text-gray-500 dark:text-gray-400">Company Claim Total</p>
                             <p class="text-base font-semibold text-orange-500">
-                                ₹{{ number_format($latest['company_claim_amount'] ?? 0, 2) }}
+                                ₹{{ number_format($claims->sum('company_claim_amount'), 2) }}
                             </p>
                         </div>
 
-                        <div>
-                            <p class="text-gray-500 dark:text-gray-400">Start Period</p>
-                            <p class="text-base font-semibold">{{ $latest['start_period'] ?? 'N/A' }}</p>
-                        </div>
-
-                        <div>
-                            <p class="text-gray-500 dark:text-gray-400">End Period</p>
-                            <p class="text-base font-semibold">{{ $latest['end_period'] ?? 'N/A' }}</p>
-                        </div>
-
-                        <div class="sm:col-span-2">
-                            <p class="text-gray-500 dark:text-gray-400">Enrolled At</p>
-                            <p class="text-base font-semibold">{{ $latest['enrolled_at'] ?? 'N/A' }}</p>
+                        <div class="sm:col-span-2 pt-2 border-t border-gray-200 dark:border-n600 mt-2">
+                            <div class="flex flex-wrap gap-4 text-sm mt-2">
+                                <span class="text-green-600 font-medium">Active: {{ $claims->where('status', 'active')->count() }}</span>
+                                <span class="text-red-500 font-medium">Inactive: {{ $claims->where('status', 'inactive')->count() }}</span>
+                                <span class="text-gray-500 font-medium">Others: {{ $claims->reject(fn($c) => in_array($c['status'], ['active', 'inactive']))->count() }}</span>
+                            </div>
                         </div>
                     </div>
-                    @else
-                    <p class="text-gray-500">No enrollment data found.</p>
-                    @endif
                 </div>
 
                 <!-- Card 2: Optional Summary or Duplicate -->

@@ -29,6 +29,8 @@ class BenefitsEnrollController extends Controller
 
     public function index()
     {
+        $benefits = Benefit::with('domain:id,name')->where('user_id',Auth::guard('vendor')->id())->get();
+       
         $claims = Claim::with(['media:id,model_id,path', 'company:id,company_name', 'domain:id,name'])
             ->where('user_id', Auth::guard('employee')->user()->id)
             ->paginate(10)
@@ -59,7 +61,7 @@ class BenefitsEnrollController extends Controller
                 ];
             });
             
-        return view($this->name . '.benefits.index')->with('claims',$claims);
+        return view($this->name . '.benefits.index', compact('claims', 'benefits'));
     }
 
     public function create()
