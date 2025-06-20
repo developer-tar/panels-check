@@ -114,6 +114,7 @@ class UsersController extends Controller {
         }
     }
     public function kycPendingRequest() {
+
         $users = User::with(['media:id,model_id,path', 'company:id,company_name', 'roles:id,name'])
             ->whereNot('id', Auth::guard('admin')->id())->where(['kyc_status' => config('constants.user_approval_status.pending')])
             ->whereHas('roles', function($q){
@@ -153,6 +154,8 @@ class UsersController extends Controller {
                     'country' => $countryName,
                     'identity_document' => $user->media->first()?->path,
                     'kyc_status' => ucfirst($kycStatus),
+                    'doc_type' => isset($user->doc_type) ? config('constants.indentity_docs.'.$user->doc_type) : null,
+                    'doc_number' => $user->doc_number,
                 ];
             });
         

@@ -77,7 +77,7 @@ class User extends Authenticatable {
         return $this->hasMany(Media::class, 'model_id')->where('model_name', User::class);
     }
     public function claims(){
-        return $this->hasMany(Claim::class, 'users_id');
+        return $this->hasMany(Claim::class);
     }
     public function domain(){
         return $this->belongsTo(Domain::class);
