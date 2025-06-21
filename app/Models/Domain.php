@@ -10,4 +10,16 @@ class Domain extends Model
         'name',
         'description',
     ];
+    public function company()
+    {
+        return $this->hasMany(Company::class, 'domain_id');
+    }
+    public function benefit()
+    {
+        return $this->hasMany(Benefit::class, 'domain_id');
+    }
+    public function claim()
+    {
+        return $this->hasMany(Claim::class, 'domain_id');
+    }
 }

@@ -8,6 +8,7 @@ use App\ImageUploadTrait;
 use App\Models\Benefit;
 use App\Models\Claim;
 use App\Models\Company;
+use App\Models\Domain;
 use App\Models\Media;
 use App\Services\CompanyService;
 use Carbon\Carbon;
@@ -29,8 +30,30 @@ class BenefitsEnrollController extends Controller
 
     public function index()
     {
-        $benefits = Benefit::with('domain:id,name')->where('user_id',Auth::guard('vendor')->id())->get();
-       
+
+        $showCaseDetails = Benefit::with('domain:id,name', 'domain.company:id,company_name,email,domain_id', 'domain.claim:id,domain_id')
+            ->whereHas('domain.claim', function ($q) {
+                return $q->whereNot('user_id', auth()->guard('employee')->id());
+            })
+            ->whereNot('user_id', Auth::guard('vendor')->id())
+            ->select('domain_id', 'company_id', 'coverage_limit', 'start_period', 'end_period')
+            ->get();
+        if ($showCaseDetails->isNotEmpty()) {
+            $showCaseDetails = $showCaseDetails->map(function ($show) {
+                $domain = optional($show->domain);
+                $company = optional($domain->company->first());
+
+                return [
+                    'domain_name' => $domain->name,
+                    'company_name' => $company->company_name,
+                    'company_email' => $company->email,
+                    'coverage_rate' => $show->coverage_limit,
+                    'start_period' => $show->start_period,
+                    'end_period' => $show->end_period,
+                ];
+            });
+
+        }
         $claims = Claim::with(['media:id,model_id,path', 'company:id,company_name', 'domain:id,name'])
             ->where('user_id', Auth::guard('employee')->user()->id)
             ->paginate(10)
@@ -56,19 +79,16 @@ class BenefitsEnrollController extends Controller
                     'end_period' => $benefit?->end_period,
                     'enrolled_at' => $claim?->created_at ? Carbon::parse($claim?->created_at)->diffForHumans() : null,
                     'status' => $status,
-
-
                 ];
             });
-            
-        return view($this->name . '.benefits.index', compact('claims', 'benefits'));
+        return view($this->name . '.benefits.index', compact('claims', 'showCaseDetails'));
     }
 
     public function create()
     {
-        
-        $companies = Benefit::with(['company:id,company_name','domain:id,name'])->get();
-        
+
+        $companies = Benefit::with(['company:id,company_name', 'domain:id,name'])->get();
+
         $companies = $companies->filter(function ($claim) {
             return $claim->domain?->name;
         })->map(function ($claim) {
@@ -79,8 +99,8 @@ class BenefitsEnrollController extends Controller
                 'name' => $claim?->company?->company_name . ' ' . $domainName,
             ];
         });
-        
-       
+
+
 
         return view($this->name . '.benefits.create')->with('companies', $companies);
     }
